@@ -1,5 +1,5 @@
 ---
-type: entity
+type: topic
 tags: []
 topic: <slug>
 created: YYYY-MM-DD
@@ -9,18 +9,24 @@ sources: []
 status: active
 ---
 
-# <Name>
+# <Topic Name>
 
-一句话定义。
+一句话定义追踪的主题(研究线/长期关注领域)。
 
-## 关键信息
+## 核心页面
 
-- 事实/数据点(来源: [[source-slug]])
+- [[related-concept]] — 一句话说明其在本主题中的角色
+- [[related-synthesis]] — 综合结论页
 
-## 与其他页面的关系
+## 当前状态 / 进展
 
-- 详见 [[related-page]]
+- 已摄入 N 份源文档;综合页完成情况
+- 关键实证基础
 
-## 演变 / 争议
+## 开放问题
 
-> [!warning] 此处的早期说法已被更新数据取代,见 [[newer-page]](日期)。
+- 值得继续追踪的问题列表(与综合页开放问题保持一致)
+
+## 相关主题
+
+- 其他主题的链接;新主题起步时可复用本模板

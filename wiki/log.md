@@ -13,3 +13,332 @@
 - 重点: 如何让 AI 更好实现功能 → 综合页 ai-feature-implementation-loop
 
 ## [2026-08-02] lint | index & topics synced (multi-topic upgrade, 16 pages -> topic: ai-agents)
+
+## [2026-08-02] ingest | Best practices for Claude Code
+
+- 源文档: raw/Best practices for Claude Code.md (Anthropic 官方文档, 剪藏 2026-08-02)
+- 新建 9 页: 1 source (2026-08-02-best-practices-claude-code), 1 entity (claude-code), 7 concepts (claude-md, agent-verification, plan-mode, skills, subagents, parallel-agents, model-context-protocol)
+- 更新 5 页: anthropic, context-engineering, ai-agent-spec, curse-of-instructions, ai-feature-implementation-loop (验证门禁四档 + 失败模式修复表)
+- 与 2026-01-13-good-spec-for-ai-agents 相互印证,无矛盾;补充"何时跳过计划"粒度判断
+
+## [2026-08-02] structure | topics 目录建立 + ai-agents 主题页
+
+- 人类新增 wiki/topics/ 分类与 ai-agents.md(type: topic);lint 已纳入 topics(CATS + orphan 检查)
+- _templates/topic.md 更新为新主题页约定(核心页面/当前状态/开放问题)
+- ai-agents 主题页内容刷新:2 份源文档、核心页面扩充、开放问题同步
+
+## [2026-08-02] structure | topic 约定落定:全库 25 页 topic 字段 + lint 自动检查
+
+- 约定确认:wiki/topics/ 主题页为长期追踪入口;ingest 时自动同步其 当前状态/开放问题(已写入 AGENTS.md §1/§2/§3)
+- 补齐第二次 ingest 的 9 页 topic: ai-agents 字段(其余 16 页由人类先行添加)
+- lint.sh 已有 topic-missing 检查(人类添加 §6),全库 25 页 topic 字段均指向 topics/ai-agents.md
+
+## [2026-08-02] ingest | Building Effective AI Agents
+
+- 源文档: raw/Building Effective AI Agents.md (Anthropic 工程博客, Erik Schluntz/Barry Zhang;原始发布日期待核实,剪藏 2026-08-02)
+- 新建 5 页: 1 source (2026-08-02-building-effective-ai-agents), 1 entity (swe-bench), 3 concepts (agentic-systems, agentic-workflow-patterns, agent-computer-interface)
+- 更新 7 页: anthropic, model-context-protocol, parallel-agents, llm-as-a-judge, agent-verification, lethal-trifecta, ai-feature-implementation-loop
+- 跨源术语对应: ACI↔AX(Osmani)、ground truth↔验证检查、routing 分级↔致命三要素成本缓解
+
+## [2026-08-02] ingest | Effective context engineering for AI agents
+
+- 源文档: raw/Effective context engineering for AI agents.md (Anthropic 工程博客, Applied AI 团队;发布于 2025-09,具体日期待核实;剪藏 2026-08-02)
+- 新建 3 页: 1 source (2026-08-02-effective-context-engineering-for-ai-agents), 2 concepts (context-rot, agentic-memory)
+- 重构 1 页: context-engineering(升级为领域定义级:注意力预算、正确高度、最小工具集、JIT 检索、长时任务三技术)
+- 更新 6 页: subagents, simon-willison(定义被官方采纳), agentic-systems(定义演进), claude-md(混合策略), curse-of-instructions(正确高度), ai-feature-implementation-loop
+- 跨源呼应: Willison 的代理定义("LLMs autonomously using tools in a loop")被 Anthropic 官方采纳
+
+## [2026-08-02] ingest | Writing effective tools for AI agents—using AI agents
+
+- 源文档: raw/Writing effective tools for AI agents—using AI agents.md (Anthropic 工程博客, Ken Aizawa;发布于 2025-09-11,据外部转载确认,待原文核实)
+- 新建 2 页: 1 source (2025-09-11-writing-effective-tools-for-ai-agents, 首个按真实发布日命名的源), 1 concept (tool-evaluation)
+- 重构 1 页: agent-computer-interface(五条设计原则 + 评测指向,成为 ACI 完整落地手册)
+- 更新 6 页: model-context-protocol, swe-bench(SOTA 实证), claude-code(25k 上限/协作优化), context-engineering, llm-as-a-judge(verifier 角色), ai-feature-implementation-loop(自举实证)
+- 关键实证: Sonnet 3.5 经工具描述微调达 SWE-bench Verified SOTA;"用 AI agents 写 AI agents 的工具"
+
+## [2026-08-02] ingest | How we built our multi-agent research system
+
+- 源文档: raw/How we built our multi-agent research system.md (Anthropic 工程博客, Jeremy Hadfield/Barry Zhang 等;发布日未标注,待核实;剪藏 2026-08-02)
+- 新建 2 页: 1 source (2026-08-02-how-we-built-our-multi-agent-research-system), 1 concept (multi-agent-systems)
+- 更新 7 页: subagents(委派教法), parallel-agents(90.2%/4-15× token), llm-as-a-judge(rubric 判分/小样本启动), agentic-workflow-patterns(orchestrator 生产案例), agentic-memory(计划入内存), context-engineering(长时对话管理), ai-feature-implementation-loop(多代理开放问题获数据)
+- 关键数据: 多代理 vs 单代理 +90.2%;token 4×/15×;BrowseComp 80% 方差由 token 用量解释;编码暂不适合多代理
+
+## [2026-08-02] ingest | Equipping agents for the real world with Agent Skills
+
+- 源文档: raw/Equipping agents for the real world with Agent Skills.md (Anthropic 工程博客, Barry Zhang/Keith Lazuka/Mahesh Murag;发布日未标注,文内标注 2025-12-18 开放标准更新;剪藏 2026-08-02)
+- 新建 2 页: 1 source (2026-08-02-equipping-agents-with-agent-skills), 1 concept (progressive-disclosure, 三源印证)
+- 重构 1 页: skills(升级为领域定义级:三级披露、代码执行、开发四准则、安全、开放标准)
+- 更新 4 页: context-engineering, model-context-protocol(与 MCP 互补), anthropic(开放标准), ai-feature-implementation-loop(反馈层 skill 沉淀)
+- 跨源模式: 渐进式披露 = Osmani 扩展 TOC + context engineering JIT + Skills 三级结构
+
+## [2026-08-02] ingest | The File System Is the New Database (Personal OS for AI Agents)
+
+- 源文档: raw/The File System Is the New Database_ How I Built a Personal OS for AI Agents.md (X 长推文, Muratcan Koylan @ Sully.ai;frontmatter 标注 2025-10-06,内嵌引文至 2026-02,成文时间存疑)
+- 首篇独立开发者视角源文档
+- 新建 3 页: 1 source (2025-10-06-file-system-is-the-new-database), 1 entity (muratcan-koylan), 1 concept (file-as-memory)
+- 更新 6 页: context-engineering(实践印证), agentic-memory(情景记忆), progressive-disclosure(Vercel 56% 反证), skills(自动/手动双模式 + 触发率反证), claude-md(指令层级), ai-feature-implementation-loop(独立视角支持与反证)
+- 关键反证: Vercel Next.js 16 评测 56% skill 从未被调用(二手引述,待核);NeurIPS 人格论文提示
+
+## [2026-08-02] ingest | LLM Powered Autonomous Agents
+
+- 源文档: raw/LLM Powered Autonomous Agents.md (Lilian Weng, Lil'Log;发布于 2023-06-23)
+- 首篇学术综述式源文档;wiki 时间跨度延伸至 2023(奠基文献)
+- 新建 3 页: 1 source (2023-06-23-llm-powered-autonomous-agents), 1 entity (lilian-weng), 1 concept (self-reflection)
+- 更新 6 页: agentic-memory(生成式代理记忆流), llm-as-a-judge(ChemCrow 自评盲区反证), tool-evaluation(API-Bank 谱系), agentic-systems(历史框架), agentic-workflow-patterns(MRKL/HuggingGPT 谱系), ai-feature-implementation-loop(奠基对照 + 文件/向量记忆双线)
+- 关键反证: ChemCrow 人类专家评审 vs LLM 自评分歧;三大挑战(有限上下文/长程规划/NL 接口)的时间线对照
+
+## [2026-08-02] ingest | Effective harnesses for long-running agents
+
+- 源文档: raw/Effective harnesses for long-running agents.md (Anthropic 工程博客, Justin Young;发布日待核实,推定 2025 底-2026)
+- 新建 2 页: 1 source (2026-08-02-effective-harnesses-for-long-running-agents), 1 concept (long-running-agents)
+- 更新 6 页: agentic-memory(跨会话 harness 记忆), file-as-memory(harness 实例), conformance-testing(可执行特征清单), agent-verification(浏览器自动化验证), context-engineering(多上下文窗口工作流), ai-feature-implementation-loop(长时任务失败模式表 + 开放问题)
+- 关键数据: 跨会话零记忆是长时任务核心难题;compaction 不足以跨会话;feature list passes 门禁防"提前宣布完成";浏览器自动化测试大幅提升
+
+## [2026-08-02] ingest | Harness design for long-running application development
+
+- 源文档: raw/Harness design for long-running application development.md (Anthropic Labs, Prithvi Rajasekaran;发布日待核实,推定 2026)
+- 上篇 harness 文献的直接续作;GAN 式 generator-evaluator + planner 三代理架构
+- 新建 2 页: 1 source (2026-08-02-harness-design-for-long-running-apps), 1 concept (context-anxiety)
+- 更新 7 页: llm-as-a-judge(自评偏差+评估器校准), long-running-agents(三代理架构+sprint contract), context-engineering(上下文焦虑+reset), agent-verification(硬阈值评估器), agentic-workflow-patterns(evaluator-optimizer 深度案例), spec-driven-development(planner 自动化 Specify), ai-feature-implementation-loop(新失败模式+成本数据)
+- 关键数据: Solo 20min/$9 vs 三代理 6h/$200(20倍);DAW 3h50m/$124.70,QA 每轮 $3-4;Sonnet 4.5 上下文焦虑→Opus 4.5 消除
+
+## [2026-08-02] ingest | Agent Harness Engineering
+
+- 源文档: raw/Agent Harness Engineering.md (Addy Osmani;发布于 2026-04-19)
+- Osmani 第三篇源文档;harness 工程学科化的综合论述(Viv Trivedy 等式、HumanLayer skill issue、Terminal Bench 证据、HaaS)
+- 新建 2 页: 1 source (2026-04-19-agent-harness-engineering), 1 concept (harness-engineering)
+- 更新 5 页: addy-osmani(第三篇源), agents-md(棘轮原则), context-engineering(tool-call 输出卸载), long-running-agents(Ralph Loop), ai-feature-implementation-loop(harness 差距论 + MCP 供应链安全)
+- 关键数据: Terminal Bench 2.0 同模型跨 harness 差距大;只改 harness Top 30→Top 5;AGENTS.md <60 行(HumanLayer)
+
+## [2026-08-02] ingest | The Factory Model: How Coding Agents Changed Software Engineering
+
+- 源文档: raw/The Factory Model_ How Coding Agents Changed Software Engineering.md (Addy Osmani;发布于 2026-02-25)
+- Osmani 第四篇源文档;行业范式级论述(软件第三纪元、工厂心智模型、spec 即杠杆、验证是瓶颈)
+- 新建 2 页: 1 source (2026-02-25-factory-model-coding-agents), 1 concept (factory-model)
+- 更新 7 页: addy-osmani(第四篇源), ai-agent-spec(spec 即杠杆), agentic-systems(三代工具谱系), conformance-testing(红/绿 TDD 强制), agent-verification(验证瓶颈论), agents-md(文档即训练材料), ai-feature-implementation-loop(范式层)
+- 关键主张: 验证是未解问题(不是生成);测试后写则测的是"实现恰好做的事";人工审查是安全系统;宏观指标(二手)
+
+## [2026-08-02] ingest | AI writes code faster. Your job is still to prove it works.
+
+- 源文档: raw/AI writes code faster. Your job is still to prove it works..md (Addy Osmani;发布于 2026-01-07)
+- Osmani 第五篇源文档;AI 时代代码评审:负担转移显式化 + PR Contract
+- 新建 2 页: 1 source (2026-01-07-ai-code-review), 1 concept (pr-contract)
+- 更新 4 页: addy-osmani(第五篇源), agent-verification(人类侧闭环+量化), llm-as-a-judge(AI 评审工具现实), ai-feature-implementation-loop(评审层)
+- 关键数据(均二手待核): PR +18%、事故 +24%、失败率 +30%、45% 安全缺陷、逻辑 1.75×/XSS 2.74×
+
+## [2026-08-02] ingest | Comprehension Debt - the hidden cost of AI generated code
+
+- 源文档: raw/Comprehension Debt - the hidden cost of AI generated code..md (Addy Osmani;发布于 2026-03-14)
+- Osmani 第六篇源文档;理解力债务:AI 代码对人类理解力的隐性成本(对验证/评审路线的重要对冲)
+- 新建 2 页: 1 source (2026-03-14-comprehension-debt), 1 concept (comprehension-debt)
+- 更新 5 页: addy-osmani(第六篇源), pr-contract(被评审≠被理解), agent-verification(测试硬上限), factory-model(spec 杠杆边界), ai-feature-implementation-loop(理解力层)
+- 关键数据(待核): Anthropic RCT 理解力 -17%(50% vs 67%);委派式 <40% vs 询问式 >65%;速度不对称
+
+## [2026-08-02] ingest | Cognitive Surrender
+
+- 源文档: raw/Cognitive Surrender.md (Addy Osmani;发布于 2026-05-05)
+- Osmani 第七篇源文档;认知投降:理解力债务的机制层(offloading vs surrender)
+- 新建 2 页: 1 source (2026-05-05-cognitive-surrender), 1 concept (cognitive-surrender)
+- 更新 5 页: addy-osmani(第七篇源), comprehension-debt(机制层), pr-contract(校准功能), vibe-coding(投降风险), ai-feature-implementation-loop(人侧机制层)
+- 关键数据(待核): Wharton 3 实验 1372 人,AI 错时 73% 接受错答案、信心反升;MIT 脑神经研究
+
+## [2026-08-02] ingest | 工程技术:在智能体优先的世界中利用 Codex
+
+- 源文档: raw/工程技术：在智能体优先的世界中利用 Codex.md (OpenAI 官方博客, Ryan Lopopolo;发布于 2026-02-11)
+- 首个 OpenAI 视角;零人工代码实验(5 个月 100 万行、1500 PR、3.5 PR/人/天,自述)
+- 新建 3 页: 1 source (2026-02-11-codex-agent-first-engineering), 1 entity (openai), 1 concept (agent-readability)
+- 更新 7 页: agents-md(四败因+地图论), agent-computer-interface(应用/可观测性可读性), progressive-disclosure(仓库知识库实例), file-as-memory(仓库即记录系统), agent-verification(智能体对智能体评审), harness-engineering(熵与垃圾回收), ai-feature-implementation-loop(阵营实验层+矛盾标注)
+- 记录阵营矛盾: OpenAI 智能体对智能体评审+减少阻塞门 vs Osmani 人类签字不可替代(双向标注)
+
+## [2026-08-02] ingest | 持续改进我们的智能体框架
+
+- 源文档: raw/持续改进我们的智能体框架.md (Cursor 官方博客, Stefan Heule;发布于 2026-04-30)
+- 首个 Cursor 阵营;harness 持续改进方法论(Keep Rate/语义满意度/按模型定制/回归追踪)
+- 新建 2 页: 1 source (2026-04-30-cursor-agent-harness-improvement), 1 entity (cursor)
+- 更新 6 页: harness-engineering(按模型定制), context-anxiety(第三次报告+提示调优), context-engineering(护栏→动态上下文), tool-evaluation(在线评测指标), context-rot(工具错误致腐), ai-feature-implementation-loop(框架厂层)
+- 关键数据: Keep Rate 变更保留率;工具可靠性冲刺后 ≥99%(多 99.9%);patch vs str_replace 格式错配消耗 reasoning token
+
+## [2026-08-02] ingest | Skill Issue: Harness Engineering for Coding Agents
+
+- 源文档: raw/Skill Issue_ Harness Engineering for Coding Agents.md (HumanLayer, Kyle;发布于 2026-03-12)
+- "skill issue"框架出处(Osmani harness 文引用源头);配置工程六面 + 回压 + 上下文防火墙
+- 新建 2 页: 1 source (2026-03-12-skill-issue-harness-engineering), 1 entity (humanlayer)
+- 更新 7 页: agents-md(ETH Zurich 反证), subagents(上下文防火墙), agent-verification(回压体系), context-engineering(指令预算/愚蠢区/长上下文怀疑), harness-engineering(过拟合双刃#33/#5+经验清单), skills(恶意注册表+工具分发), ai-feature-implementation-loop(配置工程层)
+- 关键数据(待核): ETH Zurich 138 agentfile(LLM 生成损害性能贵 20%+,人工 +4%);Terminal Bench Opus 4.6 #33→#5
+
+## [2026-08-02] ingest | AI Native 时代——研发组织何去何从
+
+- 源文档: raw/AI Native 时代 —— 研发组织何去何从.md (阿里技术, 许晓斌;发布于 2026-05-08)
+- 首个中文原创源 + 首个组织设计视角;全数据为内部转述(待核)
+- 新建 6 页: 1 source (2026-05-08-ai-native-organization), 2 entities (alibaba, xu-xiaobin), 4 concepts (execution-graph, hive-mind, management-collapse, distillation-anxiety)
+- 更新 5 页: agent-readability(AI 友好 5 维度+人形偏置), harness-engineering(组织尺度+复利), comprehension-debt(组织侧镜像,修复一次误删), anthropic(Hive Mind 文化,二手), ai-feature-implementation-loop(组织层)
+- 关键数据(二手待核): 编码 10× vs 端到端 2-3×;同日迭代(6 周→1 天);系统打通调研断层第一;Peter Pang 管人 60%→<10%;Agent 四不对称
+- 新增阵营佐证: 阿里"不敢全信、人工又扛不住" = 评审分歧的第三方中间观察
+
+## [2026-08-02] ingest | How Claude Code works in large codebases
+
+- 源文档: raw/How Claude Code works in large codebases_ Best practices and where to start.md (Anthropic 官方, Applied AI 团队;发布 2026-05-14,推断待核)
+- "Claude Code at scale" 系列首篇;harness 官方背书 + agentic vs RAG 检索 + 配置评审节奏 + 企业所有权
+- 新建 1 页: source (2026-05-14-claude-code-large-codebases)
+- 更新 8 页: claude-code, harness-engineering(官方背书+3-6 月维护节奏), context-engineering(RAG 陈旧失败模式+LSP 符号检索), subagents(探索编辑分离), claude-md(分层加载+随模型进化维护), skills(路径限定), management-collapse(agent manager/DRI↔Architect), ai-feature-implementation-loop(企业规模部署层)
+- 发布日推断: frontmatter 笔误 2001-05-14 → 2026-05-14(Ken Huang 5-20 checklist、HN 5-29 热帖佐证)
+- 关键发现: 组件误区表;配置评审 3-6 月 = harness 过时问题首个节奏答案;agent manager/DRI = 阿里 Architect 的企业落地名;Ken Huang 与阿里文章同话语圈
+
+## [2026-08-02] ingest | The Intent Debt
+
+- 源文档: raw/The Intent Debt.md (Addy Osmani;发布于 2026-06-05)
+- ⚠️ raw clip 正文缺失(仅 "ai" 二字),内容自 addyosmani.com/blog/intent-debt/ 抓取补全
+- 债务三部曲完成篇:技术债(代码)/认知债(人)/意图债(工件);引 Storey Triple Debt Model (arXiv 2603.22106,待核)
+- 新建 2 页: source (2026-06-05-intent-debt), concept (intent-debt)
+- 更新 5 页: comprehension-debt(三元组定位+互补论证), cognitive-surrender(意图债=被写下来的投降), agents-md(意图账本 framing+反 /init), ai-agent-spec(spec 写意图), ai-feature-implementation-loop(债务三元组层)
+- 关键论点: 意图是唯一必须源于人的输入;冷启动经济学(每会话付一次×每个代理);orchestration tax 大部分是意图税;"AI 擅长产出你忘了写下来的问题的答案"
+- 待核: Triple Debt Model 原文;orchestration-tax / automated-decision-logs / self-improving-agents 三篇 Osmani 关联文未入库
+
+## [2026-08-02] fix | raw/The Intent Debt.md 已补全
+
+- 人工重新裁剪补全 raw 文件(原 clip 正文仅 "ai");核对与 2026-08-02 抓取版内容一致,已入库页面无需修订
+- 更新 source 页备注为已解决状态
+
+## [2026-08-02] ingest | Loop Engineering
+
+- 源文档: raw/Loop Engineering.md (Addy Osmani;发布于 2026-06-07)
+- 循环工程:harness 上一层("跑在定时器上的 harness");五件套+记忆;Steinberger/Cherny 推文引证(二手)
+- 新建 2 页: source (2026-06-07-loop-engineering), concept (loop-engineering)
+- 更新 8 页: harness-engineering(层级定位), agent-verification(/goal 停止条件验证), long-running-agents(循环原语), subagents(Codex TOML+maker/checker), skills(触发描述+创作格式vs分发), cognitive-surrender(循环=加速剂或解药), comprehension-debt(循环加速债务), ai-feature-implementation-loop(循环工程层)
+- 关键论点: "done 是主张不是证明";同构循环异果;"杠杆点移动了";循环不替人做三件事(验证/理解/姿态)
+- 无新矛盾(验证立场与 pr-contract 阵营一致);token 成本模型/无监督循环失败模式待核
+
+## [2026-08-02] ingest | The Code Agent Orchestra
+
+- 源文档: raw/The Code Agent Orchestra - what makes multi-agent coding work.md (Osmani, O'Reilly AI CodeCon 演讲文字稿;发布于 2026-03-26)
+- 指挥→编排范式;单代理三堵墙;四乘法理由;Agent Teams 协调原语;2026 工具三层;Ralph Loop 形式化;质量门三件套
+- 新建 3 页: source (2026-03-26-code-agent-orchestra), concepts (agent-teams, ralph-loop)
+- 更新 8 页: multi-agent-systems(编排层), parallel-agents(编排纪律), subagents(报告文件交接+层级子代理), agents-md(ETH 精确数字-3%/>20%/Gloaguen), self-reflection(循环护栏强制反思), long-running-agents(ralph-loop 链接), factory-model(六步流水线), ai-feature-implementation-loop(多代理编排层)
+- 关键数据: ETH Zurich 精确化(成功率 -3%、推理成本 +20%+,归因 Gloaguen et al.,待核);3-5 队友甜点区;MAX_ITERATIONS=8 强制反思;四通道记忆;Beads(SQL 可寻址制度记忆)
+- Agent Teams = 对"实时协调不成熟"开放问题的产品化回应;无新矛盾
+
+## [2026-08-02] ingest | Agent Skills (Osmani)
+
+- 源文档: raw/Agent Skills.md (Addy Osmani;发布于 2026-05-03)
+- agent-skills 开源项目设计思想文(27K stars,MIT);过程胜过散文;反合理化表格;Google DNA;五条不可妥协
+- 新建 3 页: source (2026-05-03-agent-skills), concepts (process-over-prose, anti-rationalization-tables[从 cognitive-surrender 反制升格])
+- 更新 6 页: skills(Osmani 版+六阶段 SDLC+路由器+可移植性), cognitive-surrender(表格链接), agents-md(五条不可妥协), harness-engineering(层级分工), long-running-agents(运行越长越强制), ai-feature-implementation-loop(纪律工程层)
+- 关键论点: "工作日益变成把纪律编码成代理无法说服自己绕开的东西";验证不可妥协(证据退出标准);范围纪律=PR 可合并性最大单一决定因素;反合理化表格公开样例集落地(部分回答开放问题)
+- 无新矛盾;五条不可妥协与 ETH 反证兼容(短而强制 vs 长而忽略)
+
+## [2026-08-02] ingest | The Future of Agentic Coding: Conductors to Orchestrators
+
+- 源文档: raw/The future of agentic coding_ conductors to orchestrators.md (Addy Osmani;发布于 2026-01-02)
+- conductor/orchestrator 分类学原始定义(Code Agent Orchestra 演讲前身);五轴对比;编排六大挑战
+- 新建 2 页: source (2026-01-02-future-agentic-coding), concept (conductor-orchestrator)
+- 更新 2 页: multi-agent-systems(角色光谱链接), ai-feature-implementation-loop(六大挑战+AI 可观测性)
+- 关键互证: ephemeral vs git 痕迹 ↔ file-as-memory/pr-contract;"代理评审代理、人最后在环" ↔ 阵营分歧中间观察;spec 上移 ↔ intent-debt/ai-agent-spec;Osmani 2026 写作弧线起点
+- 无新矛盾;90% 采用率与 10+ PR/天无出处待核
+
+## [2026-08-02] ingest | Your AI coding agents need a manager
+
+- 源文档: raw/Your AI coding agents need a manager.md (Addy Osmani;发布于 2026-01-08)
+- 管理技能迁移论;四项技能;delegate/review/own 三分法;PR packet;六步操作系统(工厂流水线谱系源头)
+- 新建 2 页: source (2026-01-08-coding-agents-manager), concept (agent-management)
+- 更新 5 页: pr-contract(PR packet 操作化), conductor-orchestrator(操作手册链接), simon-willison(评审瓶颈论), factory-model(六步谱系;补上 orchestra ingest 遗漏的流水线 bullet), ai-feature-implementation-loop(管理层)
+- 关键互证: PR packet ↔ pr-contract 四字段;delegate/review/own = 阵营分歧的折中表述;Agent HQ 控制平面趋势;Cherny 头衔表述不一(创造者 vs 负责人,待核)
+- 无新矛盾
+
+## [2026-08-02] ingest | Agentic Engineering
+
+- 源文档: raw/Agentic Engineering.md (Addy Osmani;发布于 2026-02-04)
+- 术语定名:vibe coding 行李箱词问题;agentic engineering 正名(Karpathy 命名);技能差距
+- 新建 2 页: source (2026-02-04-agentic-engineering), concept (agentic-engineering)
+- 更新 4 页: vibe-coding(谱系+合法用途+失败模式), simon-willison(vibe engineering 提案), addy-osmani(两本书), ai-feature-implementation-loop(术语与立场层)
+- 关键互证: "测试是把不可靠的代理变成可靠系统的方式" ↔ 验证是瓶颈;解释不了就不该进 ↔ pr-contract;"AI 更奖励好工程实践" ↔ spec 杠杆;skill atrophy ↔ Anthropic RCT
+- 无新矛盾;Karpathy 推文/Willison 原文待核
+
+## [2026-08-02] ingest | Self-Improving Coding Agents
+
+- 源文档: raw/Self-Improving Coding Agents.md (Addy Osmani;发布于 2026-01-31)
+- Ralph Loop 实操大全(Ryan Carson 技术扩展);六步循环;四通道记忆;AGENTS.md 手册;监控止损;风险管理
+- 新建 1 页: source (2026-01-31-self-improving-agents);ralph-loop 概念页大幅重写(六步+手册+止损+风险)
+- 更新 4 页: agents-md(手册结构+Eric Ma 实时反馈+记忆注入验证), long-running-agents(复合循环+定期重新聚焦), agent-teams(Cursor 规模化实验:锁失败→风险厌恶代理;Planner-Worker-Judge), ai-feature-implementation-loop(自改进循环层)
+- 关键互证: 四通道记忆 ↔ file-as-memory/long-running-agents;PR 不自动合并 ↔ pr-contract 阵营;"迭代更深而非更宽" ↔ 3-5 甜点;新张力:运行笔记本(代理自写学习条目)vs ETH 反证(待核)
+- 无新矛盾;$50k/几百美元轶事与外部引用待核
+
+## [2026-08-02] ingest | Agentic Code Review
+
+- 源文档: raw/Agentic Code Review.md (Addy Osmani;发布于 2026-06-15)
+- 2026-01-07 短评文 ai-code-review 的全面深化版:四数据集(Faros/CodeRabbit/GitClear/GitHub)、评审器异质性实证(93.4% 恰好一工具抓到)、human on the loop、分层评审行动清单
+- 新建 1 页: source (2026-06-15-agentic-code-review)
+- 更新 8 页: agent-verification(评审经济学/分层/异质性/human on the loop/纪律四则), pr-contract(证据门槛/决策日志/agent ghost), llm-as-a-judge(异质性节), comprehension-debt(意图恢复), cognitive-surrender(闭环 borrowed confidence), intent-debt(决策日志), ai-feature-implementation-loop(评审经济学层+反证区 2 条新张力)
+- 新张力: "有意减少阻塞门"(OpenAI) vs "默认零评审"(Faros +31.3%)——同向成因相反;agent ghost(38% 弃审) vs 偶发失败重跑——同一行为两种解读
+- 关键数字: churn +861%、缺陷率 9%→54%、评审时长 +441.5%、1.7x issues、4x 产出 vs 12% 真实增益、60M+ 评审/10x
+- 无直接新矛盾;全部厂商数据有立场但跨源效应量一致(已在 source 页标注);arXiv 与访谈原文待核
+
+## [2026-08-02] ingest | The Orchestration Tax
+
+- 源文档: raw/The Orchestration Tax.md (Addy Osmani;发布于 2026-05-24)
+- "编排税"术语正式定名(Google I/O panel 上 Richard Seroter 命名);GIL 类比 + Amdahl 定律精确化;注意力架构五实践
+- 新建 2 页: source (2026-05-24-orchestration-tax), 概念 orchestration-tax(升格独立概念页——多代理时代的核心经济概念)
+- 更新 6 页: parallel-agents(人类是瓶颈:并行上限 = 评审率), multi-agent-systems(编排经济学), conductor-orchestrator(编排税成本经济学;顺带修复历史遗留 \" 转义 typo), intent-debt(编排税 = 意图税出处 + Storey 博客旁证), cognitive-surrender(注意力耗尽 = 投降的结构路径), ai-feature-implementation-loop(编排税层)
+- 关键互证: 回压 ↔ harness-engineering 验证回压;批量评审 ↔ Ralph Loop 监控节奏;"锁只花在判断上" ↔ pr-contract 证据义务;两堆分类 ↔ conductor-orchestrator 人力前载/后载;Storey 认知债博客 ↔ Triple Debt Model 跟踪(arXiv 2603.22106)
+- 无新矛盾;Osmani 未入库关联文已清零(自改进/对抗评审/编排税全部入库)
+- 待核: Google I/O panel 视频;Your parallel Agent limit 博客;Storey 认知债博客(2026-02-09,未来 raw 候选)
+
+## [2026-08-02] ingest | Building an AI-native engineering team
+
+- 源文档: raw/building-an-ai-native-engineering-team.pdf (OpenAI 官方指南,20 页英文 PDF;发布日待核实,估计 2025 末-2026,暂用裁剪日 2026-08-02)
+- SDLC 六阶段(Plan/Design/Build/Test/Review/Document/Deploy&maintain)每阶段 Delegate/Review/Own 三分法 + checklist;METR 数据(2h17m/7 个月翻倍)
+- 新建 1 页: source (2026-08-02-building-ai-native-engineering-team)
+- 更新 6 页: pr-contract(官方立场 note:own 最终评审合并——与内部实验同公司两种声音), agent-verification(官方评审方法论:专门训练 P0/P1 + gold-standard 评估集 + PR comment reactions), agents-md(解锁 agentic loops/自动文档指令——AGENTS.md 三处落地载体), conformance-testing(测试=事实源+独立会话+TDD 先失败官方背书), agent-management(SDLC 全流程三分法), ai-feature-implementation-loop(官方指南层 + 阵营分裂"厂商内部镜像"维度)
+- 关键互证: 四使能 = harness 四支柱;测试先行 ↔ spec-driven/TDD;PLAN.md ↔ plan-mode;delegate/review/own 从二手变一手
+- 无新矛盾;新张力: 官方指南(对外保守,人 own 合并) vs 内部实验(激进,评审代理化)——"建议给别人的 vs 自己敢做的"
+- 待核: 发布日;METR 一手报告;Cloudwalk/Sansan/Virgin Atlantic 案例(营销性)
+
+## [2026-08-02] ingest | Measuring AI Ability to Complete Long Software Tasks
+
+- 源文档: raw/Measuring AI Ability to Complete Long Software Tasks.md (METR;发布于 2025-03-19,页面带 2026-01-29 Time Horizon 1.1 更新注记,交互图更新至 2026)
+- 时间地平线度量一手报告:任务长度(人类时长)= AI 能力;约每 7 个月翻倍(6 年);GPT-2 ~4 秒 → Claude 3.7 ~1h → GPT-5 ~2h → Opus 4.6 ~16h
+- 新建 1 页: source (2025-03-19-measuring-ai-long-tasks)
+- 更新 2 页: long-running-agents(能力基线节), ai-feature-implementation-loop(官方指南层引用一手化)
+- **待核闭环**: OpenAI PDF 引用的 "METR 2h17m" 与一手交互图 GPT-5(2025-08)数据点一致——二手引用已核实 ✓(source 2026-08-02-building-ai-native-engineering-team 待核状态更新)
+- 无新矛盾;交互图数据点由 SVG 近似读取(约数,精确值待核 time-horizons 页)
+- 未来候选: Time Horizon 1.1(2026-01-29)方法论更新、arXiv 2503.14499 全文
+
+## [2026-08-02] lint | 全库健康检查
+
+- 结构: lint clean(97 pages);raw/ 32 文件全部已入库,无遗漏
+- 修复: 主题页开放问题区滞后(旧版 25 条)→ 与综合页合并同步(45+ 条,去重后补入主题页独有 11 条:GitHub 2,500+ agents.md 口径/LLM-judge 盲区/过度规范边界/五模式选择/context rot 曲线/memory tool/工具命名空间/agentskills.io/Vercel 56%/NeurIPS 人格论文/LLM+P 长程规划);综合页补编排税量化与时间地平线外推两条开放问题
+- 核对: index 为 ingest 顺序追加(惯例正确);conformance-testing refs 无残留垃圾;ralph-loop 无"五步"旧表述残留;2h17m 已核实闭环
+- 待核状态 20 个 source 页标记均为真实未解(外部引用/发布日/二手数据),无需变更
+
+## [2026-08-02] ingest ×4 | AI 抓取补充(AI 直接抓取,无 raw 文件)
+
+- 抓取 4 篇高优先候选(用户确认),provenance 标注:非人工裁剪,AI 直抓 URL;发布日经 arXiv API/页面 meta 核实
+- ① [[2026-02-09-cognitive-debt]] Storey 认知债博客(2026-02-09)——认知债一手源;Naur 程序理论/Brooks 回声;缓解实践
+- ② [[2026-01-28-skill-formation-rct]] Anthropic RCT(arXiv 2601.20245)——理解力债实验一手化:核心发现核实(六交互模式/65-86% 高分界/agentic 损失更大);-17%/52 人口径待全文
+- ③ [[2026-02-12-evaluating-agents-md]] ETH AGENTS.md 研究(arXiv 2602.11988)——反证一手化:**数字协调 -3%(转述)vs -0.5%/-2%(一手)**;文档冗余假说(+2.7%);指令被遵循但概览失败
+- ④ [[2026-04-07-cognitive-parallel-agents]] Osmani 并行限制(2026-04-07)——编排税前传;ambient anxiety tax 出处;先降范围再降数量
+- 更新 7 页: comprehension-debt(RCT/Storey 一手化), intent-debt(Storey 核实✓), orchestration-tax(前传+Storey 一手), agents-md(ETH 一手化), ai-feature-implementation-loop(反证区+编排税层+开放问题)
+- 待核闭环: ETH -3% 转述差异(同量级,聚合口径待全文);Storey 债务框架旁证 ✓;RCT 二手转述核心一致 ✓
+- 无新矛盾;已解决: 综合页"Anthropic RCT 与 <40%/>65% 数据核实"开放问题(与一手 65-86% 吻合)
+
+## [2026-08-02] ingest | From Technical Debt to Cognitive and Intent Debt (Triple Debt Model)
+
+- 源文档: raw/2603.22106v4.pdf (Storey;arXiv 2603.22106,发布 2026-03-23,v4 更新 2026-04-06,arXiv API 核实)
+- 债务三元组一手论文:三层系统健康(意图/代码/共享理解);三债因果循环;AI 减技术债同时加速认知+意图债
+- 新建 1 页: source (2026-03-23-triple-debt-model)
+- 更新 4 页: intent-debt(债务三元组一手化 + **修正:认知债(团队级)≠ comprehension debt(个人)**——此前 wiki 合并了两者), comprehension-debt(论文级定义与区分/诊断信号/缓解), cognitive-surrender(Shaw & Nave SSRN 6097646 出处确认——Wharton 数据一手引用), ai-feature-implementation-loop(理解力层一手化 + 新张力"抵制理解的自动化 vs 文档委托" + 意图债测量监控方向)
+- 关键互证: 投降→认知债机制链;reimplementation 修复 ↔ ralph-loop;"把理解当交付物" ↔ pr-contract;Willison 认知债博客(2026-02-15)新候选源
+- 无新矛盾;新张力: Storey"抵制理解自动化" vs OpenAI 文档委托(折中:委托草稿+人评审)
+- 待核: Willison 认知债博客、Shaw & Nave SSRN 全文、Starr & Storey 2602.10540、AIRELI 分类(未来候选)
+
+## [2026-08-02] lint | 全面自检(38 源/102 页)
+
+- 修复: index.md 重复 [[anthropic]] 条目(第 10/13 行,103→102 与页数一致);comprehension-debt 债务三元组段残留"待核"→ 更新为一手论文引用(认知债缓解靠实践,非简单"让代理解释")
+- 同步: 主题页当前状态区待核标记更新(RCT/Wharton/ETH 已一手化,精确口径标注);开放问题区与综合页一致 ✓
+- 核对通过: source 编号 17-38 连续无重复;关键数字跨页一致(ETH -0.5%/-2% 口径、2h17m、93.4%、441.5%);综合页 18 层清单完整;lint clean(102 pages)
+- 剩余待核 9 项均为真实未解(宏观二手数据/Terminal Bench #33#5/Vercel 56%/$50k 轶事/Karpathy 原文/Cherny 头衔/阿里二手/loop-engineering 作者自评/management-collapse),无需变更
+
+## [2026-08-03] fix | Storey 认知债博客 raw 人工裁剪版核对
+
+- raw/How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive Debt.md 人工裁剪版提供(AI 直抓版 2026-08-02 在先)
+- 核对: 两版核心主张一致 ✓;raw 版更完整,补入 3 段:①创业课实证(7-8 周撞墙,共享理解碎片化)②Fowler/Thoughtworks 退思会 breakout session(2026-02-09 同日;慢下来+结对/重构/TDD 治双债)③认知债警告信号(犹豫变更/部落知识/黑箱感)
+- source 页 provenance 更新(直抓 → 直抓+人工裁剪核对一致);待办区更新(Triple Debt 论文已一手化)

@@ -4,8 +4,8 @@ tags: [ai-agents, risk]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [simon-willison, vibe-coding]
-sources: [2026-01-13-good-spec-for-ai-agents]
+refs: [simon-willison, vibe-coding, agentic-workflow-patterns]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-building-effective-ai-agents]
 status: active
 ---
 
@@ -25,6 +25,7 @@ status: active
 
 - spec 与审查流程必须**同时**针对三者设计:速度→门禁/分阶段审查;非确定性→版本控制 + 日志追踪 + 一致性测试锚定;成本→模型分级(便宜模型做重复活,顶级模型做关键推理),并控制上下文 token 预算
 - 忽视它是 [[vibe-coding]] 上生产的主要事故源
+- 工程化印证(来源: [[2026-08-02-building-effective-ai-agents]]):Anthropic 明确把**错误复合(compounding errors)**列为自主代理的主要风险(非确定性的多步放大);其 **routing** 模式(easy→Haiku/难→Sonnet 分级)是成本维度的标准缓解——与 Osmani 的模型分级建议一致(见 [[agentic-workflow-patterns]])
 
 ## 与其他页面的关系
 

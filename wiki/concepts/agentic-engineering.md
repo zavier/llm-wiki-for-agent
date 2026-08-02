@@ -1,0 +1,37 @@
+---
+type: concept
+tags: [ai-agents, engineering-discipline, workflow, terminology]
+topic: ai-agents
+created: 2026-08-02
+updated: 2026-08-02
+refs: [vibe-coding, ai-agent-spec, agent-verification, conformance-testing, comprehension-debt, cognitive-surrender, factory-model, agent-management, addy-osmani]
+sources: [2026-02-04-agentic-engineering]
+status: active
+---
+
+# Agentic engineering
+
+有纪律的 AI 辅助软件开发:代理做实现、**人拥有架构/质量/正确性**——相对 [[vibe-coding]](YOLO)的正式工作流;Karpathy 命名、Osmani 采纳的术语,频谱上位于 vibe coding ↔ AI-assisted engineering ↔ agentic engineering 的一端。
+
+## 关键信息
+
+**术语谱系**(来源: [[2026-02-04-agentic-engineering]]):vibe coding(Karpathy 造词,"人是 prompt DJ")→ AI-assisted engineering(Osmani 早期偏好,人在环)→ vibe engineering(Willison 提案,"vibe" 负资产太重:信号随意,CTO 听到会担忧)→ **agentic engineering**(Karpathy 提议,2026-02):三个理由——描述实际发生的事(编排能执行/测试/精化的代理,你作架构师/评审者/决策者)、职业上可读(能进职位描述)、划出干净界线(术语本身强制执行区分)
+
+**实践四步**:
+
+1. **从计划开始**:prompt 前先写设计文档/spec(可 AI 辅助),拆明确定义的任务,决定架构——vibe 党跳过、项目出轨的地方(见 [[ai-agent-spec]])
+2. **指挥,然后评审**:以对人工队友 PR 的严格度评审;"**如果你解释不了一个模块是干什么的,它就不该进**"(见 [[pr-contract]] 知识转移义务)
+3. **测试不倦**:最大的区分器——有测试套件,代理循环迭代到通过,给你高置信;没测试,它兴高采烈地在坏代码上宣布"完成";"**测试是你把不可靠的代理变成可靠系统的方式**"(见 [[agent-verification]])
+4. **拥有代码库**:维护文档、版本控制+CI、监控生产;AI 加速工作,你为系统负责
+
+**核心反讽**:AI 辅助开发**比传统开发更奖励好工程实践**——spec 越好输出越好、测试越全面委派越自信、架构越干净幻觉越少;"AI 没造成问题;跳过设计思考造成了"(与 [[factory-model]] spec 杠杆互证)
+
+**技能差距**:不成比例地惠及资深工程师(基础 → 力乘器);初级工程师有 **skill atrophy** 风险——"一代能 prompt 但不会 debug、能生成但不会推理自己生成物的开发者";"agentic engineering 不比传统工程更容易——**它是另一种难**:拿打字时间换评审时间、实现努力换编排技能、写代码换读与评估代码"(见 [[comprehension-debt]] 与 [[cognitive-surrender]] 的同一危机表述)
+
+**前进方向**:诚实术语(别一个词叫两件事);**更好的评估框架**(衡量"可靠软件"而不只是"更快软件");投资基础(架构/安全/系统设计溢价上升);"AI 编码的兴起不取代软件工程的技艺——**它抬高了对它的要求**"
+
+## 与其他页面的关系
+
+- 光谱另一端: [[vibe-coding]];纪律机制: [[ai-agent-spec]]、[[agent-verification]]、[[conformance-testing]]
+- 人侧: [[comprehension-debt]](skill atrophy 的债务侧)、[[cognitive-surrender]];规模化: [[agent-management]]、[[factory-model]]
+- 倡导者: [[addy-osmani]](书:Beyond Vibe Coding);来源: [[2026-02-04-agentic-engineering]]

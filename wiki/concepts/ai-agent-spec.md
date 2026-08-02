@@ -4,8 +4,8 @@ tags: [ai-agents, spec-writing]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [spec-driven-development, curse-of-instructions, three-tier-boundaries, agents-md, context-engineering, conformance-testing, llm-as-a-judge]
-sources: [2026-01-13-good-spec-for-ai-agents]
+refs: [spec-driven-development, curse-of-instructions, three-tier-boundaries, agents-md, context-engineering, conformance-testing, llm-as-a-judge, agent-verification, plan-mode, factory-model, intent-debt]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-02-25-factory-model-coding-agents, 2026-06-05-intent-debt]
 status: active
 ---
 
@@ -39,6 +39,12 @@ status: active
 - **goal-oriented**:初期多写 what/why(用户是谁、要什么、成功长什么样),少写 how
 - **匹配任务复杂度**:不过度规范简单任务(如"居中一个 div"),不欠规范复杂任务(如 OAuth 流程)
 - 用 in-line TODO 注释把代码变成 mini-spec,让代理逐个填充
+- **具体化提示四策略**(来源: [[2026-08-02-best-practices-claude-code]]):scope 任务(指定文件/场景/测试偏好,如"覆盖登出用户的边界情况,避免 mock");指向源码("翻 ExecutionFactory 的 git 历史,总结其 API 由来");参照既有模式("照 HotDogWidget.php 的模式实现日历组件,只用现有库");描述症状(现象 + 可能位置 + "修好"长什么样)
+- **采访式开局**:大功能先让 Claude 用 AskUserQuestion 采访你(技术实现、UI/UX、边界、取舍),产出 SPEC.md 后**开新会话**执行——干净上下文 + 书面 spec;spec 自包含:点名文件与接口、声明 out of scope、以端到端验证步骤收尾
+- **验证先行**:prompt 里直接给示例测试用例("validateEmail:[user@example.com] 为 true,[user@.com] 为 false"),让代理实现后跑测试
+- 模糊提示也有用武之地:探索阶段("这个文件有什么可改进的?")能带出你没想到的问题
+- **Spec 即杠杆**(来源: [[2026-02-25-factory-model-coding-agents]]):舰队规模(20-50 代理并行)下,平庸 vs 优秀输出的差距几乎全在 spec 质量——**模糊想法乘法式放大**(含糊需求在几十个并行运行里各自偏一点,糟糕架构决策传遍舰队);"spec 不再是 prompt,是产品思维的外显";代理无法澄清从未给它的需求,会用假设填补,假设会复合(见 [[factory-model]])
+- **Spec 写意图而非实现**(来源: [[2026-06-05-intent-debt]]):spec 的首要职责是承载代码自己承载不了的意图——目标/约束/不可妥协项/显式 done(快、可访问、安全、愉悦,超越"功能正确");"无法捕捉全部意图不是捕捉零的许可证":spec 列不完隐性决策,但**承重决策的 why 必须记录**,因为 AI 会把意图空白填成合理猜测(见 [[intent-debt]])
 
 ## 与其他页面的关系
 

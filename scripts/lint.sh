@@ -40,8 +40,8 @@ for f in "${PAGES[@]}" "$WIKI/index.md"; do
   done < <(grep -o '\[\[[^]|]*' "$f" | sed 's/\[\[//' | sort -u)
 done
 
-# --- 3. orphans(entities/concepts/syntheses 无入链;sources/answers 按设计是叶子) ---
-for f in "$WIKI"/entities/*.md "$WIKI"/concepts/*.md "$WIKI"/syntheses/*.md; do
+# --- 3. orphans(entities/concepts/syntheses/topics 无入链;sources/answers 按设计是叶子) ---
+for f in "$WIKI"/entities/*.md "$WIKI"/concepts/*.md "$WIKI"/syntheses/*.md "$WIKI"/topics/*.md; do
   [ -f "$f" ] || continue
   base="$(basename "$f" .md)"
   if ! grep -rl "\[\[$base" "${PAGES[@]}" "$WIKI/index.md" 2>/dev/null \

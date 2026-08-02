@@ -4,8 +4,8 @@ tags: [ai-agents, workflow, spec-writing]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [ai-agent-spec, agents-md]
-sources: [2026-01-13-good-spec-for-ai-agents]
+refs: [ai-agent-spec, agents-md, long-running-agents]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-harness-design-for-long-running-apps]
 status: active
 ---
 
@@ -28,6 +28,7 @@ status: active
 - spec 是"活的、可执行工件",与版本控制、CI/CD 绑定;变更自动传播到任务分解与测试
 - 门禁:spec 未验证前代理不能前进
 - 防止 Willison 所称 "house of cards code"——脆弱的 AI 输出在审视下崩塌
+- **Specify 阶段的代理自动化**(来源: [[2026-08-02-harness-design-for-long-running-apps]]):Anthropic Labs 的 planner 代理把 1-4 句 prompt 自动展开为完整产品 spec(16 特征/10 sprint 级)——四阶段中"人写 spec"环节可交由代理;planner 被刻意要求**避免细粒度实现细节**("写错会在下游级联"),与门禁流的"强调用户体验而非技术栈"同调;生成器每 sprint 与评估器**协商 done 定义**(sprint contract)再实现——相当于把验收标准提前到写码前(见 [[long-running-agents]])
 
 ## 与其他页面的关系
 
