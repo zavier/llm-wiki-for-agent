@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, debt, intent, externalization, failure-mode]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [comprehension-debt, cognitive-surrender, agents-md, ai-agent-spec, factory-model, distillation-anxiety, addy-osmani, agent-readability, loop-engineering, ralph-loop, pr-contract, plan-mode, orchestration-tax]
-sources: [2026-06-05-intent-debt, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax]
+updated: 2026-08-03
+refs: [comprehension-debt, cognitive-surrender, agents-md, ai-agent-spec, factory-model, distillation-anxiety, addy-osmani, agent-readability, loop-engineering, ralph-loop, pr-contract, plan-mode, orchestration-tax, theory-building]
+sources: [2026-06-05-intent-debt, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-12-24-nobody-knows-how-software-products-work]
 status: active
 ---
 
@@ -37,6 +37,8 @@ status: active
 
 **冷启动经济学**:人的意图靠走廊对话/评审评论/事故记忆逐人传递(四年的老工程师 = "意图文档",昂贵但有损);**代理每次会话冷启动**,不带任何隐性意图——"给团队加代理 = 一夜之间团队规模翻倍,全是没有长期记忆的初级员工";未外部化意图从"偶尔付一次(入职/离职)"变成"**每个会话付一次 × 每个代理**";orchestration tax 很大部分就是意图税(管理多代理累 = 在补供从未写下的意图,出处: [[2026-05-24-orchestration-tax]]);Storey 认知债博客(2026-02-09)已一手核实(债务框架旁证 ✓,见 [[2026-02-09-cognitive-debt]])
 
+**先 AI 形态**(来源: [[2025-12-24-nobody-knows-how-software-products-work]]):很多系统行为**没有自觉意图**——从一系列"默认选择"的相互作用中涌现,文档写作者常常"第一次发现系统如何工作";意图债不全是 AI 时代的新债,AI 把既有的"未外部化意图"成本从偶尔(入职/离职/文档危机)变成**每个会话 × 每个代理**(呼应冷启动经济学)
+
 **高意图债的形态**(不是摩擦,是无助感):代理"修 bug"删掉承重 guard clause 无人能辨;重构改掉用户依赖的行为,测试全绿但只编码了旧行为、从未编码意图;问"两个服务为什么走队列不走直连"答"代理建议的,当时看着没问题"——已经开始计息的意图债
 
 **与投降的关系**:投降是个体当下的姿态(见 [[cognitive-surrender]]);意图债是几百次那样的时刻留在仓库里的沉淀——"团队规模、被写下来的投降";金句:"**代码是答案,意图是它本该解决的问题。AI 极其擅长产出你忘了写下来的问题的答案。**"
@@ -54,3 +56,4 @@ status: active
 - 偿付机制: [[ai-agent-spec]]、[[agents-md]]、[[agent-readability]](意图放代理能读的地方 = 可读性的一部分)
 - **决策日志 = 意图外部化的评审形态**(来源: [[2026-06-15-agentic-code-review]]):agent 推理在 diff 产生时被丢弃 → 评审者被迫重构从未写下的意图(441% 更久);修复:代理在 PR 上写决策日志(想做什么/排除了什么/为什么)——意图在便宜时(生成时)捕获,而非昂贵时(评审时)重建(见 [[pr-contract]]);Kun Chen 极端版:意图 upfront 写进 plan(计划质量决定代理无人值守时长)——"意图没消失,人提前写好了"(见 [[plan-mode]])
 - 组织侧: [[distillation-anxiety]](知识必须显性化的恐惧面)、[[factory-model]](spec 杠杆 + 假设复合);倡导者: [[addy-osmani]]
+- **时间性意图**(来源: [[2026-07-11-in-defense-of-not-understanding-your-codebase]]):"理论是时间性的"——理解 = 能答"为什么此时建 X""Y 何时加入";意图债的**时间维度**:rationale 不只含 what/why,还含 why-then(决策时的语境与先后);决策日志/ADR 若只记"为什么"不记"为什么是现在",意图仍会随时间丢失(见 [[theory-building]])

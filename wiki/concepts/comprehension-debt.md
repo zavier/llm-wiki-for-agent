@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, cognitive-debt, comprehension, failure-mode]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [ai-agent-spec, spec-driven-development, three-tier-boundaries, conformance-testing, agent-verification, pr-contract, factory-model, agents-md, agent-readability, intent-debt, cognitive-surrender, claude-code, addy-osmani, orchestration-tax]
-sources: [2026-03-14-comprehension-debt, 2026-01-07-ai-code-review, 2026-05-05-cognitive-surrender, 2026-06-05-intent-debt, 2026-06-15-agentic-code-review, 2026-01-28-skill-formation-rct, 2026-02-09-cognitive-debt, 2026-03-23-triple-debt-model]
+updated: 2026-08-03
+refs: [ai-agent-spec, spec-driven-development, three-tier-boundaries, conformance-testing, agent-verification, pr-contract, factory-model, agents-md, agent-readability, intent-debt, cognitive-surrender, claude-code, addy-osmani, orchestration-tax, theory-building, sean-goedecke]
+sources: [2026-03-14-comprehension-debt, 2026-01-07-ai-code-review, 2026-05-05-cognitive-surrender, 2026-06-05-intent-debt, 2026-06-15-agentic-code-review, 2026-01-28-skill-formation-rct, 2026-02-09-cognitive-debt, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-12-24-nobody-knows-how-software-products-work]
 status: active
 ---
 
@@ -41,6 +41,10 @@ status: active
 **债务三元组中的定位**(一手论文: [[2026-03-23-triple-debt-model]],Storey;此前 Osmani 转述):认知债只是三元组之一(技术债在代码、**认知债在人(团队级共享理解侵蚀)**、意图债在工件);三债独立——低技术债+高意图债完全可能;三债**相互因果强化**(意图→认知→技术→认知);认知债缓解靠**实践**(human review/结对/walkthroughs/retro/reimplementation——"使隐式知识显式的实践最有效","让代理解释"只是部分手段),意图债"事后恢复困难甚至不可能"(见 [[intent-debt]]);互补论证:"无法捕捉全部意图不是捕捉零的许可证"——spec 列不完隐性决策,但**承重的那几个 why 必须记**(选错会付出昂贵代价的决策,没人会事后重建)
 
 **机制层:认知投降**(来源: [[2026-05-05-cognitive-surrender]]):债务的累积机制是 [[cognitive-surrender|认知投降]]——offloading(交 how 留 what,仍判断)退化为 surrender(不再构建独立答案);Wharton 数据:AI 错时 73% 接受、信心反升(借用信心);每次投降是一笔小贷,债务以丢失的心智模型计价;投降有路径依赖(跳过一块后下一块几乎必然继续投降);反制:验证硬退出、反合理化表格、小 PR(评审单位=理解单位)、概念询问优先、刻意摩擦、每周无 AI 键盘时间
+
+**对冲:部分理解是常态,债务要标定**(来源: [[2026-07-11-in-defense-of-not-understanding-your-codebase]],Goedecke):大系统里**人人都持部分错误的理论**——系统太大装不进任何人的脑子,完整理解在规模上不可得;能力 = 带着部分正确的理论有效工作(take a position、最 educated guess、承担后果,"如果你称职,那个人就是你");**与债务框架兼容而非矛盾**:Goedecke 辩护的是**分布式理解的稳态**(每人理解局部、系统整体靠分布与 transactive memory 被理解),债务框架针对**分布式理解的失效**(共享理解侵蚀、transactive memory 丢失——Storey 论文明言"分布式理解自古有之,新颖的是累积速率与检测难度");由此产生**标定问题**:正常局部理解 vs 债务式侵蚀的分界线在哪(→ 测量开放问题);LLM 双刃剑:更难构建详细心智理论,但快速建部分理论并更有效利用(Goedecke 自认未定论;注意他承认"更难"——与 RCT"生成式使用损害理解"同向,对冲的是"AI 必损理解"的单向断言);**理论只是众多价值之一**——别人写代码/法定功能/同事离职/安全补丁/新依赖都在损害理论维护,理解侵蚀的日常性不只来自 AI(见 [[theory-building]]);**时间性理论**:能答"为什么此时建 X""Y 何时加入"= 意图的时间维度(→ [[intent-debt]])
+
+**先 AI 基线:战争迷雾是常态**(来源: [[2025-12-24-nobody-knows-how-software-products-work]]):AI 之前,大公司对自己系统的"战争迷雾"就存在——基本问题常只有少数人能答,有时零人(结构原因:[[wicked-features]] 使系统复杂到禁止理解);唯一可靠答案源 = 读代码(调查技能:交互产品/读码/"探索性手术"——改代码或强制检查恒真,独立于写码的稀缺技能);含义:债务框架测的是**恶化**而非从零到一——标定问题(见上)的参照系是"AI 之前就存在的部分理解";AI 加速"答案不稳定性"(每次变更引入新细节与例外,同一问题要反复研究);reorg 摧毁默会知识 ↔ Storey transactive memory 丢失;代码可读性 = 组织知识资产,AI 产出侵蚀它 → 调查成本上升
 
 ## 与其他页面的关系
 

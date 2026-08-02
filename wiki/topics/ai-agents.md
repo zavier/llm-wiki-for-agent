@@ -2,9 +2,9 @@
 type: topic
 tags: [ai-agents, spec-writing, research]
 created: 2026-08-02
-updated: 2026-08-02
-refs: [ai-agent-spec, spec-driven-development, ai-feature-implementation-loop, agentic-systems, context-engineering, agent-computer-interface, multi-agent-systems, skills, file-as-memory, self-reflection, long-running-agents, context-anxiety, harness-engineering, factory-model, pr-contract, comprehension-debt, cognitive-surrender, agent-readability, cursor, humanlayer, execution-graph, hive-mind, management-collapse, distillation-anxiety, alibaba, xu-xiaobin, claude-code, intent-debt, loop-engineering, agent-teams, ralph-loop, process-over-prose, anti-rationalization-tables, conductor-orchestrator, agent-management, agentic-engineering, orchestration-tax]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2026-05-03-agent-skills, 2026-01-02-future-agentic-coding, 2026-01-08-coding-agents-manager, 2026-02-04-agentic-engineering, 2026-01-31-self-improving-agents, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax]
+updated: 2026-08-03
+refs: [ai-agent-spec, spec-driven-development, ai-feature-implementation-loop, agentic-systems, context-engineering, agent-computer-interface, multi-agent-systems, skills, file-as-memory, self-reflection, long-running-agents, context-anxiety, harness-engineering, factory-model, pr-contract, comprehension-debt, cognitive-surrender, agent-readability, cursor, humanlayer, execution-graph, hive-mind, management-collapse, distillation-anxiety, alibaba, xu-xiaobin, claude-code, intent-debt, loop-engineering, agent-teams, ralph-loop, process-over-prose, anti-rationalization-tables, conductor-orchestrator, agent-management, agentic-engineering, orchestration-tax, theory-building, sean-goedecke, pure-impure-engineering, wicked-features]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2026-05-03-agent-skills, 2026-01-02-future-agentic-coding, 2026-01-08-coding-agents-manager, 2026-02-04-agentic-engineering, 2026-01-31-self-improving-agents, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-08-02-building-ai-native-engineering-team, 2025-03-19-measuring-ai-long-tasks, 2026-02-09-cognitive-debt, 2026-01-28-skill-formation-rct, 2026-02-12-evaluating-agents-md, 2026-04-07-cognitive-parallel-agents, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-06-22-pure-and-impure-engineering, 2025-02-10-engineers-who-wont-commit, 2025-12-24-nobody-knows-how-software-products-work, 2025-04-12-wicked-features]
 status: active
 ---
 
@@ -49,6 +49,10 @@ status: active
 - [[factory-model]] — 工厂心智模型:建生产软件的工厂;spec 即杠杆、验证是瓶颈
 - [[pr-contract]] — PR 契约:作者对评审者的证据义务(意图/证据/风险/评审重点)
 - [[comprehension-debt]] — 理解力债务:代码量 vs 人类理解量的差距;测试/spec 的边界
+- [[theory-building]] — 程序即理论(Naur 1985):认知债的理论基础;Goedecke 反驳(部分理论是常态)
+- [[sean-goedecke]] — GitHub Copilot 团队 Staff;pure/impure 工程文化;不理解的辩护
+- [[pure-impure-engineering]] — 两种工程文化:pure 完美解决技术问题 vs impure 高效解决现实问题;AI 帮助 impure 最多
+- [[wicked-features]] — 影响每个其他功能的需求;大系统禁止理解/不可重建的机制;老兵=熟悉全部 wicked features
 - [[intent-debt]] — 意图债:外部化 rationale 的缺失;债务三元组中唯一代理无法代付的一角
 - [[cognitive-surrender]] — 认知投降:债务的机制;offloading vs surrender;借用信心;互惠放大
 - [[agent-readability]] — 智能体可读性:仓库/应用/可观测性三级阶梯;"上下文之外不存在";AI 友好 5 维度
@@ -94,12 +98,17 @@ status: active
 - [[2026-02-12-evaluating-agents-md]] — 第三十六篇源文档(ETH:AGENTS.md 反证一手化;-0.5%/-2% 口径;文档冗余假说)
 - [[2026-04-07-cognitive-parallel-agents]] — 第三十七篇源文档(Osmani:并行上限;ambient anxiety tax;先降范围再降数量)
 - [[2026-03-23-triple-debt-model]] — 第三十八篇源文档(Storey 论文:债务三元组一手化;认知债≠comprehension debt 修正;抵制理解的自动化)
+- [[2026-07-11-in-defense-of-not-understanding-your-codebase]] — 第三十九篇源文档(Goedecke:为大系统部分理解辩护;驳 Naur 废弃重建;理论=权衡之一;LLM 双刃剑)
+- [[2025-06-22-pure-and-impure-engineering]] — 第四十篇源文档(Goedecke:pure/impure 两种工程文化;AI 对 impure 帮助最大;METR impact-of-ai 佐证待核)
+- [[2025-02-10-engineers-who-wont-commit]] — 第四十一篇源文档(Goedecke:take a position;不表态=默许最终决定;责任缺席 vs 决策缺席)
+- [[2025-12-24-nobody-knows-how-software-products-work]] — 第四十二篇源文档(Goedecke:大系统战争迷雾;代码库=唯一可靠答案源;意图债先 AI 形态)
+- [[2025-04-12-wicked-features]] — 第四十三篇源文档(Goedecke:wicked features 定义;Password Game 类比;老兵=熟悉全部 wicked features;固有 vs 实现问题)
 
 ## 当前状态 / 进展
 
-- 已摄入 38 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×10 + OpenAI ×2 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH)
+- 已摄入 43 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×10 + OpenAI ×2 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH) + Goedecke ×5
 - 综合页已更新:自改进循环层 + 评审经济学层 + 编排税层 + 官方指南层 + 理解力层(债务框架一手化);METR 时间地平线一手化(2h17m 核实);认知债/意图债/投降机制链一手化(Storey 论文 + RCT + Shaw&Nave)
-- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(一手已核;-17% 精确口径待全文)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)
+- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(一手已核;-17% 精确口径待全文)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)
 
 ## 开放问题
 
@@ -132,7 +141,9 @@ status: active
 - **验证基础设施**(自动回归检测、工件级验证、快速环境供应、并行护栏)的行业进展——Osmani 指为未解投资
 - 宏观指标核实(新网站 +40%、iOS 应用 +50%、代码推送 +35%,二手引述);"更多数量≠更好质量"的评估方法
 - **评审量化数据核实**(PR +18%/事故 +24%/失败率 +30%/45% 安全缺陷/1.75×/2.74×,均为二手);PR Contract 在团队中的实际采用数据;"AI code auditor"角色落地形态
-- **理解力测量**:现无任何工件捕获理解力债务(velocity/DORA/覆盖率全盲)——测量方法本身是开放问题;Anthropic RCT 一手已核(核心发现 ✓,52 人/-17% 精确口径待全文);<40%/>65% 与一手"65-86% 高分界"同量级吻合
+- **理解力测量**:现无任何工件捕获理解力债务(velocity/DORA/覆盖率全盲)——测量方法本身是开放问题;Anthropic RCT 一手已核(核心发现 ✓,52 人/-17% 精确口径待全文);<40%/>65% 与一手"65-86% 高分界"同量级吻合;Goedecke 对冲:大系统内部分理解是常态——"正常局部理解 vs 债务式侵蚀"的分界未定(见 [[2026-07-11-in-defense-of-not-understanding-your-codebase]]);基线参照:AI 之前就存在战争迷雾(见 [[2025-12-24-nobody-knows-how-software-products-work]])
+- **AI 有用性差异标定**:pure vs impure 工程的 AI 提速差异(Goedecke ~30% 自报 vs METR impact-of-ai"熟悉代码库者提速很小"待核;与 RCT 技能形成同族;解释"AI 对一些人神奇对另一些人无用",见 [[pure-impure-engineering]])
+- **wicked features 量化**:多少 wicked features 使系统从"可理解"翻到"禁止理解"?新人掌握全部 wicked features 的时间曲线(公司老兵的隐性价值,无数据;见 [[wicked-features]])
 - **人类技能形成**:被动委派 vs 主动提问式使用的边界;如何在工作流中设计"理解强制点"(评审/讲解/文档义务)
 - **投降校准**:如何测量/训练"知道自己在 offloading 还是 surrender"的能力(个人启发式无量化);反合理化表格的公开样例集与采用数据;Wharton/MIT/arXiv 三篇原文核实
 - **智能体对智能体评审 vs 人工签字**:阵营分歧的实证比较(内部 beta 工具 vs 生产系统的适用边界;OpenAI 自述数据核实)

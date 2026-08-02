@@ -342,3 +342,34 @@
 - raw/How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive Debt.md 人工裁剪版提供(AI 直抓版 2026-08-02 在先)
 - 核对: 两版核心主张一致 ✓;raw 版更完整,补入 3 段:①创业课实证(7-8 周撞墙,共享理解碎片化)②Fowler/Thoughtworks 退思会 breakout session(2026-02-09 同日;慢下来+结对/重构/TDD 治双债)③认知债警告信号(犹豫变更/部落知识/黑箱感)
 - source 页 provenance 更新(直抓 → 直抓+人工裁剪核对一致);待办区更新(Triple Debt 论文已一手化)
+
+## [2026-08-03] ingest | In defense of not understanding your codebase (Goedecke)
+
+- 源文档: raw/In defense of not understanding your codebase.md(Goedecke 博客;发布 2026-07-11 站点页面头核实,raw frontmatter published/author 为空已补全,raw 未改动)
+- 核心: 驳 Naur《Programming as Theory Building》废弃重建论(①大系统无法从零重建——成功重写=切块逐块 ②废弃代码库复活是常态);大系统人人持部分错误理论——能力=带部分正确理论工作("那个人就是你");理论构建只是众多权衡之一(他人写码/法定功能/离职/安全补丁/依赖都在损害它);LLM 双刃剑(难建详细理论 vs 快速建部分理论+更有效利用,作者自认未定论);时间性理论(为什么此时建 X/Y 何时加入)
+- 新建 3 页: source (2026-07-11-in-defense-of-not-understanding-your-codebase,第 39 篇)、entity (sean-goedecke)、concept (theory-building——Storey 与 Goedecke 对 Naur 的交锋点)
+- 更新 6 页: comprehension-debt(对冲:部分理解是常态/债务要标定;LLM 双刃剑;时间性理论)、cognitive-surrender(第三路径:部分理论+承诺猜测)、distillation-anxiety(反证:程序理论可从代码重建,但组织隐性知识≠程序理论)、intent-debt(时间性意图:why-then)、cognitive-debt/triple-debt-model 源页(Naur 指向 theory-building)
+- 修复漂移: 主题页 frontmatter sources 缺最后 7 篇(32-38)→ 补齐并加新源
+- 关键互证: Goedecke"分布式理解的稳态" vs Storey"分布式理解的失效(速率/检测难度)"——兼容不矛盾;重写=切块 ↔ 架构尺度策略;投降第三路径 ↔ 反制启发式
+- 无新矛盾;新张力(暂不建页): "部分理解无妨" vs "理解差距是债"——差异在测量单位与时间尺度,synthesis 候选
+- 待核: Goedecke 播客简介数据(2025 年 141 篇/月百万读者,二手);pure/impure 与 good engineers 系列原文(候选源)
+
+## [2026-08-03] ingest | Goedecke 三篇:pure/impure、Take a position、Nobody knows(第 40-42 篇)
+
+- 源文档: raw/Pure and impure software engineering.md、raw/Engineers who won't commit.md、raw/Nobody knows how large software products work.md(AI 直抓版 2026-08-03,curl+pandoc 全文;发布日站点 post-meta 核实:2025-06-22 / 2025-02-10 / 2025-12-24;未经人工裁剪核对,raw frontmatter 由抓取脚本补全)
+- 核心: ①pure/impure 两种工程文化(纯技术完美 vs 高效解决现实问题;不是能力等级是不同领域;2010s pure 被过度资助);**AI 对 impure 帮助最大**(~30% 自报,pure 工程师专精领域内几乎总胜过 LLM)——解释"AI 对一些人神奇对另一些人无用" ②take a position(最有上下文者必须表态哪怕 55-60% 信心;不表态=默许最终决定;surrender=决策缺席 vs non-committal=责任缺席) ③战争迷雾(大系统基本问题有时零人能答;代码库=唯一可靠答案源;reorg 摧毁默会知识;行为涌现无自觉意图)
+- 新建 4 页: source ×3(第 40/41/42 篇)、concept (pure-impure-engineering)
+- 更新 5 页: cognitive-surrender(第三路径一手化+双失败模式区分)、theory-building(经验证据:战争迷雾;文化层)、comprehension-debt(先 AI 基线:债务测恶化非从零到一)、intent-debt(意图债先 AI 形态:涌现行为)、sean-goedecke(4 源)
+- 主题页: 视角统计 Goedecke ×4;实证基础 + METR impact-of-ai(待核);开放问题 + AI 有用性差异标定;理解力测量加基线参照
+- 关键互证: 战争迷雾 ↔ Storey transactive memory 丢失;"探索性手术" ↔ in-defense"端到端一条流";代码库=答案源 → 代码可读性=组织知识资产(与理解力债闭合);METR impact-of-ai 方向性与 Anthropic RCT 同族(待核)
+- 无新矛盾;待核: METR impact-of-ai 报告、Goedecke ~30% 自报;候选源: wicked-features(三篇反复引用)
+
+## [2026-08-03] ingest | Wicked features(第 43 篇)
+
+- 源文档: raw/Wicked features.md(AI 直抓版 2026-08-03;发布 2025-04-12 站点 post-meta 核实;未经人工裁剪核对)
+- 核心: wicked features = 必须每次建其他功能都考虑的需求(新用户类型/on-prem/分片/本地性/跨区域迁移/i18n);Password Game 类比(规则成组求解,大项目从工单/事故才知道坏了——低估任务的常见原因);大部分固有于领域模型层而非实现;最有钱的客户爱它们;工程师职责=阻止不必要的+限制爆炸半径
+- 新建 2 页: source (2025-04-12-wicked-features)、concept (wicked-features——机制层,4 篇 Goedecke 文的共同底层)
+- 更新 7 页: theory-building(战争迷雾结构性原因)、comprehension-debt(禁止理解的供给侧机制)、pure-impure-engineering(混战复杂度来源)、nobody-knows/pure-impure/in-defense 源页(机制链接+待办更新)、sean-goedecke(5 源)
+- 主题页: 43 份;Goedecke ×5;开放问题 + wicked features 量化(翻车曲线/onboarding 时间曲线无数据)
+- 关键互证: "老兵=熟悉全部 wicked features" ↔ intent-debt"四年老工程师=意图文档"(具体内容物);Password Game 延迟反馈 ↔ 认知债警告信号;不可重建论的机制闭合
+- 无新矛盾;待核不变(METR impact-of-ai、~30% 自报);Goedecke 主要概念体系已收齐(理论构建/两文化/take a position/战争迷雾/wicked features)

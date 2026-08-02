@@ -12,6 +12,7 @@
 - [[claude-code]] — Anthropic 的代理式编码环境;上下文约束、扩展体系、并行会话、企业规模模式
 - [[github]] — agents.md 2,500+ 配置研究 + Spec Kit + Copilot agents.md
 - [[simon-willison]] — AI 工程评论家;一致性测试、致命三要素、AI 代理管理思想
+- [[sean-goedecke]] — GitHub Copilot 团队 Staff 工程师;pure/impure 工程文化;不理解的辩护
 - [[swe-bench]] — 编码代理基准:基于真实 GitHub issue;SWE-bench Verified
 - [[muratcan-koylan]] — Sully.ai Context Engineer;文件即数据库个人 OS;独立实践者视角
 
@@ -42,6 +43,9 @@
 - [[agent-management]] — 代理管理:管理技能迁移(brief 七字段/delegate-review-own/PR packet/异步查岗)
 - [[agentic-engineering]] — 纪律化 AI 开发:AI 实现+人拥有架构/质量/正确性;测试=可靠化;技能差距
 - [[comprehension-debt]] — 理解力债务:代码量 vs 人类理解量的差距;测试/spec 的边界
+- [[theory-building]] — 程序即理论(Naur 1985);认知债理论基础;Goedecke 反驳
+- [[pure-impure-engineering]] — 两种工程文化:pure 完美解决技术问题 vs impure 高效解决现实问题;AI 帮助 impure 最多
+- [[wicked-features]] — 影响每个其他功能的需求;大系统禁止理解/不可重建的机制
 - [[conformance-testing]] — 语言无关的一致性契约测试,源自 spec 的验收标准
 - [[context-anxiety]] — 上下文焦虑:接近以为的上下文极限时提前收尾;reset vs compaction
 - [[context-engineering]] — 上下文管理:注意力预算、JIT 检索、compaction/笔记/子代理
@@ -111,6 +115,11 @@
 - [[2026-02-12-evaluating-agents-md]] — ETH Zurich:AGENTS.md 反证一手化(-0.5%/-2%;+20% 成本;文档冗余假说)
 - [[2026-04-07-cognitive-parallel-agents]] — Osmani:并行代理上限(监督吞吐≠理解吞吐;ambient anxiety tax)
 - [[2026-03-23-triple-debt-model]] — Storey 论文:债务三元组一手化(三层系统健康/三债循环/抵制理解自动化)
+- [[2026-07-11-in-defense-of-not-understanding-your-codebase]] — Goedecke:为大系统部分理解辩护;驳 Naur 废弃重建;LLM 双刃剑
+- [[2025-06-22-pure-and-impure-engineering]] — Goedecke:pure/impure 两种工程文化;AI 对 impure 帮助最大;METR 佐证待核
+- [[2025-02-10-engineers-who-wont-commit]] — Goedecke:take a position;不表态=默许最终决定
+- [[2025-12-24-nobody-knows-how-software-products-work]] — Goedecke:大系统战争迷雾;代码库=唯一可靠答案源;意图债先 AI 形态
+- [[2025-04-12-wicked-features]] — Goedecke:wicked features 定义;Password Game 类比;老兵=熟悉全部 wicked features
 
 ## Syntheses
 
@@ -125,4 +134,4 @@
 <!-- _暂无页面。_ -->
 
 ---
-_Last updated: 2026-08-02 (ingest 2026-03-23-triple-debt-model)_
+_Last updated: 2026-08-03 (ingest Goedecke 五篇:2026-07-11/2025-06-22/2025-02-10/2025-12-24/2025-04-12)_

@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, organization, knowledge-transfer, incentive, failure-mode]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [management-collapse, execution-graph, comprehension-debt, cognitive-surrender, file-as-memory, alibaba]
-sources: [2026-05-08-ai-native-organization]
+updated: 2026-08-03
+refs: [management-collapse, execution-graph, comprehension-debt, cognitive-surrender, file-as-memory, alibaba, theory-building]
+sources: [2026-05-08-ai-native-organization, 2026-07-11-in-defense-of-not-understanding-your-codebase]
 status: active
 ---
 
@@ -31,4 +31,5 @@ status: active
 
 - 组织侧: [[management-collapse]](Architect 通道是接住机制之一)、[[execution-graph]]
 - 知识侧:与 [[comprehension-debt]] 互为镜像(一边是 AI 代码无人理解,一边是人的知识必须显性化);与 [[cognitive-surrender]] 同属人侧机制
+- **反证:程序理论可从代码重建**(来源: [[2026-07-11-in-defense-of-not-understanding-your-codebase]],Goedecke 驳 Naur):废弃代码库"复活"是常态,新人靠"端到端理解一条流 → 逐步扩展"重建理论(Ryle:know-how 随行动自动形成)——"知识随持有人消失"并非铁律;但边界要分清:可重建的是**程序理论**(代码里可推断的 what/why,见 [[theory-building]]),蒸馏焦虑的对象更大——组织流程/人脉/约定/背景语境从未进代码,才是真正随人消失的部分;且重建依赖"代码可读、怪例可辨"的前提,AI 产出的理解力债正侵蚀该前提(见 [[comprehension-debt]])
 - AI 知识资产继承(员工调教好的 agent 人走时怎么办——开放问题)相关: [[file-as-memory]];来源: [[2026-05-08-ai-native-organization]]
