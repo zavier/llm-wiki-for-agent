@@ -1,6 +1,7 @@
 ---
 type: concept
 tags: [espresso, brewing]
+topic: coffee
 created: 2026-04-02
 updated: 2026-04-02
 refs: [espresso-brewing-overview]

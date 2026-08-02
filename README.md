@@ -18,8 +18,9 @@ llm-wiki/
 │   ├── sources/       # 来源页:每个 raw 文件对应一页,YYYY-MM-DD-slug.md
 │   ├── syntheses/     # 综合页:跨来源的论点/对比
 │   ├── answers/       # 沉淀下来的问答
+│   ├── topics/        # ★ 每个研究主题一个 hub 页(入口、状态、开放问题)
 │   ├── _templates/    # 页面模板(复制即用)
-│   └── _examples/     # 示例页(咖啡主题演示,可删)
+│   └── _examples/     # 示例页(双主题咖啡演示,可删)
 └── scripts/lint.sh    # 结构体检:孤儿页、断链、index 漂移等
 ```
 
@@ -28,6 +29,13 @@ llm-wiki/
 ```bash
 cd ~/code/llm-wiki
 pi "读取 AGENTS.md,然后告诉我 wiki 当前状态"        # 或 Claude Code / Codex / Cursor
+```
+
+### 新建一个研究主题
+
+```bash
+cp wiki/_templates/topic-hub.md wiki/topics/<slug>.md   # 填好主题名/目标/开放问题
+# 然后对 agent 说:新建了主题 <slug>,更新 index 并追加 log
 ```
 
 以后的工作流就三句话(具体步骤 AGENTS.md 里都有):
@@ -42,13 +50,14 @@ pi "读取 AGENTS.md,然后告诉我 wiki 当前状态"        # 或 Claude Code
 
 - **Obsidian 打开 `wiki/` 目录**:用 graph view 看页面间连接,双链跳转阅读。wiki 就是一堆 markdown,任何编辑器都能用。
 - **答案回填**:好问答别留在聊天记录里——让 agent 存成 `wiki/answers/` 页面,探索也复利。
+- **多主题研究**:每个主题一个 `wiki/topics/<slug>.md` hub 页;页面用 frontmatter 的 `topic:` 声明归属,跨主题页面(如 `topic: [a, b]`)在两个 hub 中都登记。lint 会校验每个 topic 都有对应 hub。
 - **矛盾处理**:新资料推翻旧说法时,旧页标 `status: superseded` 并链接新页,不静默改写历史。
 - **版本历史免费送**:整个目录就是 git 仓库,已初始化。
 
 ## 定制
 
 - schema 在 `AGENTS.md`,觉得约定不顺就改,LLM 会照新约定干活。
-- 页面模板在 `wiki/_templates/`,新增页面类型照抄一个。
+- 页面模板在 `wiki/_templates/`,新增页面类型照抄一个(多主题时先建 `topic-hub.md` 的实例)。
 - `wiki/_examples/` 是演示页,看完可整个删掉。
 - 规模大了(几百页后)再考虑加搜索(qmd 之类),初期 index.md 完全够用。
 

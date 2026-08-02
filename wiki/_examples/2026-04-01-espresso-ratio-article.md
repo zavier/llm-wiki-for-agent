@@ -1,6 +1,7 @@
 ---
 type: source
 tags: [espresso, brewing]
+topic: coffee
 created: 2026-04-01
 updated: 2026-04-01
 status: active

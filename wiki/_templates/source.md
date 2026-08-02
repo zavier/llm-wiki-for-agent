@@ -1,6 +1,7 @@
 ---
 type: source
 tags: []
+topic: <slug>
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 status: active

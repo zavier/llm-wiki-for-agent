@@ -1,6 +1,7 @@
 ---
 type: entity
 tags: [espresso, equipment]
+topic: [coffee, coffee-gear]
 created: 2026-04-02
 updated: 2026-04-02
 refs: [espresso-extraction]

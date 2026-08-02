@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # LLM Wiki 结构健康检查(lint)
-# 检查:frontmatter、wikilink 指向、孤儿页面、index.md 漂移、log.md 格式。
+# 检查:frontmatter、wikilink 指向、孤儿页面、index.md 漂移、log.md 格式、topic hub 完整性。
 # 用法: scripts/lint.sh   (退出码非 0 = 有问题)
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WIKI="$ROOT/wiki"
-CATS="entities concepts sources syntheses answers"
+CATS="topics entities concepts sources syntheses answers"
 problems=0
 
 say() { printf '%s\n' "$*"; }
@@ -75,6 +75,16 @@ if [ -f "$WIKI/log.md" ]; then
     fi
   done < "$WIKI/log.md"
 fi
+
+# --- 6. frontmatter 的 topic 字段必须有对应 topics/<slug>.md ---
+for f in "${PAGES[@]}"; do
+  while IFS= read -r t; do
+    [ -z "$t" ] && continue
+    if [ ! -f "$WIKI/topics/$t.md" ]; then
+      say "topic-missing: $f -> topic: $t(无 topics/$t.md)"; problems=$((problems+1))
+    fi
+  done < <(grep -o '^topic:.*' "$f" | sed 's/^topic:[[:space:]]*//' | tr ',' '\n' | tr -d '[] ' | grep -v '^$')
+done
 
 # --- 汇总 ---
 if [ "$problems" -eq 0 ]; then
