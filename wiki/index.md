@@ -131,7 +131,7 @@
 
 ## Answers
 
-<!-- _暂无页面。_ -->
+- [[ai-coding-vs-traditional-development]] — AI coding 相比传统开发:解决执行/获取类问题,新增理解/判断/验证类问题
 
 ---
-_Last updated: 2026-08-03 (ingest Goedecke 五篇:2026-07-11/2025-06-22/2025-02-10/2025-12-24/2025-04-12)_
+_Last updated: 2026-08-03 (ingest RCT 全文 v2:n=52/-17%/六模式画像/错误机制)_

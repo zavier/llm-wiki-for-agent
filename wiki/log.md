@@ -373,3 +373,19 @@
 - 主题页: 43 份;Goedecke ×5;开放问题 + wicked features 量化(翻车曲线/onboarding 时间曲线无数据)
 - 关键互证: "老兵=熟悉全部 wicked features" ↔ intent-debt"四年老工程师=意图文档"(具体内容物);Password Game 延迟反馈 ↔ 认知债警告信号;不可重建论的机制闭合
 - 无新矛盾;待核不变(METR impact-of-ai、~30% 自报);Goedecke 主要概念体系已收齐(理论构建/两文化/take a position/战争迷雾/wicked features)
+
+## [2026-08-03] answer | AI coding 相比传统开发:解决什么、新增什么
+
+- 查询: "使用AI coding过程中,相比传统开发,可以优化解决哪些问题,同时新增了哪些新的问题?" 人类确认归档
+- 新建 1 页: wiki/answers/ai-coding-vs-traditional-development.md
+- 核心结论: 解决的都是执行/获取类问题(实现速度/知识门槛/意图传递/验证成本),新增的几乎全是理解/判断/验证类问题(理解债/认知投降/意图债高频化/编排税/致命三要素/技能萎缩);共同根 = 人仍是唯一串行判断点,瓶颈从生成转移到评审;核心反讽: AI 开发比传统开发更奖励好工程实践
+- 引用 14 页 refs + 14 份 sources;index.md 已更新(Answers 首条目)
+
+## [2026-08-03] ingest | Anthropic RCT 全文(v2,raw/2601.20245v2.pdf)
+
+- 源文档: raw/2601.20245v2.pdf(pdftotext 全文 12 页;v2 发布 2026-02-01;作者 Shen*(Anthropic Fellows)/Tamkin;预注册 OSF w49e7;注释数据开源 github.com/safety-research/how-ai-impacts-skill-formation)
+- 核心: ①全部数字闭合:n=52(26/26)、quiz -17%=4.15/27 分、d=0.738、p=0.010;任务时间**无显著差异 p=0.391**(Osmani 二手"52 人/-17%"完全吻合) ②为什么没提速:写 query 时间=思考时间(总交互 11 分钟/单条 6 分钟/15 queries);完全委派子组 n=4(~20%)19.5min vs 对照 23min;chat=认知卸载下界,agentic 损失更大(论文自身 future work 立场) ③六模式精确画像:低分 <40%(AI Delegation 39%/Progressive Reliance 35%/Iterative Debugging 24% 最慢 31min)、高分 ≥65%(Generation-Then-Comprehension 86%/Hybrid 68%/Conceptual Inquiry 65% 高分中最快);Generation-Then-Comprehension vs AI Delegation 表面行为几乎一样=offloading/surrender 实验级映射 ④**错误即学习机制**:对照中位 3 错误 vs AI 组 1;零错误完成 12 人仅 2 在对照;Trio 相关错误(RuntimeWarning/TypeError)强制核心概念;AI 绕过学习事件本身 ⑤debugging 题差距最大=监督 AI 代码所需能力恰被 AI 使用侵蚀(闭环反讽) ⑥直接粘贴 vs 手动复制 quiz 无差异(认知努力>原始时间) ⑦pilot 方法论透明:35% 对照违规用 AI、"无 AI 对照组"现实中会漏
+- 更新 6 页: source 2026-01-28-skill-formation-rct(全文一手化+raw 路径)、comprehension-debt(数字闭合+错误机制+quiz 测量工件)、cognitive-surrender(六模式映射+事后自知)、agentic-engineering(数字核实)、pure-impure-engineering(新技能任务无提速边界标定)、ai-feature-implementation-loop(理解力层+反证+开放问题 2 条)
+- 主题页: 进展 +1 条;实证基础闭合 1 条;开放问题更新 3 条(理解力测量口径、技能形成操作化、AI 有用性边界)+ 新增 1 条(错误甜蜜点)
+- 关键互证: 六模式 ↔ surrender/offloading 同行为异结果(与 loop-engineering"同构循环异果"同族);错误机制 ↔ 刻意摩擦反制实验支持;chat=下界 ↔ "agentic 损失更大"从推论升格为论文自身立场;RCT 无显著提速 vs 文献提速(Peng 55.5%/Cui 26.8%)↔ 任务新旧边界
+- 无新矛盾;待核不变(METR impact-of-ai、Wharton 全文);新增待核: 六模式在真实纵向场景的分布、agentic 工具直接实验(均论文 future work)

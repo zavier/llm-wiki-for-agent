@@ -108,7 +108,8 @@ status: active
 
 - 已摄入 43 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×10 + OpenAI ×2 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH) + Goedecke ×5
 - 综合页已更新:自改进循环层 + 评审经济学层 + 编排税层 + 官方指南层 + 理解力层(债务框架一手化);METR 时间地平线一手化(2h17m 核实);认知债/意图债/投降机制链一手化(Storey 论文 + RCT + Shaw&Nave)
-- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(一手已核;-17% 精确口径待全文)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)
+- **RCT 全文一手化**(2026-08-03,raw/2601.20245v2.pdf):Anthropic RCT v2 全文——n=52/-17%/d=0.738/p=0.010;任务时间无显著差异 p=0.391;六模式精确画像(65-86% vs 24-39%;Generation-Then-Comprehension 86% 最高);错误即学习机制(对照中位 3 错误 vs AI 组 1);chat=认知卸载下界(agentic 损失更大是论文自身立场);全部数字闭合
+- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(全文一手已核 2026-08-03:n=52/-17%/d=0.738/六模式画像/错误机制)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)
 
 ## 开放问题
 
@@ -141,10 +142,11 @@ status: active
 - **验证基础设施**(自动回归检测、工件级验证、快速环境供应、并行护栏)的行业进展——Osmani 指为未解投资
 - 宏观指标核实(新网站 +40%、iOS 应用 +50%、代码推送 +35%,二手引述);"更多数量≠更好质量"的评估方法
 - **评审量化数据核实**(PR +18%/事故 +24%/失败率 +30%/45% 安全缺陷/1.75×/2.74×,均为二手);PR Contract 在团队中的实际采用数据;"AI code auditor"角色落地形态
-- **理解力测量**:现无任何工件捕获理解力债务(velocity/DORA/覆盖率全盲)——测量方法本身是开放问题;Anthropic RCT 一手已核(核心发现 ✓,52 人/-17% 精确口径待全文);<40%/>65% 与一手"65-86% 高分界"同量级吻合;Goedecke 对冲:大系统内部分理解是常态——"正常局部理解 vs 债务式侵蚀"的分界未定(见 [[2026-07-11-in-defense-of-not-understanding-your-codebase]]);基线参照:AI 之前就存在战争迷雾(见 [[2025-12-24-nobody-knows-how-software-products-work]])
-- **AI 有用性差异标定**:pure vs impure 工程的 AI 提速差异(Goedecke ~30% 自报 vs METR impact-of-ai"熟悉代码库者提速很小"待核;与 RCT 技能形成同族;解释"AI 对一些人神奇对另一些人无用",见 [[pure-impure-engineering]])
+- **理解力测量**:现无任何工件捕获理解力债务(velocity/DORA/覆盖率全盲)——测量方法本身是开放问题;Anthropic RCT 口径已全文闭合(n=52/-17%/d=0.738,2026-08-03);RCT quiz 方法学(IRT 校准/14 题 27 分/三题型)是现成可借鉴工件;Goedecke 对冲:大系统内部分理解是常态——"正常局部理解 vs 债务式侵蚀"的分界未定(见 [[2026-07-11-in-defense-of-not-understanding-your-codebase]]);基线参照:AI 之前就存在战争迷雾(见 [[2025-12-24-nobody-knows-how-software-products-work]])
+- **AI 有用性差异标定**:pure vs impure 工程的 AI 提速差异(Goedecke ~30% 自报 vs METR impact-of-ai"熟悉代码库者提速很小"待核;与 RCT 技能形成同族;解释"AI 对一些人神奇对另一些人无用",见 [[pure-impure-engineering]]);RCT 补边界:新技能任务无显著提速(p=0.391) vs 熟悉任务文献提速(Peng +55.5%/Cui +26.8%)——完全委派才快且以技能为代价(来源: [[2026-01-28-skill-formation-rct]])
 - **wicked features 量化**:多少 wicked features 使系统从"可理解"翻到"禁止理解"?新人掌握全部 wicked features 的时间曲线(公司老兵的隐性价值,无数据;见 [[wicked-features]])
-- **人类技能形成**:被动委派 vs 主动提问式使用的边界;如何在工作流中设计"理解强制点"(评审/讲解/文档义务)
+- **人类技能形成**:被动委派 vs 主动提问式使用的边界——RCT 六模式已操作化(低分:完全委派/渐进依赖/迭代调试;高分:概念询问/生成后理解/混合解释,65-86% vs 24-39%,来源: [[2026-01-28-skill-formation-rct]]);仍开放:真实纵向场景分布(1 小时实验 vs 数月技能形成)、agentic 工具直接实验(论文 future work)、"理解强制点"(评审/讲解/文档义务)落地形态
+- **错误即学习的甜蜜点**:RCT 实证错误是技能形成事件(对照中位 3 错误 vs AI 组 1;零错误完成 12 人仅 2 在对照)——但错误过多卡任务(pilot D 对照仅 60% 完成 vs AI 90%);多少/什么类型错误最优、与刻意摩擦反制的量化关系未定(来源: [[2026-01-28-skill-formation-rct]])
 - **投降校准**:如何测量/训练"知道自己在 offloading 还是 surrender"的能力(个人启发式无量化);反合理化表格的公开样例集与采用数据;Wharton/MIT/arXiv 三篇原文核实
 - **智能体对智能体评审 vs 人工签字**:阵营分歧的实证比较(内部 beta 工具 vs 生产系统的适用边界;OpenAI 自述数据核实)
   - **"有意减少阻塞门" vs "默认零评审"的界限**(来源: [[2026-06-15-agentic-code-review]]):OpenAI 有意设计的"减少阻塞门"与 Faros 的"零评审合并 +31.3%"(没人决定停止评审,量让人跟不上)表面同向、成因相反——一个是有意的契约重设计,一个是流程被动失守;证据缺口:如何区分"设计好的薄评审"与"悄悄崩溃的评审"(见 [[pr-contract]])
