@@ -389,3 +389,53 @@
 - 主题页: 进展 +1 条;实证基础闭合 1 条;开放问题更新 3 条(理解力测量口径、技能形成操作化、AI 有用性边界)+ 新增 1 条(错误甜蜜点)
 - 关键互证: 六模式 ↔ surrender/offloading 同行为异结果(与 loop-engineering"同构循环异果"同族);错误机制 ↔ 刻意摩擦反制实验支持;chat=下界 ↔ "agentic 损失更大"从推论升格为论文自身立场;RCT 无显著提速 vs 文献提速(Peng 55.5%/Cui 26.8%)↔ 任务新旧边界
 - 无新矛盾;待核不变(METR impact-of-ai、Wharton 全文);新增待核: 六模式在真实纵向场景的分布、agentic 工具直接实验(均论文 future work)
+
+## [2026-08-04] ingest | LLMs reward expertise(Goedecke 第 6 源)
+
+- 源文档: raw/LLMs reward expertise.md;发布 **2026-07-24**(站点页头核实),抓取/摄入 08-04;源页按发布日命名 2026-07-24-llms-reward-expertise
+- 核心: ①核心论点 = 领域专长是最重要的提示技能("LLM 奖励专长")——同模型,懂行的人榨出的价值更高;对许多任务**人=瓶颈而非模型**(信息"已在模型里",要懂行的人拉出来);专长随模型变强继续有用 ②Tao×ChatGPT(Jacobian 猜想反例对话)五观察:短准消息只回主旨/**mode shunting**(信号专长把模型推入"与数学家对话"模式,输出更简洁)/推回式纠错("这看起来比我期望的更复杂")/自导下一步几乎不采纳模型建议/但技巧不可复制——关键是懂数学本身 ③理论=推模型的杠杆("不,可以更简单""我们不是已经做了 X 吗""能用熟悉的术语表达吗");具体细节主导设计("X 在这里有效吗"只有懂系统的人能问) ④无专长时抱 LLM 至少得 something"并不坏",多数人混合两种模式
+- 新建 2 页: sources/2026-07-24-llms-reward-expertise(第 44 源)、concepts/expertise-leverage(专长杠杆)
+- 更新 4 页: sean-goedecke(第 6 源+新论点)、theory-building(应用延伸:理论=LLM 使用杠杆)、cognitive-surrender(镜像:steering 而非 surrender)、ai-feature-implementation-loop(理解力层+专长杠杆层)
+- 主题页: 44 份;Goedecke ×6;开放问题 +1(专长杠杆量化/mode shunting 机制验证)
+- 关键互证: 专长杠杆 ↔ RCT 六模式(高分 Generation-Then-Comprehension 86% = 专长驱动使用 vs 低分 AI Delegation 39% = 零专长委托)——理论陈述遇实验证据;与 cognitive-surrender 互为镜像(同模型同输出,区别在用户是否带理论进场);**自噬张力**:专长让 AI 使用更有效,但 AI 使用侵蚀专长(RCT -17%)——"LLM 双刃剑"在使用侧收敛;传达"想要什么"=瓶颈 ↔ intent-debt(意图外部化是唯一必须源于人的输入)
+- 无新矛盾;待核不变;新增待核: 文内两篇未摄入(ai-makes-weak-engineers-less-harmful、you-cant-design-software-you-dont-work-on)+ 同标签相关文(开权重逃逸)可作潜在新源
+
+## [2026-08-04] ingest | AI makes weak engineers less harmful(Goedecke 第 7 源)
+
+- 源文档: raw/AI makes weak engineers less harmful.md;发布 **2026-05-09**(站点页头核实),抓取/摄入 08-04;源页按发布日命名 2026-05-09-ai-makes-weak-engineers-less-harmful;上一源(llms-reward-expertise)文内引用的"无专长不坏"出处,现在一手化
+- 核心: ①工程能力**重尾分布**,弱工程师传统净负(Jane Street 式小而贵团队;tech lead 保证关键部分交到不会搞砸的人手里) ②Claude Code **抬高弱工程师地板**:最差 PR 从"绝不可能工作"变"标准 LLM PR"(逐行功能正常);故意犯明显错误 agent 硬推回,但漏"需要理解代码库其他部分"的微妙错误 ③Claude-over-Slack 协作:恼人但边际正("更多算力投入你的问题比更少好") ④**三输+价值追问**:本人学更少/公司付人类薪水得 Copilot 订阅/"AI 给工程师加的价值"之后必有"工程师给 AI 加的价值"追问→失业风险 ⑤**自我选择边界**:没有强工程师薄包装化(基线品味抓 AI 错误),现象限于"对其产出是改进"的净负工程师;脚注自疑:LLM 输出持续优于自己+留神它哪里更好=可能是好的学习方式(skill atrophy 判断的限定)
+- 新建 1 页: sources/2026-05-09-ai-makes-weak-engineers-less-harmful(第 45 源;不新建概念页——折入既有三页)
+- 更新 4 页: sean-goedecke(第 7 源)、expertise-leverage("无专长不坏"机制:地板抬高+边界,弱端托底/强端放大)、cognitive-surrender(组织级形态:薄包装=决策缺席界面化;对从未有独立观点者=托底非投降)、agentic-engineering(技能差距组织级印证+雇佣风险)
+- 主题页: 45 份;Goedecke ×7;开放问题 +1(薄包装经济学:薪水 vs 订阅错配比例、失业推论证据)
+- 关键互证: 薄包装 = RCT 六模式低分组(AI Delegation 39%)的组织形态;"学得更少" ↔ RCT quiz -17%;agent 漏微妙错误 ↔ 战争迷雾;与 llms-reward-expertise 互补(专长杠杆两端:弱端被托底、强端被放大);surrender 概念边界修正——投降预设"有立场可失去",对净负工程师薄包装是地板抬高
+- 无新矛盾;待核不变;新增待核: Theo 视频内容、simple-work-gets-rewarded 潜在新源、非工程师薄包装(nooneshappy.com)引证
+
+## [2026-08-04] ingest | Programming (with AI agents) as theory building(Goedecke 第 8 源)
+
+- 源文档: raw/Programming (with AI agents) as theory building.md;发布 **2026-04-03**(站点页头核实,tags: ai, naur theory),抓取/摄入 08-04;源页按发布日命名 2026-04-03-programming-with-ai-agents-as-theory-building
+- 核心: ①认同 Naur 程序理论观;第二论辩回应两类批评——\"LLM 让工程师跳过理论构建\":承认心智模型更不详细但非灾难(所有理论本就略过细节,如 breadth of your stack),**80/20/10 评审漏斗**实证(2-3 并行 agent;~80% 被 kill/打回;20% 仔细评审;仅 ~10% 进入产出;拒绝几乎全部 = 理论仍是\"我的\");\"LLM 没有理论\":pattern-match 或**局部理论**(不层层堆叠即可)、日志可见显式理论构建(假设→验证→调整)、调试赛跑\"有时 agent 赢\" ②**关键区分:保留 > 构建**——agent 无法保留理论、每次从零构建(文档\"严格不可能\"完整捕获),\"下一个大创新 = 长期理论保留\":权重内化(continuous learning)或超长上下文 ③脚注 2:全委托 = 薄包装(\"是改进但职业前景不好\")
+- 新建 1 页: sources/2026-04-03-programming-with-ai-agents-as-theory-building(第 46 源)
+- 更新 4 页: sean-goedecke(第 8 源+第二论辩)、theory-building(主:第二论辩新章节 80/20/10+局部理论+保留 vs 构建)、expertise-leverage(杠杆机制量化:拒绝能力=操作面)、cognitive-surrender(拒绝率=投降测量代理,部分回答投降校准开放问题)
+- 主题页: 46 份;Goedecke ×8;开放问题 +1(agent 长期理论保留:权重/超长上下文/文件记忆对比)
+- 关键互证: 80/20/10 ↔ 评审经济学(Faros churn/Keep Rate 个人版数字)与 Keep Rate 测量缺口;保留理论 ↔ long-running-agents/file-as-memory/intent-debt(agent 每次从零构建 = 无长期记忆的认知侧表述);局部理论 ↔ in-defense 部分错误理论;引 RCT 总结帖(作者视为权衡非灾难);脚注 2 ↔ 薄包装(05-09 源)
+- 无新矛盾;待核不变;新增待核: 80/20/10 为单一样本自报、continuous-learning 与 will-my-job-still-exist 潜在新源、Victor Taelin 推文(怪异代码库理论构建,轶事)
+
+## [2026-08-04] ingest | Mistakes engineers make in large established codebases(Goedecke 第 9 源)
+
+- 源文档: raw/Mistakes engineers make in large established codebases.md;发布 **2025-01-02**(站点页头核实),抓取/摄入 08-04;源页按发布日命名 2025-01-02-large-established-codebases;**目前摄入最早的 Goedecke 源**(纯前 AI,正文零 AI 提及)
+- 核心: ①大代码库定义(~5M 行/100-1000 人/≥10 年);**首要错误 = 不一致**(用\"最合理方式\"实现、远离遗留代码)——必须沉入遗留代码库以维持一致性:防地雷(既有功能=穿过雷区的安全路径;bots/代表认证等\"你不知道的事\")/减缓混乱/通用改进前提;不一致 = 负反馈循环(最难 5% 端点被留出范围 → 更不一致) ②操作:prior art 先行/生产足迹(热路径)/测试限制(靠监控)/依赖谨慎/删除代码(先 instrument 驱动调用者到零)/小 PR+前置跨团队改动(领域专家预判) ③**90% 价值辩护**:大公司收入主要来自大代码库(\"这就是你的工作\");**不先理解就无法拆解**(成功拆解者 = 已能流畅内部交付的团队)
+- 新建 2 页: sources/2025-01-02-large-established-codebases(第 47 源)、concepts/codebase-consistency(一致性:与 wicked-features 需求侧互补的实现侧原则)
+- 更新 4 页: sean-goedecke(第 9 源)、theory-building(一致性=理论的供给侧条件)、pure-impure-engineering(90% 价值=impure 是公司实际工作的论证+\"理解能力是入场券\")、ai-feature-implementation-loop(规范层\"参照既有模式\"获得一手理论依据)
+- 主题页: 47 份;Goedecke ×9;开放问题 +1(agent 的一致性维护:让 AI 跟随 prior art;不一致量化检测)
+- 关键互证: prior art 安全路径 ↔ 战争迷雾(代码库=唯一可靠答案源);\"不能拆解除非先理解\" ↔ in-defense 切块重写**机制闭合**;不一致负反馈 ↔ wicked 连锁/认知债累积;删除代码(证据化) ↔ agent-verification 验证纪律;小 PR/领域专家 ↔ pr-contract
+- 无新矛盾;待核不变;新增待核: \"90% 价值\"为作者经验判断(非数据)、HN 讨论(42627227)可作社区样本、staff-engineer-promotions 潜在新源(弱相关)
+
+## [2026-08-04] ingest | I don't know if my job will still exist in ten years(Goedecke 第 10 源)
+
+- 源文档: raw/I don't know if my job will still exist in ten years.md;发布 **2026-03-06**(站点页头核实,tags: tech companies, ai, zirp),抓取/摄入 08-04;源页按发布日命名 2026-03-06-will-my-job-still-exist;04-03 源的同标签相关文
+- 核心: ①自尝苦果:编程的杠杆意义=自动化其他行业,自动化自己=宇宙正义;staff 大概**最后被替换**("为什么雇一群工程师当手,而不花零头租 Claude Opus 4.6 实例?")→ 初级/中级先受苦 ②**超调/欠调框架**:欠调=工作更久但=监督代理群;超调=停止雇人太早→资深需求中期上升 ③**反驳 Jevons**:AI 修 bug/清理=生成能力(一年并行提问体验:无望→有时比我快→通常比我快更有洞察);"没有真正的新能力 AI 代理需要才能取代我——只需更好更可靠" → 需求更可能降
+- 新建 1 页: sources/2026-03-06-will-my-job-still-exist(第 48 源;不新建概念页——职业预测折入既有页)
+- 更新 3 页: sean-goedecke(第 10 源+立场张力标注)、agentic-engineering(行业级雇佣风险:skill atrophy → 行业收缩风险)、expertise-leverage(乐观/悲观张力:专长决定相对位置,行业收缩是绝对量;Goedecke 2026 立场弧线 03 悲观→07 专长升值)
+- 主题页: 48 份;Goedecke ×10;开放问题 +1(Jevons 效应 vs AI 维护能力:Goedecke"通常比我快" vs Faros 评审 +441.5% 的张力)
+- 关键互证: staff 最后被替换 ↔ 专长梯度(弱端托底→中级压缩→资深监督);监督代理群 ↔ agent-management/orchestration-tax;初级池枯竭 ↔ distillation-anxiety 培养断裂;"更好更可靠即可" ↔ METR 时间地平线;**分歧记录**:AI 维护=生成能力 vs 评审经济学"写便宜了,理解没便宜"(两侧真实,交汇点未定);**立场张力**:03-06 悲观 vs 07-24 乐观(同一作者)
+- 无新矛盾;待核不变;新增待核: why-do-ai-enterprise-projects-fail(95% 失败,MIT NANDA 报告)潜在新源、HN/Reddit/Tildes/lobste.rs 评论样本

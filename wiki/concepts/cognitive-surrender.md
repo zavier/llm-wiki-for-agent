@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, cognition, human-factor, failure-mode]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-03
-refs: [comprehension-debt, pr-contract, vibe-coding, addy-osmani, agent-verification, self-reflection, harness-engineering, intent-debt, loop-engineering, llm-as-a-judge, three-tier-boundaries, agentic-engineering, orchestration-tax, theory-building, pure-impure-engineering]
-sources: [2026-05-05-cognitive-surrender, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-02-10-engineers-who-wont-commit]
+updated: 2026-08-04
+refs: [comprehension-debt, pr-contract, vibe-coding, addy-osmani, agent-verification, self-reflection, harness-engineering, intent-debt, loop-engineering, llm-as-a-judge, three-tier-boundaries, agentic-engineering, orchestration-tax, theory-building, pure-impure-engineering, expertise-leverage]
+sources: [2026-05-05-cognitive-surrender, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2026-07-24-llms-reward-expertise, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-04-03-programming-with-ai-agents-as-theory-building, 2025-02-10-engineers-who-wont-commit]
 status: active
 ---
 
@@ -36,6 +36,12 @@ status: active
 **循环 = 投降的加速剂或解药**(来源: [[2026-06-07-loop-engineering]]):循环自己跑时,"舒适姿势最危险"——很容易停止持有观点、接受它给回的一切;"设计循环带着判断力是解药,用它逃避思考是加速剂——**同一个动作,相反的结果**";同构循环异果:两个人建同一个循环得到相反结果(一个加速深懂的工作,一个逃避理解),"循环不知道区别,你知道"(见 [[loop-engineering]])
 
 **正向框架:互惠放大(mutual amplification,Andy Clark)**:合作而非委派——prompt 磨利输出、输出磨利下个 prompt;结束时心智模型更尖而非更糊;"代理是房间里第二个工程师,不是唯一一个";判据:你还能自己造出这东西吗
+
+**镜像:专长杠杆 = steering 而非 surrender**(来源: [[2026-07-24-llms-reward-expertise]],Goedecke):投降 = 无独立观点时输出=你的答案;**专长杠杆 = 有独立观点时输出=原料**——同模型同输出,区别在用户是否带理论进场;Tao 式用法:推回式纠错("这看起来比我期望的更复杂",不直接反驳)、自导下一步、从多段输出里抓相关想法;RCT 六模式实证:高分 Generation-Then-Comprehension(86%)正是"生成后理解+纠偏"的 steering,低分 AI Delegation(39%)是零专长投降——**surrender 的反制不只是姿态,是专长**;"读输出前先构建期望"的启发式 = 期望就是理论(见 [[expertise-leverage]])
+
+**组织级形态:薄包装工程师**(来源: [[2026-05-09-ai-makes-weak-engineers-less-harmful]],Goedecke):最弱工程师把消息粘贴进 Claude Code 再粘贴回——同事视角 ≈ 与 LLM 实例通过 Slack 协作;这是 surrender 的**社交化/职业化形态**(决策缺席被界面化),但作者把它读作改进:对**从未形成过独立观点**的净负工程师,薄包装不是"从有观点投降到没观点",而是**地板抬高**(surrender 预设"有立场可失去",此处没有可失去的立场);重要边界:没有强工程师薄包装化(基线品味抓 AI 错误)、脚注自疑"LLM 输出持续优于自己时可能是好的学习方式"——投降/托底/学习的三分界随专长水平移动
+
+**量化对照:拒绝率 = 投降的测量代理**(来源: [[2026-04-03-programming-with-ai-agents-as-theory-building]],本 wiki 综合):不投降者的实测——~80% agent 输出被 kill/打回、仅 ~10% 进入产出;有理论才拒绝得动,投降者无拒绝依据(只能接受)——采纳率(10% vs 100%)可作 surrender 的操作化代理,部分回答"投降校准"开放问题的测量缺口(待核:单一样本自报,需多人数据)
 
 **第三路径:部分理论 + 承诺猜测**(来源: [[2026-07-11-in-defense-of-not-understanding-your-codebase]]、[[2025-02-10-engineers-who-wont-commit]],Goedecke):完整理解不可得时(大系统常态),投降不是唯一选择——姿态:不等待"完美理解的人"("如果你称职,那个人就是你"),做最 educated guess 并承担后果;一手化行为规范:房间里最有上下文/技能/权力的人**必须表态,哪怕仅 55-60% 信心**;不表态的三重代价(逼上下文更少的人猜/weakest-but-loudest 趁机推糟糕主意/把技术决策推给经理);"不表态 = 默许最终被做出的决定";经理对错误判断宽容(他们自己天天做 educated guess),真正毁信任的是"错得太多";例外:信任破裂环境(估算落空会被 PIP)不批评沉默;与 surrender 的区别:**仍持有部分理论并为猜测负责**(有可检查、可被后果检验的东西),而非停止构建答案;与 offloading 的区别:offloading 交"怎么做"留"是什么"的判断,此为无完整理论时**仍作判断并承担后果**;再补一种区分:**surrender = 无独立观点(决策缺席),non-committal = 有观点但拒绝承担(责任缺席)**——两种"决策的缺席",前者是认知问题,后者是勇气/义务问题;实践化方向:把"猜"变成显式假设 + 后果预案(呼应 [[anti-rationalization-tables]] 的书面反驳与 [[pr-contract]] 的风险声明,见 [[theory-building]]、[[pure-impure-engineering]])
 
