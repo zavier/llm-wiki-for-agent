@@ -4,8 +4,8 @@ tags: [ai-agents, scalability, workflow]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [claude-code, subagents, lethal-trifecta, agentic-workflow-patterns, multi-agent-systems, agent-teams, orchestration-tax, agent-verification]
-sources: [2026-08-02-best-practices-claude-code, 2026-01-13-good-spec-for-ai-agents, 2026-08-02-building-effective-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-03-26-code-agent-orchestra, 2026-05-24-orchestration-tax]
+refs: [claude-code, subagents, lethal-trifecta, agentic-workflow-patterns, multi-agent-systems, agent-teams, orchestration-tax, agent-verification, pi-coding-agent]
+sources: [2026-08-02-best-practices-claude-code, 2026-01-13-good-spec-for-ai-agents, 2026-08-02-building-effective-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-03-26-code-agent-orchestra, 2026-05-24-orchestration-tax, 2025-11-30-opinionated-minimal-coding-agent]
 status: active
 ---
 
@@ -28,6 +28,7 @@ status: active
 - 模式定位(来源: [[2026-08-02-building-effective-ai-agents]]):parallelization 工作流有两个变体——**sectioning**(拆独立子任务并行,如守卫审查与主响应分离,比同一 LLM 调用同时处理两者更好)与 **voting**(同任务多次多样输出提置信度,如漏洞多提示审查);与 orchestrator-workers 的区别:子任务预定义与否(见 [[agentic-workflow-patterns]])
 - **编排纪律**(来源: [[2026-03-26-code-agent-orchestra]]):WIP 上限——别跑超过你能有意义评审的代理数(3-5 甜点);**一文件一主人**——绝不让两个代理编辑同一文件(冲突杀死速度);worktree 生命周期脚本(agent-spin/agent-merge/agent-clean,约 12 行 bash,Conductor 可视化替代);token 预算与终止标准(每代理预算如前端 180k/后端 280k,85% 自动暂停通知 lead,**3+ 卡死迭代即杀并换新代理**);异步查岗每 5-10 分钟一次,别 hover(见 [[agent-teams]])
 - **人类是瓶颈:并行上限 = 评审率**(来源: [[2026-05-24-orchestration-tax]]):启动代理便宜、闭环评审贵——你是唯一串行处理器(GIL/Amdahl:串行分数 = 判断);**正确并行数 = 你能真正评审好的数量,对多数人是个位低位数**("AI 工具乐意让你开 20 个,那只是 UI 功能");回压原则:agent 数(生产者)匹配评审率(消费者);批量评审比逐个冷切换便宜(每次 check-in 付 context switch 成本);两堆分类:隔离工作可委托后台,复杂任务(判断即工作)**绝不同时并行**;代价 = [[orchestration-tax]](不付 = 浅层评审 + [[cognitive-surrender]] + 心智模型过期)
+- **极简派反模式论**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]]):"并行派生多个子代理实现功能 = 反模式,除非你不介意代码库变成垃圾堆";代码评审是子代理的正当用例,但实操 = 开新会话独立评审而非会话内并行——与编排税(WIP 上限/评审率瓶颈/3-5 甜点)定性互证;可观测性对比:pi 的 `pi --print` 自派生输出全可见,主流 harness 的会话内子代理是黑箱(见 [[subagents]]);另一实证:"我们太信任代理了"——pi-mono 大量 PR 因代理没 grasp 全貌被返工
 
 ## 与其他页面的关系
 

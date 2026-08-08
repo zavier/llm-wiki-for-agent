@@ -4,8 +4,8 @@ tags: [ai-agents, long-running, harness, memory]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [agentic-memory, agent-verification, conformance-testing, context-engineering, agentic-workflow-patterns, file-as-memory, context-anxiety, harness-engineering, loop-engineering, ralph-loop, skills]
-sources: [2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2026-05-03-agent-skills, 2026-01-31-self-improving-agents, 2025-03-19-measuring-ai-long-tasks]
+refs: [agentic-memory, agent-verification, conformance-testing, context-engineering, agentic-workflow-patterns, file-as-memory, context-anxiety, harness-engineering, loop-engineering, ralph-loop, skills, pi-coding-agent]
+sources: [2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2026-05-03-agent-skills, 2026-01-31-self-improving-agents, 2025-03-19-measuring-ai-long-tasks, 2025-11-30-opinionated-minimal-coding-agent]
 status: active
 ---
 
@@ -50,6 +50,10 @@ status: active
 **运行越长,强制越多**(来源: [[2026-05-03-agent-skills]],Osmani):10 分钟会话跳过测试 = 一个 bug;30 小时会话跳过测试 = 结束时没人记得原始意图的调试考古项目——长运行放大每个捷径,资深脚手架(验证退出标准/反合理化表/范围纪律)在长时任务里**必须强制执行而非建议**(见 [[skills]]、[[process-over-prose]])
 
 **复合循环与重新聚焦**(来源: [[2026-01-31-self-improving-agents]]):Ralph Loop 升级版——Analysis → Planning → Execution 复合循环(代理决定最高优先级功能是什么,见 [[ralph-loop]]);长跑漂移/隧道视野的对抗:**定期全新开始**(完成一大块后停下、评审中间产物、更新任务列表再继续);自动停止条件(迭代数/时间/闲置——最后 5 次迭代无提交即断)防跑一夜空转
+
+**极简派对照:文件即状态,不做内建清单**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]]):pi 拒绝内建 to-do——列表给模型增加"跟踪与更新状态"的负担,出错机会更多;需要任务跟踪就写 TODO.md(checkbox),代理读写同普通文件。注意与特征清单门禁的表面冲突:Anthropic 用 JSON 特征清单 + passes 门禁防"提前宣布完成",pi 用外部文件 + 人来判断——**都外部化状态,分歧在"列表是否应由 harness 工具化并强制"**;另报告无 compaction 单会话数百轮(对照 [[context-anxiety]],个人不需要压缩)。
+
+> [!warning] 学派分歧:harness 强制特征清单(Anthropic,见 [[2026-08-02-effective-harnesses-for-long-running-agents]]) vs 文件化状态不内建(pi)——门禁强制 vs 状态可见,证据都来自各自 daily driver(见 [[minimal-vs-rich-harness]])。
 
 ## 与其他页面的关系
 

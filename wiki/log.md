@@ -439,3 +439,14 @@
 - 主题页: 48 份;Goedecke ×10;开放问题 +1(Jevons 效应 vs AI 维护能力:Goedecke"通常比我快" vs Faros 评审 +441.5% 的张力)
 - 关键互证: staff 最后被替换 ↔ 专长梯度(弱端托底→中级压缩→资深监督);监督代理群 ↔ agent-management/orchestration-tax;初级池枯竭 ↔ distillation-anxiety 培养断裂;"更好更可靠即可" ↔ METR 时间地平线;**分歧记录**:AI 维护=生成能力 vs 评审经济学"写便宜了,理解没便宜"(两侧真实,交汇点未定);**立场张力**:03-06 悲观 vs 07-24 乐观(同一作者)
 - 无新矛盾;待核不变;新增待核: why-do-ai-enterprise-projects-fail(95% 失败,MIT NANDA 报告)潜在新源、HN/Reddit/Tildes/lobste.rs 评论样本
+
+## [2026-08-08] ingest | What I learned building an opinionated and minimal coding agent
+
+- 源文档: raw/What I learned building an opinionated and minimal coding agent.md(Mario Zechner 2025-11-30,badlogic/libGDX 作者;自建极简编码代理 pi 的完整复盘)
+- 新建 4 页: sources/2025-11-30-opinionated-minimal-coding-agent(第 49 源)、entities/mario-zechner、entities/pi-coding-agent、syntheses/minimal-vs-rich-harness(极简 vs 富 harness 两派全景对比)
+- 核心: ①<1000 token 系统提示+四工具(read/write/edit/bash)够用——Terminal-Bench 2.0 五轮跑分上榜(Opus 4.5)+ Terminus 2(纯 tmux、零工具)名列前茅 = 极简可行双重证据 ②上下文工程=一切但"没有任何 harness 真的让你做它"(背后注入+不透明);pi=完全控制+完全可观测 ③反 MCP:Playwright 13.7k/DevTools 18k tokens=7-9% 窗口税,CLI+README 按需读替代(mcporter 兜底) ④反 to-do/plan mode:状态文件化(TODO.md/PLAN.md,跨会话可版本化) ⑤反后台 bash(tmux:可观测+人机协同调试) ⑥反子代理:黑箱中的黑箱;独立会话+工件交接代替;并行子代理=反模式("代码库变垃圾堆") ⑦YOLO 默认:权限弹窗=security theater,能力三元组无解(引 Willison dual-LLM 自评) ⑧实证:"模型被训练成只读片段、不愿读全文→找不全上下文,我们太信任代理了"(pi-mono PR 大量返工) ⑨基准时区效应(CET vs PST 错误率);无 compaction 单会话数百轮
+- 更新 9 页: plan-mode(PLAN.md 文件化反论)、model-context-protocol(上下文税反论)、subagents(黑箱批判+独立会话替代)、long-running-agents(to-do 张力)、progressive-disclosure(CLI-README 形态)、agent-computer-interface(输出双通道+流式解析)、context-engineering(完全控制论)、harness-engineering(极简证据+Terminal Bench 数据点)、parallel-agents(并行子代理=反模式);全部标注学派分歧 callout
+- 主题页: 49 份源文档;视角 +Zechner(极简派);实证基础 +pi/Terminus 2;Terminal Bench #33 vs #5 开放问题补充极简派数据点;新增开放问题 1 组(极简 vs 富 A/B、to-do 冲突边界、子代理可观测性、读全文假说、规模-学派相关性)
+- 关键互证: 极简派 ↔ curse-of-instructions/ETH agentfile/56% 未触发/指令预算/HumanLayer"从简单开始";文件即状态 ↔ file-as-memory;并行反模式 ↔ orchestration-tax;YOLO ↔ Willison dual-LLM 自评;Terminus 2 ↔ 四工具
+- 无事实矛盾(学派分歧已标注,未改写旧页);待核: pi 榜单最终名次、Terminus 2 详情、Armin Ronacher《Agents are hard》原文、mcporter 落地
+- 元观察: 本 wiki 运行环境即 pi(系统提示/四工具与文章逐字吻合)——本 wiki 的 AGENTS.md 契约/lint.sh/文件即状态实践 = 极简派活证据

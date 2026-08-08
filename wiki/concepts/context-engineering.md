@@ -4,8 +4,8 @@ tags: [context, prompt-engineering, ai-agents]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [curse-of-instructions, anthropic, ai-agent-spec, subagents, claude-md, agentic-memory, context-rot, progressive-disclosure, skills, long-running-agents, context-anxiety, harness-engineering, cursor, humanlayer, claude-code]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-14-claude-code-large-codebases]
+refs: [curse-of-instructions, anthropic, ai-agent-spec, subagents, claude-md, agentic-memory, context-rot, progressive-disclosure, skills, long-running-agents, context-anxiety, harness-engineering, cursor, humanlayer, claude-code, pi-coding-agent, minimal-vs-rich-harness]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-14-claude-code-large-codebases, 2025-11-30-opinionated-minimal-coding-agent]
 status: active
 ---
 
@@ -54,6 +54,7 @@ status: active
 
 **总原则**:找最小的高信号 token 集合;"do the simplest thing that works";模型越强,规定性工程越少
 
+- **完全控制论**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]]):独立实践者的极端版——"Twitter 上全是上下文工程文章,但没有 harness 真的让你做它":主流工具背后注入内容且不在 UI 暴露;pi 的全部卖点 = 精确控制进模型的每个 token + 观测代理实际读了什么;极简系统提示+工具(<1000 tokens)是该哲学的实现手段("模型 RL 后天生懂编码代理")——与"最小高信号 token 集合"同向,与"rich harness"的配置传统对立(见 [[minimal-vs-rich-harness]]);无 compaction 单会话数百轮 = "不引入自动压缩"本身也是上下文控制策略(对照 [[context-anxiety]])
 - 实践印证(来源: [[2025-10-06-file-system-is-the-new-database]]):独立实践者用三级披露 + 模块隔离做成 11 模块个人 OS("任何信息最多两跳");U 形注意力曲线 = "lost-in-middle",关键规则必须前置(1200 行声音指南改为关键规则前 100 行);模块边界即加载决策(拆一个模块省 40% token);格式-功能映射与追加式安全见 [[file-as-memory]]
 
 ## 与其他页面的关系

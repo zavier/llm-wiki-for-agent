@@ -15,10 +15,12 @@
 - [[sean-goedecke]] — GitHub Copilot 团队 Staff 工程师;pure/impure 工程文化;不理解的辩护;LLM 奖励专长;弱工程师无害化;LLM 与理论构建;大代码库一致性;职业未来(超调/欠调)
 - [[swe-bench]] — 编码代理基准:基于真实 GitHub issue;SWE-bench Verified
 - [[muratcan-koylan]] — Sully.ai Context Engineer;文件即数据库个人 OS;独立实践者视角
+- [[mario-zechner]] — badlogic/libGDX 作者;自建极简编码代理 pi;极简 harness 学派代表人物
+- [[pi-coding-agent]] — Zechner 的极简编码代理:四工具+<1000 token 提示;YOLO;反 MCP/子代理/to-do;Terminal-Bench 上榜;本 wiki 运行环境
 
 ## Concepts
 
-- [[agent-computer-interface]] — ACI:工具契约设计五原则;评测驱动;与 AX 同族
+- [[agent-computer-interface]] — ACI:工具契约设计五原则;评测驱动;与 AX 同族;输出双通道/流式 UX
 - [[agent-verification]] — 给代理可运行的检查;验证门禁四档(同 prompt//goal/hook/评审子代理)
 - [[agentic-memory]] — 结构化笔记:窗口外持久化,跨会话记忆(Pokémon 例证)
 - [[agentic-systems]] — workflows vs agents 架构分类;三原则(简单/透明/ACI)
@@ -50,7 +52,7 @@
 - [[codebase-consistency]] — 代码库一致性:prior art=雷区安全路径;不一致=首要错误;90% 价值
 - [[conformance-testing]] — 语言无关的一致性契约测试,源自 spec 的验收标准
 - [[context-anxiety]] — 上下文焦虑:接近以为的上下文极限时提前收尾;reset vs compaction
-- [[context-engineering]] — 上下文管理:注意力预算、JIT 检索、compaction/笔记/子代理
+- [[context-engineering]] — 上下文管理:注意力预算、JIT 检索、compaction/笔记/子代理;完全控制论(pi)
 - [[context-rot]] — 上下文腐烂:token 越多召回越差;注意力预算是有限资源
 - [[curse-of-instructions]] — 指令诅咒:指令越多模型遵循越差
 - [[lethal-trifecta]] — 致命三要素:速度 / 非确定性 / 成本
@@ -58,19 +60,19 @@
 - [[lilian-weng]] — OpenAI 研究员、Lil'Log;LLM 代理三组件框架奠基综述作者
 - [[alibaba]] — 阿里技术公众号;AI Native 组织实践(内部访谈/调研数据,二手待核)
 - [[xu-xiaobin]] — 阿里技术作者;AI Native 组织设计视角;Execution Graph/蒸馏焦虑传播者
-- [[harness-engineering]] — harness 工程:Agent = Model + Harness;棘轮原则、行为驱动设计、HaaS
+- [[harness-engineering]] — harness 工程:Agent = Model + Harness;棘轮原则、行为驱动设计、HaaS;极简派(pi/Terminus 2)
 - [[llm-as-a-judge]] — 用第二个 LLM 评审主观质量;evaluator-optimizer 循环形态;ChemCrow 自评盲区反证
-- [[long-running-agents]] — 跨会话 harness:初始器/编码双代理、特征清单 passes 门禁、会话仪式
-- [[model-context-protocol]] — MCP:模型↔外部工具/数据的标准连接协议
+- [[long-running-agents]] — 跨会话 harness:初始器/编码双代理、特征清单 passes 门禁、会话仪式;to-do 张力(pi 文件化)
+- [[model-context-protocol]] — MCP:模型↔外部工具/数据的标准连接协议;上下文税反论(pi)
 - [[multi-agent-systems]] — 多代理协作:收益/代价量化(90.2%、4-15× token)、生产工程
-- [[parallel-agents]] — 并行代理会话:sectioning/voting、Writer/Reviewer、fan-out
-- [[plan-mode]] — 只读规划模式:先探索后规划再编码;小任务跳过
+- [[parallel-agents]] — 并行代理会话:sectioning/voting、Writer/Reviewer、fan-out;并行子代理=反模式(pi)
+- [[plan-mode]] — 只读规划模式:先探索后规划再编码;小任务跳过;PLAN.md 文件化反论(pi)
 - [[pr-contract]] — PR 契约:作者对评审者的证据义务(意图/证据/风险/评审重点)
-- [[progressive-disclosure]] — 渐进式披露:元数据预载、细节按需加载(skills/JIT/扩展 TOC 三源印证 + 56% 未触发反证)
+- [[progressive-disclosure]] — 渐进式披露:元数据预载、细节按需加载(skills/JIT/扩展 TOC 三源印证 + 56% 未触发反证 + CLI-README 形态)
 - [[skills]] — SKILL.md 按需加载的领域知识与工作流;自动/手动双模式;2025-12 开放标准
 - [[self-reflection]] — 自反思技术谱系:ReAct/Reflexion/CoH/AD
 - [[spec-driven-development]] — 四阶段门禁流:Specify → Plan → Tasks → Implement
-- [[subagents]] — 独立上下文的专职子代理:调查/验证/对抗性评审/多代理委派
+- [[subagents]] — 独立上下文的专职子代理:调查/验证/对抗性评审/多代理委派;黑箱批判与独立会话替代(pi)
 - [[three-tier-boundaries]] — 三层边界:Always / Ask first / Never
 - [[tool-evaluation]] — 评测驱动的工具开发循环:原型→评测→代理协作优化
 - [[vibe-coding]] — 直觉快速编码;与 AI-assisted engineering 的纪律对照
@@ -127,10 +129,12 @@
 - [[2025-02-10-engineers-who-wont-commit]] — Goedecke:take a position;不表态=默许最终决定
 - [[2025-12-24-nobody-knows-how-software-products-work]] — Goedecke:大系统战争迷雾;代码库=唯一可靠答案源;意图债先 AI 形态
 - [[2025-04-12-wicked-features]] — Goedecke:wicked features 定义;Password Game 类比;老兵=熟悉全部 wicked features
+- [[2025-11-30-opinionated-minimal-coding-agent]] — Zechner:自建极简编码代理 pi 复盘(极简派一手源;Terminal-Bench/反 MCP/文件即状态)
 
 ## Syntheses
 
 - [[ai-feature-implementation-loop]] — 让 AI 更好实现功能:从 spec 到落地的闭环 + 失败模式修复表
+- [[minimal-vs-rich-harness]] — 极简 vs 富 harness 两派对比:共同底线、分维度分歧、证据对照、开放问题
 
 ## Topics
 
@@ -141,4 +145,4 @@
 - [[ai-coding-vs-traditional-development]] — AI coding 相比传统开发:解决执行/获取类问题,新增理解/判断/验证类问题
 
 ---
-_Last updated: 2026-08-04 (ingest Will my job still exist:Goedecke ×10、超调/欠调/Jevons 反驳)_
+_Last updated: 2026-08-08 (ingest Zechner:极简派 pi;新建综合页 minimal-vs-rich-harness)_

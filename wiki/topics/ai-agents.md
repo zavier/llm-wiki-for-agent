@@ -58,6 +58,9 @@ status: active
 - [[cognitive-surrender]] — 认知投降:债务的机制;offloading vs surrender;借用信心;互惠放大
 - [[expertise-leverage]] — 专长杠杆:领域专长决定 LLM 使用上限;人=瓶颈而非模型;投降的镜像
 - [[agent-readability]] — 智能体可读性:仓库/应用/可观测性三级阶梯;"上下文之外不存在";AI 友好 5 维度
+- [[pi-coding-agent]] — 极简派 harness 实体:四工具+<1000 token 提示、YOLO、文件即状态、反 MCP/子代理/to-do
+- [[mario-zechner]] — badlogic/libGDX 作者;极简 harness 学派代表人物;pi 的创造者
+- [[minimal-vs-rich-harness]] — 综合:极简 vs 富 harness 两派对比(分歧维度/证据/开放问题)
 - [[execution-graph]] — 组织范式:org chart → execution graph;routing+governance;Platform 三柱;agent 名册
 - [[hive-mind]] — 上层协作文化:双层结构(Harness 层 + Hive Mind 层);death of ego 的边界;三类工作三种治理
 - [[management-collapse]] — 管理塌缩非消失:10 件事命运分化;Architect 最高杠杆点;绩效失效
@@ -110,13 +113,15 @@ status: active
 - [[2026-04-03-programming-with-ai-agents-as-theory-building]] — 第四十六篇源文档(Goedecke:LLM 与理论构建;80/20/10 评审漏斗;保留 vs 构建;naur theory 第二论辩)
 - [[2025-01-02-large-established-codebases]] — 第四十七篇源文档(Goedecke:大代码库首要原则=一致性;prior art=雷区安全路径;90% 价值;纯前 AI 操作篇)
 - [[2026-03-06-will-my-job-still-exist]] — 第四十八篇源文档(Goedecke:职业未来;超调/欠调;反驳 Jevons;staff 最后被替换)
+- [[2025-11-30-opinionated-minimal-coding-agent]] — 第四十九篇源文档(Zechner:自建极简编码代理 pi 复盘;极简派一手源)
 
 ## 当前状态 / 进展
 
-- 已摄入 48 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×10 + OpenAI ×2 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH) + Goedecke ×10
+- 已摄入 49 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×10 + OpenAI ×2 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH) + Goedecke ×10 + **Zechner ×1(极简派)**
 - 综合页已更新:自改进循环层 + 评审经济学层 + 编排税层 + 官方指南层 + 理解力层(债务框架一手化);METR 时间地平线一手化(2h17m 核实);认知债/意图债/投降机制链一手化(Storey 论文 + RCT + Shaw&Nave)
 - **RCT 全文一手化**(2026-08-03,raw/2601.20245v2.pdf):Anthropic RCT v2 全文——n=52/-17%/d=0.738/p=0.010;任务时间无显著差异 p=0.391;六模式精确画像(65-86% vs 24-39%;Generation-Then-Comprehension 86% 最高);错误即学习机制(对照中位 3 错误 vs AI 组 1);chat=认知卸载下界(agentic 损失更大是论文自身立场);全部数字闭合
-- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(全文一手已核 2026-08-03:n=52/-17%/d=0.738/六模式画像/错误机制)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)
+- **极简派一手化**(2026-08-08,raw/What I learned building an opinionated and minimal coding agent.md):Zechner 自建 pi 复盘——<1000 token 系统提示+四工具(read/write/edit/bash)、YOLO 默认(权限弹窗=security theater)、反 MCP(上下文税:Playwright 13.7k/DevTools 18k tokens=7-9% 窗口)/to-do/plan mode(PLAN.md 文件化)/后台 bash(tmux 替代)/子代理(黑箱;独立会话+工件;并行子代理=反模式);状态全部文件化(TODO.md/PLAN.md);"模型被训练成读片段、找不全上下文,我们太信任代理了";Terminal-Bench 2.0 五轮跑分上榜 + Terminus 2(纯 tmux)名列前茅;与富 harness 学派(Anthropic/Osmani/HumanLayer)的全景分歧建综合页 [[minimal-vs-rich-harness]];本 wiki 运行环境即 pi(系统提示/四工具逐字吻合)
+- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(全文一手已核 2026-08-03:n=52/-17%/d=0.738/六模式画像/错误机制)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)、**pi Terminal-Bench 2.0 五轮跑分(Opus 4.5) + Terminus 2 纯 tmux 上榜(极简派证据,2026-08-08)**
 
 ## 开放问题
 
@@ -178,4 +183,5 @@ status: active
 - **意图债**:Triple Debt Model 原文核实(arXiv 2603.22106);"承重决策"选择标准的操作化;决策日志(ADR)采用数据;orchestration tax = 意图税 的实证拆分
 - **组织层开放问题**(来源: [[2026-05-08-ai-native-organization]]):AI 信任度两难(高风险环节"不敢全信、人工又扛不住"的量化边界);绩效失效后新依据(artifact 可见 + recognition 主动)的建立;3-5 人小团队是临时最优还是终态(探索者效应/过渡期人形需求/审稿层价值三临时条件);**AI 知识资产继承**(员工调教好的 agent 人走时怎么办——无公司有方案,与 [[file-as-memory]] 相关);agent 名册与治理 6 项基本功的落地案例;蒸馏焦虑对 Harness 转型破坏的实证数据
 - **企业规模层开放问题**(来源: [[2026-05-14-claude-code-large-codebases]]):配置评审 3-6 月节奏的量化验证(评审频率 × 模型换代率的收益曲线);LSP 部署收益数据;RAG vs agentic search 的适用边界(索引类工具在什么规模/场景仍占优);plugin 市场治理(谁批准/如何防重复建设)的行业案例;agent manager/DRI 角色在非 Anthropic 生态的普遍性
-- **Terminal Bench #33 vs #5 的复现与解释**(过拟合 vs 陌生 harness 调优收益的机制)
+- **Terminal Bench #33 vs #5 的复现与解释**(过拟合 vs 陌生 harness 调优收益的机制):**新增极简派数据点(2026-08-08,来源: [[2025-11-30-opinionated-minimal-coding-agent]])**——pi 四工具 harness 五轮跑分上榜(Opus 4.5)、Terminus 2(纯 tmux、零工具)名列前茅——富 harness 调优增益与极简基线并存,harness 差距论两面性未解(见 [[minimal-vs-rich-harness]]);另:基准受时区/负载影响(pi 第二跑仅限 CET)
+- **极简 vs 富 harness**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],见 [[minimal-vs-rich-harness]]):两派各有 daily driver + Terminal-Bench 证据,缺同模型同任务的 A/B;to-do 列表冲突(特征清单门禁 vs "列表困惑模型")的边界未定;子代理黑箱 vs 全可观测能否兼得;"模型不愿读完整文件"假说(训练分布)未验证;规模(个人 vs 组织)是否学派分化的自变量

@@ -4,8 +4,8 @@ tags: [ai-agents, harness, configuration, discipline]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [addy-osmani, agents-md, context-engineering, long-running-agents, agent-verification, model-context-protocol, tool-evaluation, agentic-workflow-patterns, agent-readability, openai, cursor, humanlayer, alibaba, execution-graph, claude-code, loop-engineering, skills, process-over-prose]
-sources: [2026-04-19-agent-harness-engineering, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills]
+refs: [addy-osmani, agents-md, context-engineering, long-running-agents, agent-verification, model-context-protocol, tool-evaluation, agentic-workflow-patterns, agent-readability, openai, cursor, humanlayer, alibaba, execution-graph, claude-code, loop-engineering, skills, process-over-prose, pi-coding-agent, minimal-vs-rich-harness]
+sources: [2026-04-19-agent-harness-engineering, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills, 2025-11-30-opinionated-minimal-coding-agent]
 status: active
 ---
 
@@ -52,6 +52,7 @@ status: active
 - **厂商官方背书 + 维护节奏**(来源: [[2026-05-14-claude-code-large-codebases]],Anthropic):"模型周围的生态——harness——决定表现的程度超过模型本身"——官方站台 HumanLayer/Osmani 的 harness 论;五扩展点**按序**构建(CLAUDE.md → hooks → skills → plugins → MCP,每层建立在前层上)+ LSP 与子代理两个能力;hooks 的自改进用法(stop hook 在上下文新鲜时反思会话并提议 CLAUDE.md 更新,start hook 动态加载团队上下文);**配置评审每 3-6 个月一次**(重大模型发布后平台期也做)——harness 过时问题的第一个节奏答案(与 Cursor 护栏过时、Anthropic 逐组件移除互证);LSP = 符号级搜索(过滤发生在模型读任何东西之前,见 [[context-engineering]]);组件常见误区表(见 source 页)
 - **上一楼层:循环工程**(来源: [[2026-06-07-loop-engineering]]):harness 之上有第三层——"跑在定时器上的 harness,孵化小助手,自我喂食"(自动化发现/派活/检查/记录/决策);五件套(automations/worktrees/skills/plugins+connectors/subagents)+ 状态文件;harness 的维护节奏升级为循环的自维护(见 [[loop-engineering]])
 - **层级分工**(来源: [[2026-05-03-agent-skills]],Osmani):harness 各层各司其职——AGENTS.md 滚动规则书、**skills = 资深工程师流程层**(可复用工作流按需渐进披露)、hooks 确定性执行、工具动作、会话日志持久记忆;skills 干"senior-engineer 流程"的活,"运行越长,资深脚手架越要强制执行而非建议"(见 [[process-over-prose]])
+- **极简派:harness 也可以是"更少"**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]]):Zechner 自建 pi 的立场——"如果我用不到,它就不会被构建":系统提示+四工具 <1000 tokens(无 hooks/skills/子代理/MCP/plan mode/to-do/后台 bash),状态全在文件(TODO.md/PLAN.md),后台交互用 tmux(可观测 + 人机协同调试),安全 = YOLO(权限弹窗 = security theater,能力三元组无解,引 [[simon-willison]] dual-LLM 自认);Terminal-Bench 2.0 五轮跑分上榜(Claude Opus 4.5);Terminal-Bench 团队自己的 Terminus 2(**纯 tmux 交互、零工具**)也名列前茅——与"Top 30→Top 5 靠调优 harness"构成 harness 差距论的两面:**harness 可以增加表现,也可以削减负担**;与 HumanLayer"从简单开始、失败后按需加、扔掉的多于在用的"清单同调;"行为驱动设计"(说不出服务哪个行为的组件不该存在)= Zechner 的"用不到就不构建"的同构表述(见 [[minimal-vs-rich-harness]])
 
 **极端实例与维护回路**(来源: [[2026-02-11-codex-agent-first-engineering]],OpenAI 零人工代码实验):harness 工程的极限形态——整个仓库由代理塑造(1/10 时间、100 万行、1500 PR);工程师的工作 = 设计环境/明确意图/构建反馈回路,出问题时问"缺什么能力、如何让能力对智能体清晰可读又可强制执行";两条新增实践:①**熵与垃圾回收**——代理复现既有模式致漂移,人类每周五清"AI 残渣"不可扩展 → 把"黄金原则"(带主观意见的机械规则)编码进仓库 + 后台清理代理(扫偏差/更新质量等级/开定向重构 PR,多数一分钟内审完自动合并);"技术债如高息贷款,小额持续偿还""人类的品味一旦被捕捉,就持续应用于每一行代码"②**规范架构**——强制不变量而非微观管理(固定层依赖方向 + 自定义 linter 机械执行,错误信息写成注入代理上下文的修复指令);"有了约束,速度才不会下降,架构才不会漂移"(见 [[agent-readability]])
 

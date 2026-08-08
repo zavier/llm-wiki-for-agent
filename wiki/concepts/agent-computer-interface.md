@@ -4,8 +4,8 @@ tags: [ai-agents, tools, design]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [agentic-systems, agentic-workflow-patterns, ai-agent-spec, swe-bench, tool-evaluation, model-context-protocol, agent-readability]
-sources: [2026-08-02-building-effective-ai-agents, 2026-01-13-good-spec-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-02-11-codex-agent-first-engineering]
+refs: [agentic-systems, agentic-workflow-patterns, ai-agent-spec, swe-bench, tool-evaluation, model-context-protocol, agent-readability, pi-coding-agent]
+sources: [2026-08-02-building-effective-ai-agents, 2026-01-13-good-spec-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-02-11-codex-agent-first-engineering, 2025-11-30-opinionated-minimal-coding-agent]
 status: active
 ---
 
@@ -32,6 +32,8 @@ status: active
 - 响应结构(XML/JSON/Markdown)无万能解,依任务与代理评测定
 - 实证:SWE-bench 代理"优化工具的时间 > 优化整体 prompt";web search 工具缺陷例(Claude 给 `query` 附加 "2025" → 改描述修正)
 - 评测驱动的开发流程见 [[tool-evaluation]]
+
+**输出双通道与流式 UX**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]]):pi-ai 的工具实现补充两个此前少见的设计维度——①**工具结果拆分**:一份给 LLM(文本/JSON 摘要)、一份给 UI(结构化 details/附件图,原生格式)——"解析文本化输出重构 UI 展示"是反模式;②**工具参数 schema 校验**(TypeBox + AJV,失败给可操作错误);③**工具调用流式期间的渐进 JSON 解析**:边流式解析参数边渲染部分结果(如 diff 随重写流式显示);④已知缺失:**工具结果流式**(bash ANSI 逐行显示)尚未实现。均为 ACI 的 UX 层扩展,与五原则的"返回有意义上下文"互训;极端版"最少工具集":read/write/edit/bash 四件套 + 可选只读模式(见 [[minimal-vs-rich-harness]])。
 
 **术语对应**:[[addy-osmani|Osmani]] 的 AX(Agent Experience,见 [[ai-agent-spec]])是同一思想在 spec 层的表达——AX 管文档/格式的代理可消费性,ACI 管工具接口的代理可用性;都是"为代理做设计"
 

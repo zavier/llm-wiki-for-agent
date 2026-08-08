@@ -4,8 +4,8 @@ tags: [context, ai-agents, design-pattern]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-08-02
-refs: [context-engineering, skills, ai-agent-spec, file-as-memory, agents-md, agent-readability]
-sources: [2026-08-02-equipping-agents-with-agent-skills, 2026-08-02-effective-context-engineering-for-ai-agents, 2026-01-13-good-spec-for-ai-agents, 2025-10-06-file-system-is-the-new-database, 2026-02-11-codex-agent-first-engineering]
+refs: [context-engineering, skills, ai-agent-spec, file-as-memory, agents-md, agent-readability, pi-coding-agent]
+sources: [2026-08-02-equipping-agents-with-agent-skills, 2026-08-02-effective-context-engineering-for-ai-agents, 2026-01-13-good-spec-for-ai-agents, 2025-10-06-file-system-is-the-new-database, 2026-02-11-codex-agent-first-engineering, 2025-11-30-opinionated-minimal-coding-agent]
 status: active
 ---
 
@@ -23,6 +23,7 @@ status: active
 - 实践印证(来源: [[2025-10-06-file-system-is-the-new-database]]):11 模块个人 OS 的三级披露——路由 SKILL.md 常载 → 模块指令 → 数据文件,"任何信息最多两跳";模块边界即加载决策(identity/brand 拆分省 40% token)
 - **反证**(来源: 同上,引 Vercel 对 Next.js 16 的评测):**56% 评测案例中 skill 从未被调用**——"LLM 本质上懒惰,渐进披露不可靠"(二手引述,待核);触发机制(name/description 质量)比披露结构本身更关键;结构再好,模型不触发就白搭
 - **仓库知识库实例**(来源: [[2026-02-11-codex-agent-first-engineering]],OpenAI 零人工代码实验):AGENTS.md 作内容目录(~100 行)→ 结构化 docs/(design-docs/exec-plans/product-specs/references)→ 具体引用(llms.txt)——"给智能体一张地图,而不是一本 1,000 页的说明书";**用机械手段强制执行披露结构**:linter + CI 验证知识库新鲜度/交叉链接/结构,doc-gardening 代理扫过时文档开修复 PR——披露不再是建议而是不变量(见 [[agent-readability]])
+- **CLI 形态(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]])**:极简派把披露做到工具层——每个外部工具 = 一个 CLI + README,代理需要时才读 README(而不是 MCP 全量工具描述常驻上下文,见 [[model-context-protocol]]);成本只在真正用时支付,天然可组合(bash 管道),扩展 = 加一个脚本。对 56% 未触发反证的部分回答:CLI 方案把"触发"从模型自觉(读 skill 描述)降为"决定调用命令后按需读档",但代理仍须知道命令存在——**发现机制仍是开放问题**。
 - 是 [[context-engineering]] "最小高信号 token 集合"的具体实现策略之一
 
 ## 与其他页面的关系
