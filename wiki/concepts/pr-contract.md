@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, code-review, verification, contract]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [agent-verification, conformance-testing, llm-as-a-judge, addy-osmani, simon-willison, factory-model, comprehension-debt, cognitive-surrender, openai, agent-management, intent-debt]
-sources: [2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-01-08-coding-agents-manager, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team]
+updated: 2026-08-09
+refs: [agent-verification, conformance-testing, llm-as-a-judge, addy-osmani, simon-willison, factory-model, comprehension-debt, cognitive-surrender, openai, agent-management, intent-debt, senko-rasic]
+sources: [2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-01-08-coding-agents-manager, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team, 2025-09-15-your-code-is-your-responsibility]
 status: active
 ---
 
@@ -34,6 +34,7 @@ PR 契约:作者对评审者的**证据义务清单**——AI 生成代码时代
 - **增量强制**:小提交 + 清晰消息 = 检查点;**绝不提交无法解释的代码**
 - **知识转移义务**:AI 写的代码必须有人能解释——否则 on-call 变得昂贵;原作者解释不了,值班工程师凌晨 2 点更解释不了
 - **人类问责底线**("A computer can never be held accountable. That's your job as the human in the loop.")——无论 AI 贡献多少,人负责
+- **独立提出者:提交即声明**(来源: [[2025-09-15-your-code-is-your-responsibility]],[[senko-rasic|Senko]],2025-09-15):四字段契约的**最小声明版**——按 Create PR = attest ①完全理解代码在做什么 ②有合法权利提交(不是偷);与 Osmani 版互补,补三样:①**合法权利字段**(版权/许可证:SO 复制、AI 输出许可问题的入口)②**披露义务**(隐藏 AI/Stack Overflow/Upwork 使用 = "严重且不可接受的职业操守违规"——未披露比使用本身更糟)③**例外区间**(spike/原型/throwaway/低影响内部工具免于完整理解义务,vibe mockup 无罪——质量要求由场景决定不由工具);"The AI wrote it = 狗吃了我的作业" ↔ 人类问责底线同构(独立表述)
 
 **适用分野**:solo(测试自动化兜底 + 关键部分人工复审)与团队(评审聚焦上下文/合规/路线图)都适用;团队场景另需管理体量——拆小 PR 防评审限速(产出 > 验证容量时评审成为限速器,OCaml 13k 行 PR 被拒即案例)
 

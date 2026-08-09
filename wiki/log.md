@@ -450,3 +450,35 @@
 - 关键互证: 极简派 ↔ curse-of-instructions/ETH agentfile/56% 未触发/指令预算/HumanLayer"从简单开始";文件即状态 ↔ file-as-memory;并行反模式 ↔ orchestration-tax;YOLO ↔ Willison dual-LLM 自评;Terminus 2 ↔ 四工具
 - 无事实矛盾(学派分歧已标注,未改写旧页);待核: pi 榜单最终名次、Terminus 2 详情、Armin Ronacher《Agents are hard》原文、mcporter 落地
 - 元观察: 本 wiki 运行环境即 pi(系统提示/四工具与文章逐字吻合)——本 wiki 的 AGENTS.md 契约/lint.sh/文件即状态实践 = 极简派活证据
+
+## [2026-08-09] ingest | "Code was never the hard part" is an insult to all programmers
+
+- 源文档: raw/Code was never the hard part_ is an insult to all programmers.md;发布 **2026-08-08**(raw frontmatter;blog.senko.net),摄入 08-09;作者 Senko Rašić(克罗地亚 Zagreb,~25 年软件开发者,About 页核实)
+- 核心: ①反驳"code was never the hard part/编码容易"话语:经济学论证(高薪/ZIRP 前/leetcode/10x ninja/bootcamp+学位/经典书/Carmack/Bellard/代码被抄会愤怒/软件如此 buggy)——编码=需技能/耐心/细节/经验/智慧的技艺 ②反驳"只有搞清楚做什么才难"单边论(PM 为什么没 10 步面试、没比开发者贵?sales 许诺新功能程序员为何生气?)③"没有中位数程序员":多数程序员不想聊 stakeholder(自由职业者/创始人例外);"我解决客户问题"转身 opine monads/DRY+"affordance=周末零花钱"漫画 = pure/impure 文化碰撞的讽刺画 ④正面立场:**两者都重要(¿Por qué no los dos?)**;任意一端("code is easy"或"code is art 不可自动化")都是 cope ⑤不变:复杂度↑/bit-rot/熵/抽象之塔/用户想要更多付更少且说不清/客户-用户脱节/蛇油贩子永在(VR 文艺复兴还在等)⑥变:行业自我颠覆史(打孔卡→汇编/COBOL→C/C++ 内存战斗(Valgrind/mysql_real_escape_string)→Rust/Go/Python/JS;dBase/Clipper/HyperCard/Access 角落系统仍在跑)⑦thrive:好奇+批判;资深→UX/客户访谈/商业,初级→指针/递归/内存层级/HTTP/leetcode ⑧底线:理解/判断/共情/品味不外包;不 abdicate responsibility;不当 meat proxy
+- 新建 2 页: sources/2026-08-08-code-was-never-the-hard-part(第 50 源)、entities/senko-rasic(独立开发者 craft 辩护派;第三种作者背景——大厂 staff Goedecke / 极简 harness Zechner / 话语批判 Senko)
+- 更新 5 页: theory-building(外部话语:craft 辩护打极端派稻草人——Goedecke 本已反对激进 Naur 论;两者在"理解系统+理解为什么"一致)、pure-impure-engineering(非 Goedecke 的第三立场"两者都要";分裂人格漫画=文化碰撞;buggy 反问=impure 混战难度另一表述)、cognitive-surrender(判断/共情/品味不外包;meat proxy=投降的职业化命名+签字责任,呼应 pr-contract;offloading 健康面独立表述)、expertise-leverage(独立声音:craft 辩护;thrive 建议=专长养成侧;"难度相对专长水平"细化托底/杠杆不对称)、2026-03-06-will-my-job-still-exist(同构互证:what changes/what doesn't/how to thrive 结构相同,需求收缩 vs 技艺仍相关=不同问题维度)
+- 主题页: 50 份源文档;视角 +Senko(craft 辩护派,独立开发者);开放问题 +1(编码难度话语的实证化:托底 vs 侮辱的判据;"软件总 buggy"常识论证 vs 评审经济学的机制缺口)
+- 关键互证: "code is easy"论者 ↔ 薄包装/托底(同一现象两种评价:侮辱 vs 地板抬高,调和=难度相对专长水平);不外包 ↔ cognitive-surrender/offloading("AI 给选项我挑选"=健康面);meat proxy ↔ 薄包装同族+签字责任;thrive 建议 ↔ 专长杠杆养成侧;软件总 buggy ↔ 评审经济学"写便宜了,理解没便宜"与 comprehension-debt 维护侧;snake oil 永在 ↔ 代理/基准 hype 批判
+- 无事实矛盾(话语层张力已标注:稻草人/侮辱 vs 托底);待核: 无;潜在新源: Senko《your code is your responsibility even if AI wrote it》(责任观姊妹篇)、gruhn.me《meat proxy》(2026-08-03,术语一手化)
+
+## [2026-08-09] ingest | Your code is your responsibility, even if AI wrote it
+
+- 源文档: raw/Your code is your responsibility, even if AI wrote it.md;发布 **2025-09-15**(raw frontmatter;blog.senko.net),摄入 08-09;Senko 第二源
+- 定位: [[2026-08-08-code-was-never-the-hard-part|craft 辩护文]] 的**前身**(早近一年)——责任观原发,2026-08 文引用其为底线("don't abdicate your responsibility");上篇源页"未收录待核"标注清除
+- 核心: ①**提交即声明**:按 Create PR = attest 完全理解代码在做什么 + 有合法权利提交(不是偷);与工具无关(vibe-coding/AI 自动补全/抄 SO/外包/阿姨帮忙)②操守面:评审/生产代码时作者不知 how/why = red flag;**隐藏 AI/SO/Upwork 使用 = 严重且不可接受的职业操守违规**(未披露比使用更糟)③**例外区间**:spike/原型/throwaway/低影响内部工具可 spaghetti("vibe-code 功能性 mockup?请便");质量与理解要求由场景不由工具决定 ④不可弃责:"The AI wrote it" = "狗吃了我的作业"
+- 新建 1 页: sources/2025-09-15-your-code-is-your-responsibility(第 51 源)
+- 更新 6 页: pr-contract(**独立提出者:提交即声明**——四字段契约的最小声明版;补合法权利字段/披露义务/例外区间;"狗吃作业"↔人类问责底线同构)、vibe-coding(例外清单独立确认:spike/原型/内部工具;进生产责任照旧)、cognitive-surrender("AI 写的"=投降的现成借口;Create PR 即声明=把理解义务变提交门槛,仪式上截断投降路径)、agentic-engineering(实践四步②的独立表述来源)、senko-rasic(第二源+时间线:责任观 2025-09 → craft 辩护 2026-08)、2026-08-08-code-was-never-the-hard-part(相关文/待办更新)
+- 主题页: 51 份源文档;Senko ×2;开放问题 +1(AI 代码披露/标注规范:个体操守端 vs 行业现实灰色带,缺跨公司实证;AI 输出许可证实践)
+- 关键互证: 提交即声明 ↔ PR contract 四字段(证据义务的仪式化最小版);例外区间 ↔ Osmani"原型 vibe 没问题,上线切回工程模式";隐藏使用=违规 ↔ 行业普遍未标注(Faros/GitClear 量级)的话语张力;狗吃作业 ↔ "A computer can never be held accountable";解释不了就不该进 ↔ "提交即声明完全理解"
+- 无事实矛盾(披露规范张力已标注);待核: gruhn.me《meat proxy》(2026-08-03)仍为潜在新源
+
+## [2026-08-09] ingest | Don't be a meat proxy
+
+- 源文档: raw/Don't be a meat proxy.md;发布 **2026-08-03**(raw frontmatter;gruhn.me),摄入 08-09;作者 Niklas Gruhn(德国,DEV 社区资料;LinkedIn 转述 Tech Manager & SE @ Appliscale,未直接核实)
+- 定位: "meat proxy" 术语**一手源**(第 52 源);被 [[2026-08-08-code-was-never-the-hard-part|Senko craft 文]] 引用为底线——提出到被引用仅 5 天;三源互引链闭合(Senko ×2 + Gruhn ×1)
+- 核心: ①定义:meat proxy = 人作为 AI 输出与接收者之间的**原样转发层**("Claude said:[整段]"回应 Slack/PR/WhatsApp)——零增值:接收者自己能用 Claude,更快且能控制上下文 ②读 AI 输出是额外努力(冗长/plausible nonsense/术语密集:NATS control-plane events 例,几乎每个词要查)③**证书机制**:prompt 可以,但读、理解、验证后**用自己的话写回复**——自己的话 = 前三步的体面证书 ④**代码评审 = 责任反转**:copy ticket → 不看代码 → 粘贴反馈迭代;谁做了实现?评审者用 Claude Code 做的,作者只是 meat proxy
+- 新建 3 页: sources/2026-08-03-dont-be-a-meat-proxy(第 52 源)、concepts/meat-proxy(术语概念化:投降的沟通侧形态;与薄包装同族不同侧——实现 vs 沟通;责任反转冲突 pr-contract"提交即声明完全理解")、entities/niklas-gruhn
+- 更新 5 页: cognitive-surrender(meat proxy 标注"未收录待核"清除,链概念页)、2026-08-08-code-was-never-the-hard-part(相关文/待办更新)、2025-09-15-your-code-is-your-responsibility(相关文/待办更新)、senko-rasic(引用 Gruhn 术语)、主题页(第 52 源;视角 +Gruhn)
+- 主题页: 52 份源文档;开放问题 +1(meat proxy 可测量性:原样转发率 = 投降的沟通侧代理;与拒绝率/采纳率并列为操作化测量;"自己的话"证书在 CI/自动化评审的形态;审计/合规场景的合法边界)
+- 关键互证: 自己的话 ↔ 投降反制启发式("读输出前构建期望")沟通版;责任反转 ↔ pr-contract 知识转移义务/"A computer can never be held accountable";"我能直接问 Claude" ↔ expertise-leverage(代理无专长可加);术语密集 ↔ comprehension-debt(没消化也没降低);评审案例 ↔ vibe-coding 生产零评审形态;薄包装"地板抬高"解读对 meat proxy 不成立(接收端明确零增值)
+- 无事实矛盾;待核: 转发在审计/合规场景可能是政策要求的适用边界未讨论;潜在新源: gruhn《What happens at 60% unemployment rate?》(2026-02-22,职业/行业侧)

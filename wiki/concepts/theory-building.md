@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, cognition, theory, naur]
 topic: ai-agents
 created: 2026-08-03
-updated: 2026-08-04
-refs: [comprehension-debt, cognitive-surrender, intent-debt, distillation-anxiety, sean-goedecke, pure-impure-engineering, expertise-leverage]
-sources: [2026-02-09-cognitive-debt, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2026-07-24-llms-reward-expertise, 2026-04-03-programming-with-ai-agents-as-theory-building, 2025-12-24-nobody-knows-how-software-products-work, 2025-06-22-pure-and-impure-engineering, 2025-01-02-large-established-codebases]
+updated: 2026-08-09
+refs: [comprehension-debt, cognitive-surrender, intent-debt, distillation-anxiety, sean-goedecke, pure-impure-engineering, expertise-leverage, senko-rasic]
+sources: [2026-02-09-cognitive-debt, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2026-07-24-llms-reward-expertise, 2026-04-03-programming-with-ai-agents-as-theory-building, 2025-12-24-nobody-knows-how-software-products-work, 2025-06-22-pure-and-impure-engineering, 2025-01-02-large-established-codebases, 2026-08-08-code-was-never-the-hard-part]
 status: active
 ---
 
@@ -48,6 +48,8 @@ Peter Naur 1985《Programming as Theory Building》:程序的主要产品不是�
 **文化层**(来源: [[2025-06-22-pure-and-impure-engineering]]):全理解是 pure 文化理想(小系统、低流动可行),部分理解是 impure 文化常态(大系统、高流动);pure 在线上过度代表;AI 对两种文化帮助不对称(impure ~30% 提速 vs pure 几乎无)——见 [[pure-impure-engineering]]
 
 **一致性:理论的供给侧条件**(来源: [[2025-01-02-large-established-codebases]],纯前 AI 操作篇):一致代码库 = 理论可构建/可维护——prior art = 可复用的既有理论片段("既有功能 = 穿过雷区的安全路径",雷区 = [[2025-12-24-nobody-knows-how-software-products-work|战争迷雾]] 中的未知地雷);不一致 = 每个端点一个局部变体,理论碎片化,且"最难 5% 端点被留出范围"→ 部分理论干脆无法成立(负反馈循环);"不先理解就无法拆解" ↔ in-defense 切块重写**机制闭合**(理解先行是拆解前提,成功拆解者 = 已能流畅内部交付的团队);删除代码(先 instrument 驱动调用者到零)= 理论修改的安全手术;AI 时代接口:LLM 默认生成"最合理方式"而非 prior art——一致性维护成为代理时代新问题(见 [[codebase-consistency]])
+
+**外部话语:craft 辩护与稻草人**(来源: [[2026-08-08-code-was-never-the-hard-part]],[[senko-rasic|Senko]],2026-08-08):把理论派画成"程序即证明、FTP 一个 PHP 文件是原罪"的漫画后批判其脱离客户——但 Goedecke 已主动反对激进 Naur 论(部分理论是常态、impure 文化合理),此反驳打的是极端派稻草人;两者在"理解系统 + 理解为什么"并存上其实一致(¿Por qué no los dos?);漫画本身 = "程序即证明"说教在实践者中的舆论形象(与 [[pure-impure-engineering]] 的 pure 说教面相呼应)
 
 ## 与其他页面的关系
 

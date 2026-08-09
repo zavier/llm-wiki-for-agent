@@ -16,6 +16,8 @@
 - [[swe-bench]] — 编码代理基准:基于真实 GitHub issue;SWE-bench Verified
 - [[muratcan-koylan]] — Sully.ai Context Engineer;文件即数据库个人 OS;独立实践者视角
 - [[mario-zechner]] — badlogic/libGDX 作者;自建极简编码代理 pi;极简 harness 学派代表人物
+- [[senko-rasic]] — 克罗地亚资深开发者;blog.senko.net;反 "code is easy" 话语;craft 辩护;判断/品味不外包
+- [[niklas-gruhn]] — gruhn.me 博客作者;meat proxy 术语提出者(2026-08-03)
 - [[pi-coding-agent]] — Zechner 的极简编码代理:四工具+<1000 token 提示;YOLO;反 MCP/子代理/to-do;Terminal-Bench 上榜;本 wiki 运行环境
 
 ## Concepts
@@ -29,6 +31,7 @@
 - [[ai-agent-spec]] — AI 代理 spec 总框架:五原则 + 六大核心区域清单
 - [[claude-md]] — Claude Code 持久上下文文件;取舍与剪枝规则
 - [[cognitive-surrender]] — 认知投降:offloading vs surrender;借用信心(73%);互惠放大
+- [[meat-proxy]] — 肉代理:原样转发 AI 输出;投降的沟通侧形态;自己的话=理解证书
 - [[expertise-leverage]] — 专长杠杆:领域专长决定 LLM 使用上限;人=瓶颈而非模型;投降的镜像
 - [[agent-readability]] — 智能体可读性:仓库/应用/可观测性三级阶梯;"上下文之外不存在"
 - [[distillation-anxiety]] — 蒸馏焦虑:知识导出的替代恐惧;培养断裂;行业负反馈环
@@ -130,6 +133,9 @@
 - [[2025-12-24-nobody-knows-how-software-products-work]] — Goedecke:大系统战争迷雾;代码库=唯一可靠答案源;意图债先 AI 形态
 - [[2025-04-12-wicked-features]] — Goedecke:wicked features 定义;Password Game 类比;老兵=熟悉全部 wicked features
 - [[2025-11-30-opinionated-minimal-coding-agent]] — Zechner:自建极简编码代理 pi 复盘(极简派一手源;Terminal-Bench/反 MCP/文件即状态)
+- [[2026-08-08-code-was-never-the-hard-part]] — Senko:编码从未容易是侮辱;两者都重要;what changes/what doesn't;meat proxy
+- [[2026-08-03-dont-be-a-meat-proxy]] — Gruhn:meat proxy 术语一手源;原样转发零增值;自己的话=理解证书;评审责任反转
+- [[2025-09-15-your-code-is-your-responsibility]] — Senko:提交 PR = 声明完全理解+合法权利;隐藏 AI 使用=操守违规;原型可 vibe;狗吃作业
 
 ## Syntheses
 
@@ -145,4 +151,4 @@
 - [[ai-coding-vs-traditional-development]] — AI coding 相比传统开发:解决执行/获取类问题,新增理解/判断/验证类问题
 
 ---
-_Last updated: 2026-08-08 (ingest Zechner:极简派 pi;新建综合页 minimal-vs-rich-harness)_
+_Last updated: 2026-08-09 (ingest Gruhn:meat proxy 术语一手化;Senko ×2 + Gruhn ×1;第 50-52 源)_

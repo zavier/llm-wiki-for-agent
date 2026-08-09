@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, engineering-culture, human-factor]
 topic: ai-agents
 created: 2026-08-03
-updated: 2026-08-03
-refs: [theory-building, comprehension-debt, cognitive-surrender, sean-goedecke, agentic-engineering, wicked-features, codebase-consistency]
-sources: [2025-06-22-pure-and-impure-engineering, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-02-10-engineers-who-wont-commit, 2025-04-12-wicked-features, 2025-01-02-large-established-codebases]
+updated: 2026-08-09
+refs: [theory-building, comprehension-debt, cognitive-surrender, sean-goedecke, agentic-engineering, wicked-features, codebase-consistency, senko-rasic]
+sources: [2025-06-22-pure-and-impure-engineering, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-02-10-engineers-who-wont-commit, 2025-04-12-wicked-features, 2025-01-02-large-established-codebases, 2026-08-08-code-was-never-the-hard-part]
 status: active
 ---
 
@@ -34,6 +34,8 @@ status: active
 **大代码库 = impure 的主场与 90% 价值**(来源: [[2025-01-02-large-established-codebases]],纯前 AI 操作篇):大型成熟代码库(~5M 行/100-1000 人/≥10 年)产生大公司**90% 的价值**——"legacy mess" = 公司实际做的事,"这就是你的工作";impure 工程的混战复杂度在此获得操作原则:**一致性**(prior art 先行/沉入遗留代码/抵制让小角落更干净,见 [[codebase-consistency]]);"不先理解就无法拆解" ↔ in-defense 的"成功重写 = 切块"闭合——**理解能力是 impure 工程的入场券**(给"impure 工程这么高薪是有原因的"补上机制)
 
 **行为规范**(来源: [[2025-02-10-engineers-who-wont-commit]]):impure 文化要求最有上下文者 take a position(哪怕 55-60% 信心)——不表态 = 默许最终决定(见 [[cognitive-surrender]] 第三路径)
+
+**外部声音:两派都要(¿Por qué no los dos?)**(来源: [[2026-08-08-code-was-never-the-hard-part]],[[senko-rasic|Senko]],2026-08-08):非 Goedecke 的第三立场——不站 pure 或 impure,主张两者是并存的技艺:"对系统的深度理解 + 对为什么建它的深度理解";"分裂人格"漫画(一边说"我解决客户问题",一边 opine monads/内存安全/DRY,客户理解 = 编造的用户画像)= 文化碰撞的讽刺画,呼应"两文化互相以为对方不称职"的机制;Senko 的"软件为什么这么 buggy"反问 = impure 混战难度的另一表述(见 [[comprehension-debt]] 维护侧)
 
 ## 与其他页面的关系
 

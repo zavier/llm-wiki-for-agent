@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, development-practice]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [simon-willison, lethal-trifecta, ai-agent-spec, cognitive-surrender, comprehension-debt, agentic-engineering]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-05-05-cognitive-surrender, 2026-02-04-agentic-engineering]
+updated: 2026-08-09
+refs: [simon-willison, lethal-trifecta, ai-agent-spec, cognitive-surrender, comprehension-debt, agentic-engineering, senko-rasic]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-05-05-cognitive-surrender, 2026-02-04-agentic-engineering, 2025-09-15-your-code-is-your-responsibility]
 status: active
 ---
 
@@ -22,6 +22,7 @@ status: active
 - **行李箱词问题**(来源: [[2026-02-04-agentic-engineering]]):vibe coding 从"不读 diff 的 YOLO"被滥用为从周末黑客到纪律工作流的统称——混为一谈造成真实损害;正确定义 = **going with the vibes + 不评审代码**("人是 prompt DJ,不是工程师");合法用途:绿地 MVP/原型/hackathon、个人脚本一次性工具、学习探索、创意头脑风暴("如果它让数百万人能造软件,那是真实的胜利");失败模式:"演示时很棒,现实到来就完了"——改/扩/加固时发现没人懂代码在干什么("这不是工程,是碰运气")
 - **术语谱系定案**:vibe coding(YOLO)→ AI-assisted engineering(人在环)→ vibe engineering(Willison,"vibe" 负资产) → **[[agentic-engineering|agentic engineering]]**(Karpathy 命名,Osmani 采纳:AI 做实现、人拥有架构/质量/正确性;职业上可读、划出干净界线)
 - Osmani 立场:原型用 vibe 没问题,上线必须切回工程模式
+- **独立确认与例外清单**(来源: [[2025-09-15-your-code-is-your-responsibility]],[[senko-rasic|Senko]],2025-09-15):spike/原型/快速丢弃/低影响内部工具 = "duct-tape spaghetti 完全没问题";"vibe-code 那个新界面当功能性 mockup?请便"——但提交 PR = 声明完全理解 + 合法权利,vibe 代码进生产责任照旧(见 [[pr-contract]]);且**隐藏 AI 使用 = 操守违规**(披露义务)
 - **投降风险**(来源: [[2026-05-05-cognitive-surrender]]):"信任 vibe"的 solo 工作流正是 [[cognitive-surrender|认知投降]]的高发区——只审关键部分 + 依赖测试兜底 = "追认而非评审";Peter Steinberger 式"大部分代码我不读"即投降姿态;反制:先构建期望再读输出、把 diff 当成 AI 没写过、每周无 AI 键盘时间校准(见 [[comprehension-debt]])
 
 ## 与其他页面的关系

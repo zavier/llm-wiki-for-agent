@@ -3,7 +3,7 @@ type: source
 tags: [ai-agents, goedecke, career, industry]
 topic: ai-agents
 created: 2026-08-04
-updated: 2026-08-04
+updated: 2026-08-09
 status: active
 ---
 
@@ -34,6 +34,7 @@ status: active
 - **分歧记录**:Goedecke"AI 维护 = 生成能力" vs [[2026-06-15-agentic-code-review|agentic-code-review]] 的 Faros 数据(评审时长 +441.5%、churn +861%、"写便宜了,理解没便宜")——AI 修 bug 能力上升 vs 人类评审成本上升,两侧都真实,交汇点未定(见主题页开放问题)
 - **立场张力(同一作者)**:03-06 悲观(需求收缩)vs 07-24 乐观(专长升值、人=瓶颈)——调和:专长决定**相对位置**(谁最后留下),行业收缩是**绝对量**
 - 相关文:why-do-ai-enterprise-projects-fail(95% AI 企业项目零回报,MIT NANDA 报告)——潜在新源
+- **同构互证**:[[2026-08-08-code-was-never-the-hard-part]](Senko,2026-08-08)——what changes / what doesn't / how to thrive 结构相同,但问题维度不同:Goedecke 问"行业是否收缩",Senko 答"技艺从未容易且仍相关",不冲突(见 [[senko-rasic]])
 
 ## 待办 / 后续
 

@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, engineering-discipline, workflow, terminology]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-04
-refs: [vibe-coding, ai-agent-spec, agent-verification, conformance-testing, comprehension-debt, cognitive-surrender, factory-model, agent-management, addy-osmani, sean-goedecke, expertise-leverage]
-sources: [2026-02-04-agentic-engineering, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-03-06-will-my-job-still-exist]
+updated: 2026-08-09
+refs: [vibe-coding, ai-agent-spec, agent-verification, conformance-testing, comprehension-debt, cognitive-surrender, factory-model, agent-management, addy-osmani, sean-goedecke, expertise-leverage, senko-rasic]
+sources: [2026-02-04-agentic-engineering, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-03-06-will-my-job-still-exist, 2025-09-15-your-code-is-your-responsibility]
 status: active
 ---
 
@@ -20,7 +20,7 @@ status: active
 **实践四步**:
 
 1. **从计划开始**:prompt 前先写设计文档/spec(可 AI 辅助),拆明确定义的任务,决定架构——vibe 党跳过、项目出轨的地方(见 [[ai-agent-spec]])
-2. **指挥,然后评审**:以对人工队友 PR 的严格度评审;"**如果你解释不了一个模块是干什么的,它就不该进**"(见 [[pr-contract]] 知识转移义务)
+2. **指挥,然后评审**:以对人工队友 PR 的严格度评审;"**如果你解释不了一个模块是干什么的,它就不该进**"(见 [[pr-contract]] 知识转移义务;独立表述来源: [[2025-09-15-your-code-is-your-responsibility]],[[senko-rasic|Senko]]:提交 PR = 声明完全理解,与工具无关)
 3. **测试不倦**:最大的区分器——有测试套件,代理循环迭代到通过,给你高置信;没测试,它兴高采烈地在坏代码上宣布"完成";"**测试是你把不可靠的代理变成可靠系统的方式**"(见 [[agent-verification]])
 4. **拥有代码库**:维护文档、版本控制+CI、监控生产;AI 加速工作,你为系统负责
 

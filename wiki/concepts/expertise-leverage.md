@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, cognition, human-factor, prompting]
 topic: ai-agents
 created: 2026-08-04
-updated: 2026-08-04
-refs: [theory-building, cognitive-surrender, comprehension-debt, intent-debt, pure-impure-engineering, sean-goedecke, agentic-engineering]
-sources: [2026-07-24-llms-reward-expertise, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-04-03-programming-with-ai-agents-as-theory-building, 2026-03-06-will-my-job-still-exist, 2026-01-28-skill-formation-rct, 2026-07-11-in-defense-of-not-understanding-your-codebase]
+updated: 2026-08-09
+refs: [theory-building, cognitive-surrender, comprehension-debt, intent-debt, pure-impure-engineering, sean-goedecke, agentic-engineering, senko-rasic]
+sources: [2026-07-24-llms-reward-expertise, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-04-03-programming-with-ai-agents-as-theory-building, 2026-03-06-will-my-job-still-exist, 2026-01-28-skill-formation-rct, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2026-08-08-code-was-never-the-hard-part]
 status: active
 ---
 
@@ -36,6 +36,8 @@ status: active
 **自噬张力**:专长让 AI 使用更有效,但 AI 使用侵蚀专长(RCT quiz **-17%**,d=0.738)——专长杠杆的资本正被杠杆本身消耗;对"AI 时代还要不要深理解"之争给出使用侧答案:深理解决定你能把模型用多狠(见 [[comprehension-debt]]、[[2026-07-11-in-defense-of-not-understanding-your-codebase|in-defense]])
 
 **乐观与悲观的张力(同一作者)**:llms-reward 断言专长随模型变强继续有用(人=瓶颈,2026-07);更早的 [[2026-03-06-will-my-job-still-exist|will-my-job-still-exist]](2026-03)断言行业需求将收缩("没有真正的新能力 AI 代理需要才能取代我——只需更好更可靠")——调和:**专长决定相对位置**(谁最后留下:staff 监督者最晚被替换),行业收缩是绝对量;两条都对时,结论 = 专长竞争更残酷而非消失;Goedecke 2026 立场弧线:悲观(03)→ 理论化(04)→ 托底观察(05)→ 专长升值(07)
+
+**独立声音:craft 辩护与专长养成**(来源: [[2026-08-08-code-was-never-the-hard-part]],[[senko-rasic|Senko]],2026-08-08):乐观侧的第三种立场——技艺从未容易且仍相关;thrive 建议 = 专长杠杆的**养成侧**:初级深挖基础(指针/递归/内存层级/HTTP/leetcode,与模型强弱无关的长期资产)、资深向相邻域扩展(UX/客户访谈/商业 = 专长跨界复用);"难度是相对专长水平的"(对薄包装者编码确实变易,对有技艺者是侮辱)细化了托底/杠杆的两端不对称
 
 ## 与其他页面的关系
 

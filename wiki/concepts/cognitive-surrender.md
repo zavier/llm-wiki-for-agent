@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, cognition, human-factor, failure-mode]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-04
-refs: [comprehension-debt, pr-contract, vibe-coding, addy-osmani, agent-verification, self-reflection, harness-engineering, intent-debt, loop-engineering, llm-as-a-judge, three-tier-boundaries, agentic-engineering, orchestration-tax, theory-building, pure-impure-engineering, expertise-leverage]
-sources: [2026-05-05-cognitive-surrender, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2026-07-24-llms-reward-expertise, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-04-03-programming-with-ai-agents-as-theory-building, 2025-02-10-engineers-who-wont-commit]
+updated: 2026-08-09
+refs: [comprehension-debt, pr-contract, vibe-coding, addy-osmani, agent-verification, self-reflection, harness-engineering, intent-debt, loop-engineering, llm-as-a-judge, three-tier-boundaries, agentic-engineering, orchestration-tax, theory-building, pure-impure-engineering, expertise-leverage, senko-rasic, meat-proxy, niklas-gruhn]
+sources: [2026-05-05-cognitive-surrender, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2026-07-24-llms-reward-expertise, 2026-05-09-ai-makes-weak-engineers-less-harmful, 2026-04-03-programming-with-ai-agents-as-theory-building, 2025-02-10-engineers-who-wont-commit, 2026-08-08-code-was-never-the-hard-part, 2025-09-15-your-code-is-your-responsibility, 2026-08-03-dont-be-a-meat-proxy]
 status: active
 ---
 
@@ -40,6 +40,8 @@ status: active
 **镜像:专长杠杆 = steering 而非 surrender**(来源: [[2026-07-24-llms-reward-expertise]],Goedecke):投降 = 无独立观点时输出=你的答案;**专长杠杆 = 有独立观点时输出=原料**——同模型同输出,区别在用户是否带理论进场;Tao 式用法:推回式纠错("这看起来比我期望的更复杂",不直接反驳)、自导下一步、从多段输出里抓相关想法;RCT 六模式实证:高分 Generation-Then-Comprehension(86%)正是"生成后理解+纠偏"的 steering,低分 AI Delegation(39%)是零专长投降——**surrender 的反制不只是姿态,是专长**;"读输出前先构建期望"的启发式 = 期望就是理论(见 [[expertise-leverage]])
 
 **组织级形态:薄包装工程师**(来源: [[2026-05-09-ai-makes-weak-engineers-less-harmful]],Goedecke):最弱工程师把消息粘贴进 Claude Code 再粘贴回——同事视角 ≈ 与 LLM 实例通过 Slack 协作;这是 surrender 的**社交化/职业化形态**(决策缺席被界面化),但作者把它读作改进:对**从未形成过独立观点**的净负工程师,薄包装不是"从有观点投降到没观点",而是**地板抬高**(surrender 预设"有立场可失去",此处没有可失去的立场);重要边界:没有强工程师薄包装化(基线品味抓 AI 错误)、脚注自疑"LLM 输出持续优于自己时可能是好的学习方式"——投降/托底/学习的三分界随专长水平移动
+
+**外部重申:判断/共情/品味不外包**(来源: [[2026-08-08-code-was-never-the-hard-part]],[[senko-rasic|Senko]],2026-08-08):"不要把理解、判断、共情、品味外包给 AI"——其中理解/判断 = surrender 的战场,共情/品味 = 其向人机关系与审美的延伸;**meat proxy**(一手源: [[2026-08-03-dont-be-a-meat-proxy]],[[niklas-gruhn|Gruhn]],2026-08-03;见 [[meat-proxy]])= 投降的沟通侧形态:原样转发 AI 输出——与薄包装(粘贴往返)同族,但强调**转发层零增值**(接收者"我能直接问 Claude,更快且能控制上下文")与**签字责任**(自己署名就得负责,呼应 [[pr-contract]] 作者义务);"AI 是 fancy autocomplete,它给选项、我挑选" = offloading 健康面的独立表述;[[2025-09-15-your-code-is-your-responsibility|责任观原发]](2025-09-15):"AI 写的" = "狗吃了我的作业"——投降的现成借口;**"Create PR 即声明完全理解"把理解义务变成提交门槛**,从仪式上截断投降路径(见 [[pr-contract]])
 
 **量化对照:拒绝率 = 投降的测量代理**(来源: [[2026-04-03-programming-with-ai-agents-as-theory-building]],本 wiki 综合):不投降者的实测——~80% agent 输出被 kill/打回、仅 ~10% 进入产出;有理论才拒绝得动,投降者无拒绝依据(只能接受)——采纳率(10% vs 100%)可作 surrender 的操作化代理,部分回答"投降校准"开放问题的测量缺口(待核:单一样本自报,需多人数据)
 
