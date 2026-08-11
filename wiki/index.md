@@ -149,6 +149,8 @@
 ## Answers
 
 - [[ai-coding-vs-traditional-development]] — AI coding 相比传统开发:解决执行/获取类问题,新增理解/判断/验证类问题
+- [[ai-coding-full-lifecycle]] — AI coding 全流程实践路线图:设计/实现/验证三阶段重点 + 体系化能力建设六块素养与四阶段路线
+- [[expertise-and-prompting]] — 领域专长 × 提问方式纵线:专长定义/业务与系统维度/绿地建仓/存量复活/设计分工分层/理解不可委托/全闭环边界
 
 ---
-_Last updated: 2026-08-09 (ingest Gruhn:meat proxy 术语一手化;Senko ×2 + Gruhn ×1;第 50-52 源)_
+_Last updated: 2026-08-10 (answer:expertise-and-prompting 追加"理解不可委托"与"全闭环边界"两节)_
