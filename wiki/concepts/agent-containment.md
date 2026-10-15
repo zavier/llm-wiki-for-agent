@@ -4,8 +4,8 @@ tags: [ai-agents, security, sandboxing, containment]
 topic: ai-agents
 created: 2026-10-15
 updated: 2026-10-15
-refs: [lethal-trifecta, model-context-protocol, curse-of-instructions, harness-engineering, agent-evals, governance-as-code, agent-verification, anthropic, claude-code, control-bands]
-sources: [2026-05-25-how-we-contain-claude]
+refs: [lethal-trifecta, model-context-protocol, curse-of-instructions, harness-engineering, agent-evals, governance-as-code, agent-verification, anthropic, claude-code, control-bands, agent-identity]
+sources: [2026-05-25-how-we-contain-claude, 2026-07-21-anthropic-secures-ai-native-sdlc]
 status: active
 ---
 
@@ -71,9 +71,12 @@ status: active
 - 符号链接解析晚于路径校验
 - 自建隔离原语而非用成熟实现(来源: 同上)
 
+- **组织级实装:远端 VM + egress allowlist**(来源: [[2026-07-21-anthropic-secures-ai-native-sdlc]]):Anthropic 把编码迁到**远端 VM**、agent 流量 **egress allowlist**——“读不可信输入时尤其重要:注入指令无法到达任意互联网目的地,外泄路径只剩一小撮被监控的服务”;此前远端编码主要护 IP,如今被成熟 AI 团队用来**围堵 agent**;生成侧把关:`/security-review`(security guidance plugin 可在生成过程中评审;PreToolUse hook 把建议变硬门)
+
 ## 与其他页面的关系
 
 - 与 [[lethal-trifecta]] 分工:那页描述**威胁面**(私有数据 + 不可信输入 + 外发通道三者齐备即致命),本页描述**防御层次**(环境层硬边界 → 模型层引导)。本页给出的这组数字(93% / 84% / 83% / ~17% / ~0.4% / 25 中 24)是 trifecta 的量化侧
+- 与 [[agent-identity]] 分工:本页给 agent“能到达哪里”的硬边界;身份层管“以谁的身份、能做什么动作”(三权限 service account/agent-to-agent 访问)——两者合起来才是完整的爆炸半径工程
 - 与 [[model-context-protocol]] 交叉:MCP 把外部工具接进来,也把提示注入的入口接进来;工具注解(open-world 访问 / 破坏性变更)是声明层的第一步,但不是边界
 - 与 [[curse-of-instructions]] 交叉:不受信输入流入 prompt 是同一机制的不同表述;亦见 [[agent-verification]] 的评审纪律条目
 - 与 [[harness-engineering]] 交叉:沙箱是 harness 的**边界组件**;"隔离强度匹配监督能力"是选 harness 形态的自变量

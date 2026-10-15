@@ -4,8 +4,8 @@ tags: [ai-agents, governance, security, compliance, configuration]
 topic: ai-agents
 created: 2026-10-15
 updated: 2026-10-15
-refs: [harness-engineering, three-tier-boundaries, skills, agent-verification, pr-contract, artifact-chain, control-bands, lethal-trifecta, anthropic, claude-code, pi-coding-agent]
-sources: [2026-08-21-ai-native-sdlc-playbook]
+refs: [harness-engineering, three-tier-boundaries, skills, agent-verification, pr-contract, artifact-chain, control-bands, lethal-trifecta, anthropic, claude-code, pi-coding-agent, agent-identity, claude-tag, agent-containment]
+sources: [2026-08-21-ai-native-sdlc-playbook, 2026-07-21-anthropic-secures-ai-native-sdlc]
 status: active
 ---
 
@@ -36,6 +36,16 @@ status: active
 **与"人"的边界**:治理即代码不取消人的判断,而是**把人放到不能被配置绕过的少数点上**——审批门定义"什么算批准"(变更单/发布经理签字);**分离职责保留:写码的代理无法批准自己的代码**;PR findings 本身不 approve/block,branch protection 仍要 code owner(可读机器可读的严重度 tally);人的注意力集中在 gates(见 [[artifact-chain]]、[[pr-contract]])。
 
 **对照极简派**:同 [[pi-coding-agent]] 一样反对**逐次人工审批**(pi:"权限弹窗 = security theater"),但路径相反——一条把信任放在**平台层强制配置 + 沙箱兜底 + 审计**,一条把信任放在**极简 + YOLO + 容器**;组织规模(需要可审计、可交接、可合规)是分化的自变量(见 [[minimal-vs-rich-harness]])。
+
+**内部实装(安全侧,2026-07)**(来源: [[2026-07-21-anthropic-secures-ai-native-sdlc]],Deputy CISO 视角):基线是人均季度产出 **8×**、Claude 撰写 **~80%** 合并代码、**>50%** 由 [[claude-tag|Claude Tag]] 合并;威胁模型三类——被注入/失陷 agent 引入恶意变更、供应链投毒被当可信输入、常规漏洞高量到达;四条策略就是本页各层的组织版(shift left、硬身份/访问边界、确定性+agentic 双轨评审、人在最高杠杆点)。逐阶段实装:
+- **Plan**:PSR 应用(Claude Opus × MITRE ATT&CK × 内部知识索引)压缩安全评审——“把安全 agent 接到组织上下文所在处”;低风险项目凭证可靠后允许团队自审
+- **Code**:安全指引编码进 CLAUDE.md + 组织 skills,构成**发现 bug 类→更新文件→未来不复发**的闭环(本页“建议层”的实例);`/security-review` + security guidance plugin 在生成过程中评审;PreToolUse hook 是把建议变硬门的可选件(Anthropic 自选把硬门放在 CI);远端 VM + **egress allowlist** 限制注入外泄路径(见 [[agent-containment]])
+- **CI**:实质评审评论率 **16%→54%**——关键前提是**要求 agent 写下“发现为真”的 proof**;多窄焦点评审 agent(不共享盲点/互为冗余/不摊薄精力)+ 对往期事故的 RAG;风险分层 + 自动批准**连信号与推理记录** + **按风险加权的抽样人审**;不变量测试(“用户 A 永远不能读用户 B 的数据”)触发额外人工评审;SAST 与 agentic 扫描并排
+- **CD**:连续 AI DAST 对齐部署节奏;2 月披露 500+ 高危 OSS 漏洞由 Claude 发现并协助修复
+- **Monitor**:告警 triage agent 三权限(写文档/发频道/读生产日志)、**不能部署**——修复须经独立 agent-人类评审系统;agent-to-agent 教训(模型升级后 IR agent 自行请另一个 Claude 推修复,被人审门拦下)→ [[agent-identity]]
+- **Governance**:**shadow mode**(新 AI 评审员先发评论等批准，并红队注入恶意变更)、抽检、vitals 仪表盘、**每个 agent 动作连信号进 SIEM**、把 agent 当**新型内部威胁**;"安全工程师的工作从监控 bug 演进为监控循环"
+
+本段还给出治理的**成本观与投资姿势**:"不要问能不能负担全扫——问**如果扫描接近免费你会跑什么**",照那个规划(与 [[agent-evals]] 的基础设施投资观同源)。
 
 ## 与现有页面的分工
 

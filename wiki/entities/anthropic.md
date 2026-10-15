@@ -4,8 +4,8 @@ tags: [organization, ai-engineering]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-10-15
-refs: [context-engineering, llm-as-a-judge, claude-code, claude-md, skills, subagents, agentic-systems, hive-mind, alibaba, artifact-chain, governance-as-code, control-bands, official-sdlc-guides, agent-evals, agent-containment, lethal-trifecta, harness-engineering]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-equipping-agents-with-agent-skills, 2026-05-08-ai-native-organization, 2026-08-21-ai-native-sdlc-playbook, 2025-11-04-code-execution-with-mcp, 2025-11-24-advanced-tool-use, 2026-01-09-demystifying-evals-for-ai-agents, 2026-01-21-ai-resistant-technical-evaluations, 2026-02-05-infrastructure-noise, 2026-03-06-eval-awareness-browsecomp, 2026-04-08-scaling-managed-agents, 2026-05-25-how-we-contain-claude]
+refs: [context-engineering, llm-as-a-judge, claude-code, claude-md, skills, subagents, agentic-systems, hive-mind, alibaba, artifact-chain, governance-as-code, control-bands, official-sdlc-guides, agent-evals, agent-containment, lethal-trifecta, harness-engineering, agent-identity, claude-tag]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-equipping-agents-with-agent-skills, 2026-05-08-ai-native-organization, 2026-08-21-ai-native-sdlc-playbook, 2025-11-04-code-execution-with-mcp, 2025-11-24-advanced-tool-use, 2026-01-09-demystifying-evals-for-ai-agents, 2026-01-21-ai-resistant-technical-evaluations, 2026-02-05-infrastructure-noise, 2026-03-06-eval-awareness-browsecomp, 2026-04-08-scaling-managed-agents, 2026-05-25-how-we-contain-claude, 2026-07-21-anthropic-secures-ai-native-sdlc, 2026-08-18-claude-tag-first-responder-ci-cd]
 status: active
 ---
 
@@ -29,6 +29,8 @@ Claude 与 Claude Code 背后的 AI 公司;贡献了有效上下文工程、Skil
 - **Hive Mind 文化**(来源: [[2026-05-08-ai-native-organization]],二手转述 Yegge):外部观察称 Anthropic"几乎肯定有比任何公司都精密的 Harness,但在 Harness 之上选择运行混乱的文化"——双层组织的原型案例(精密底层 + 松散上层,见 [[hive-mind]])
 
 - **官方 SDLC playbook(2026-08-21)**:六阶段(Plan/Design/Build/Test/Deploy/Maintain)+ 16 plays 的全流程框架——官方立场:提交工件链(intent/spec/plan/diff/PR/incident,见 [[artifact-chain]]);**skill 建议层 + hook 确定层 + managed settings 强制层 + OTel 证据层**(见 [[governance-as-code]]);逐 play 领先/滞后指标;Stage 6 控制带闭环(见 [[control-bands]])与 Claude Tag / Claude Security 的自治形态;官方文档(保守闭环+满治理门)与内部实践(托管评审、值班代理)存在"对外保守/内部激进"张力,与 OpenAI 同构(见 [[official-sdlc-guides]])
+
+- **companion 两篇(安全实现 + 值班实装)**:①安全侧([[2026-07-21-anthropic-secures-ai-native-sdlc]])——8× 产出、~80% 代码、>50% 由 [[claude-tag|Claude Tag]] 合并;PSR/shadow mode/抽检/SIEM/把 agent 当**新型内部威胁**;2 月披露 500+ 高危 OSS 漏洞;实质评审率 16%→54% ②值班侧([[2026-08-18-claude-tag-first-responder-ci-cd]])——Claude Tag 做 CI/CD on-call 第一响应者(中位 14 分钟/最快 4 分钟);617 行 investigation skill;lessons.md→skill 自改进;ci-weather;“监控事故响应系统”(见 [[agent-identity]]、[[governance-as-code]]、[[control-bands]])
 
 - **工程博客四条主线(2025-11 → 2026-05)**:除早期的 agentic systems 分类学与上下文工程外,官方在四个月内又公开了四条独立的工程线:
   1. **工具规模化**——把"按需发现 + 代码调用"做进平台层:`defer_loading` / Tool Search Tool / Programmatic Tool Calling / Tool Use Examples(见 [[agent-computer-interface]]),以及把 MCP server 呈现为代码 API 树(见 [[model-context-protocol]]);实测**工具定义从 58 工具≈55K → ~8.7K(-85%)且准确率上升**

@@ -4,8 +4,8 @@ tags: [ai-agents, verification, quality]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-10-15
-refs: [claude-code, conformance-testing, llm-as-a-judge, ai-agent-spec, agentic-systems, long-running-agents, context-anxiety, factory-model, pr-contract, comprehension-debt, openai, humanlayer, loop-engineering, cognitive-surrender, intent-debt, agent-management, artifact-chain, governance-as-code, agent-evals]
-sources: [2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-02-11-codex-agent-first-engineering, 2026-03-12-skill-issue-harness-engineering, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team, 2026-08-21-ai-native-sdlc-playbook, 2026-01-09-demystifying-evals-for-ai-agents]
+refs: [claude-code, conformance-testing, llm-as-a-judge, ai-agent-spec, agentic-systems, long-running-agents, context-anxiety, factory-model, pr-contract, comprehension-debt, openai, humanlayer, loop-engineering, cognitive-surrender, intent-debt, agent-management, artifact-chain, governance-as-code, agent-evals, agent-identity, claude-tag]
+sources: [2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-02-11-codex-agent-first-engineering, 2026-03-12-skill-issue-harness-engineering, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team, 2026-08-21-ai-native-sdlc-playbook, 2026-01-09-demystifying-evals-for-ai-agents, 2026-07-21-anthropic-secures-ai-native-sdlc, 2026-08-18-claude-tag-first-responder-ci-cd]
 status: active
 ---
 
@@ -49,6 +49,8 @@ status: active
 - **evals = AI-native 的 stage-gate QA**(来源: 同上):20-50 个真实任务(from recent work with expected outcome)写成“prompt + 可接受检查(tests pass/lint clean/behavior unchanged/policy followed)”;**在 CLAUDE.md/skills/hooks 变更时与定时跑**——“steering 代理的配置值得和代码一样的回归测试”;配置变更以 pass rate 为合并门;每个生产事故写一条 eval(归事故归属团队)留在套件;套件是**活的**——模型变强后旧 case 失去区分度,需从监控补新(见 [[conformance-testing]])
 
 - **与 agent evals 的层次分工**(来源: [[2026-01-09-demystifying-evals-for-ai-agents]]):本页回答“**给 agent 一个可运行的检查**”(验证回路的机制),[[agent-evals]] 回答“**这个检查本身可信吗**”(任务与 grader 的设计学、非确定性度量、评测自身的失效模式)。两者必须合看:一个可运行的检查如果 grader 脆、任务歧义或环境共享状态,就会给出“公平的失败”的假象——而那比没有检查更危险(具体反模式见 [[agent-evals]])
+
+- **组织级实装:proof 要求与抽检**(来源: [[2026-07-21-anthropic-secures-ai-native-sdlc]],Anthropic 安全侧):**要求 agent 为每个 finding 写下“它为真”的 proof** → 实质评审评论率 **16%→54%**;过去 claude.ai 事故约 **1/3** 的 bug 会被现在的自动流程抓住(外部佐证:Intercom 自动批准 **19%**、部署翻倍且破坏性变更停机 **-35%**;CircleCI Chunk 在人类看到前自验修复)。机制:多个**窄焦点**评审 agent(不共享盲点/互为冗余/不摊薄精力)+ 往期事故 RAG;风险分层 + 自动批准**连信号与推理记录** + **风险加权抽检**人审;不变量测试(“用户 A 永远不能读用户 B 的数据”)单独成类;SAST 与 agentic 扫描并排(与“评审器异质性”同源,尺度升到组织实装)
 
 ## 与其他页面的关系
 

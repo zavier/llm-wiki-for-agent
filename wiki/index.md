@@ -10,6 +10,7 @@
 - [[anthropic]] — Claude/Claude Code 背后公司;agentic systems 分类学、CLAUDE.md/hooks/skills/子代理扩展体系
 - [[cursor]] — Anysphere 的 AI 编码 IDE/智能体;CursorBench、Keep Rate、按模型定制框架
 - [[claude-code]] — Anthropic 的代理式编码环境;上下文约束、扩展体系、并行会话、企业规模模式
+- [[claude-tag]] — Anthropic 的 Slack 团队代理(public beta):自有身份/频道记忆/MCP;CI/CD on-call 第一响应者(中位 14 分钟);内部 >50% 代码合并者
 - [[github]] — agents.md 2,500+ 配置研究 + Spec Kit + Copilot agents.md
 - [[simon-willison]] — AI 工程评论家;一致性测试、致命三要素、AI 代理管理思想
 - [[sean-goedecke]] — GitHub Copilot 团队 Staff 工程师;pure/impure 工程文化;不理解的辩护;LLM 奖励专长;弱工程师无害化;LLM 与理论构建;大代码库一致性;职业未来(超调/欠调)
@@ -24,6 +25,7 @@
 
 - [[agent-computer-interface]] — ACI:工具契约设计五原则;工具定义按需加载(58 工具≈55K→8.7K);评测驱动;与 AX 同族;输出双通道/流式 UX
 - [[agent-containment]] — 代理围堵:先环境层硬边界再模型层引导;批准≠监督(批准 93%/提示降 84%/拦 83%/漏~17%);凭据不进沙箱、egress=能力授予、信任边界
+- [[agent-identity]] — 代理身份:单一用途身份+最小权限;边界画在“访问与动作”而非模型指令;agent-to-agent 越界案例;SIEM 归因与新型内部威胁
 - [[agent-evals]] — 代理评测方法学:能力 vs 回归 eval、pass@k/pass^k、三档 grader、基础设施噪声(1x–3x p=0.40;<3pp 存疑)、eval 认知/过期/饱和
 - [[agent-verification]] — 给代理可运行的检查;验证门禁四档(同 prompt//goal/hook/评审子代理)
 - [[agentic-memory]] — 结构化笔记:窗口外持久化,跨会话记忆(Pokémon 例证)
@@ -151,6 +153,8 @@
 - [[2026-03-06-eval-awareness-browsecomp]] — Anthropic:模型识破评测并解密答案键(1,266 题中 9 例污染 + 2 例识破);多代理 3.7× 更易发生
 - [[2026-04-08-scaling-managed-agents]] — Anthropic:harness 组件会过期(context reset 在 Opus 4.5 成死重);会话≠上下文窗口;brain/hands 解耦
 - [[2026-05-25-how-we-contain-claude]] — Anthropic:三产品围堵复盘(三类风险×三层组件×三种隔离);approval≠supervision;25 次重试 24 次外泄;allowlist=能力授予
+- [[2026-07-21-anthropic-secures-ai-native-sdlc]] — Anthropic Deputy CISO 安全实现篇:8× 产出/~80% 代码/>50% 由 Claude Tag 合并;PSR/shadow mode/抽检/SIEM;实质评审率 16%→54%
+- [[2026-08-18-claude-tag-first-responder-ci-cd]] — Anthropic 值班实现篇:中位 14 分钟/最快 4 分钟;dynamic workflow + 617 行 investigation skill + lessons.md;oncall-kit 开源
 
 ## Syntheses
 
@@ -169,4 +173,4 @@
 - [[expertise-and-prompting]] — 领域专长 × 提问方式纵线:专长定义/业务与系统维度/绿地建仓/存量复活/设计分工分层/理解不可委托/全闭环边界
 
 ---
-_Last updated: 2026-10-15 (ingest:第 54-62 源 — Anthropic eval/containment/harness 系 8 篇 + OpenAI agents 手册;新建 agent-evals / agent-containment,更新 12 页)_
+_Last updated: 2026-10-15 (ingest:第 63-64 源 — Anthropic 安全实现篇 + Claude Tag 值班篇;新建 agent-identity / claude-tag,更新 13 页)_

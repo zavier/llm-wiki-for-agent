@@ -558,3 +558,15 @@
 - 影响面: 0 个 broken-link;subagents 其余内容(上下文防火墙、探索与编辑分离、maker/checker 分裂、报告文件交接、极简派批判、官方并行会话 vs 子代理区分)不受影响
 - 保留待办: 若日后要恢复该主张,须先把原文落盘 raw/ 再走完整 ingest(候选另两篇 claude-think-tool / claude-code-auto-mode 同此)
 - 健康检查: `scripts/lint.sh` → **lint clean ✓(147 pages checked)**
+
+## [2026-10-15] ingest | Anthropic companion 两篇:安全实现 + Claude Tag 值班(第 63-64 源)
+
+- 源文档: ①raw/How Anthropic secures its AI-native software development lifecycle.md(2026-07-21,Jason Clinton,Deputy CISO;第 63 源)②raw/How Claude Tag serves as Anthropic's first responder for CI_CD failures.md(2026-08-18,Sachin Malhotra;第 64 源)——均为 [[2026-08-21-ai-native-sdlc-playbook]] 挂账的 companion,本次清账
+- 定位: playbook 治理/闭环章节的两篇实装展开——安全侧给硬数据与逐阶段控制(8× 产出、Claude 撰写 ~80% 合并代码、>50% 由 Claude Tag 合并;PSR;安全指引闭环;16→54%;shadow mode;抽检;SIEM);值班侧给 on-call 全流程(检测/triage/修复/验证/交接;中位 14 分钟、最快 4 分钟;dynamic workflow;617 行 investigation skill;lessons.md;ci-weather;oncall-kit 开源)
+- 新建 4 页: sources/2026-07-21-anthropic-secures-ai-native-sdlc、sources/2026-08-18-claude-tag-first-responder-ci-cd、concepts/agent-identity(单一用途身份/最小权限/agent-to-agent 边界/SIEM 归因/新型内部威胁)、entities/claude-tag(Slack 团队代理/on-call 第一响应者/>50% 代码合并者)
+- 更新 13 页: governance-as-code(安全实装篇:PSR/闭环指引/多窄焦点评审/抽检/SIEM/监控循环)、control-bands(值班实装:四环节+自改进环+官方口径)、agent-verification(proof 要求与 16→54%/1/3 事故 bug/风险加权抽检/不变量测试)、skills(617 行 investigation skill 共建法/lessons→skill 提升路径)、agentic-memory(lessons.md 追加→先读→固化)、subagents(dynamic workflow 编排+executor)、agent-containment(远端 VM+egress allowlist/护 IP→围堵 agent)、loop-engineering(值班闭环=自改进实例/“监控事故响应系统”)、pr-contract(每 PR 具名 owner+变更需批准+记录+抽检)、official-sdlc-guides(张力修正:内部=高自动化+高治理配对)、anthropic、claude-code、2026-08-21 源页(companion 待办清账)
+- 主题页: 64 份源文档;Anthropic ×21;开放问题 +2(身份边界与 shadow mode 毕业标准/值班泛化与记忆腐化)
+- 关键互证: agent-identity ↔ agent-containment(环境层)/governance-as-code(强制层)三层分工;16→54% ↔ 评审器异质性(93.4%);proof 要求 ↔ agent-evals(grader 校准);lessons.md ↔ file-as-memory(failures 日志最值钱)/self-improving-agents;dynamic workflow ↔ subagents(Link Shelf 文件交接);“每 PR 具名 owner+变更需批准” ↔ pr-contract 四源收敛;安全篇“边界画在访问与动作上” ↔ lethal-trifecta(外发通道的组织形态)
+- 张力修正: playbook 源页原记“官方保守 vs 内部激进”——两篇 companion 显示内部实装是“高自动化 + 高治理配对”(shadow mode/抽检/SIEM/身份边界),问题转为该实装的可复制性
+- 待核: 文中引用的候选新源(Zero Trust for Agents/agent identity & access model/CISO guide/code review 等);Intercom/CircleCI 为自述案例;值班数据为操作数据(非受控评测)
+- 健康检查: `scripts/lint.sh` → **lint clean ✓(151 pages checked)**

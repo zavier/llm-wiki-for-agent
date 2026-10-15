@@ -85,7 +85,7 @@ status: active
 
 ## 待办 / 后续
 
-- **companion 文章待摄入**:①《securing an AI-native SDLC at Anthropic》(文中链接,治理/控制细节的展开)②《how Claude Tag runs on-call for CI/CD at Anthropic》(值班案例展开);摄入后回填本页与 [[governance-as-code]]、[[control-bands]]
+- **companion 文章已摄入(2026-10-15)**:①[[2026-07-21-anthropic-secures-ai-native-sdlc]](安全实现篇:8× 产出/~80% 代码/shadow mode/抽检/SIEM)②[[2026-08-18-claude-tag-first-responder-ci-cd]](值班展开篇:中位 14 分钟/617 行 skill/lessons.md/oncall-kit 开源);已回填 [[governance-as-code]]、[[control-bands]]、[[agent-identity]]、[[claude-tag]]
 - 待核:作者 Louis Claxton 背景;发布日 2026-08-21(raw frontmatter)/PDF 版差异;文中模型名("Claude Mythos 5")与各功能 beta 状态(Claude Tag/Claude Security/Code Review/Claude Design)的时效
 - 与 OpenAI 官方指南的逐项并排已建 [[official-sdlc-guides]];后续可补:两指南的客户案例(Cloudwalk/Sansan/Virgin vs 本文未点名客户)与量化效果的对照数据
 - 开放问题已并入 topic hub:工件链在存量巨型仓库的最小可行形态;"配置即被测对象"的 eval 套件维护成本;控制带阈值(σ 分级/去噪)的跨团队标定

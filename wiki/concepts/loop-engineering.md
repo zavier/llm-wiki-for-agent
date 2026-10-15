@@ -4,8 +4,8 @@ tags: [ai-agents, loop, automation, architecture, harness]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-10-15
-refs: [harness-engineering, factory-model, long-running-agents, agent-verification, subagents, skills, agents-md, intent-debt, cognitive-surrender, comprehension-debt, addy-osmani, control-bands, artifact-chain, governance-as-code]
-sources: [2026-06-07-loop-engineering, 2026-08-21-ai-native-sdlc-playbook]
+refs: [harness-engineering, factory-model, long-running-agents, agent-verification, subagents, skills, agents-md, intent-debt, cognitive-surrender, comprehension-debt, addy-osmani, control-bands, artifact-chain, governance-as-code, claude-tag]
+sources: [2026-06-07-loop-engineering, 2026-08-21-ai-native-sdlc-playbook, 2026-08-18-claude-tag-first-responder-ci-cd]
 status: active
 ---
 
@@ -39,6 +39,8 @@ status: active
 **关键性质**:不是工具问题(五件套已随产品内置,Codex 与 Claude Code 形状一致——争论工具无意义);**同构循环异果**——两个人建同一个循环得到相反结果(一个加速深懂的工作,一个逃避理解),"循环不知道区别,你知道";循环设计比 prompt 工程更难——"Cherny 的意思不是工作变容易了,是**杠杆点移动了**";"以打算继续当工程师的方式建循环,而不是只按开始键"
 
 **Anthropic 官方版闭环(Stage 6)**(来源: [[2026-08-21-ai-native-sdlc-playbook]]):人不再启动——触发(控制带越界/ticket/频道消息/日程)在没有人在调用路径的情况下调用 Claude,它诊断、只经受闸路线行动、把发现写成 `intent.md` 回到流水线;阶段之间由**独立置信门**(确定性检查或对抗性评审代理)决定继续还是升级给人;值班形态 = Claude Tag(频道成员,过程留在频道 = 审计),巡检形态 = 定时安全扫描(finding 验证+置信度,大的转 intent.md)。与 Osmani 循环的差异在触发器形态:Osmani = **心跳自动化**(定时找活);Anthropic = **异常检测 + σ 分级响应**,检测确定性、代理每次只被调用一次(见 [[control-bands]])。共同底线不变:"验证仍在你肩上/理解仍会腐烂/舒适姿势最危险"——playbook 用 triage 队列与人审 gate 把第一条制度化
+
+**值班闭环实装**(来源: [[2026-08-18-claude-tag-first-responder-ci-cd]]):[[claude-tag|Claude Tag]] 把这一层跑成完整件——检测(规则调优 + 全量告警 + 双轨升级)/ triage(dynamic workflow + investigation skill + lessons.md)/ 修复(PR 为主;渐进部署 agent)/ 验证交接(同套 MCP + ci-weather + 日周报);口径从“监控事故”演进为“**监控事故响应系统**”。**自改进环**(lessons.md→skill)是“复利”论的实装:每次事故把知识回写,循环越跑越懂这个系统;与五件套对照——memory=频道+lessons.md、connectors=MCP、skills=investigation skills、schedules=自然语言排期、subagents=executor 池(见 [[control-bands]])
 
 ## 与其他页面的关系
 

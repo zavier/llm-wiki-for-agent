@@ -4,8 +4,8 @@ tags: [ai-agents, code-review, verification, contract]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-10-15
-refs: [agent-verification, conformance-testing, llm-as-a-judge, addy-osmani, simon-willison, factory-model, comprehension-debt, cognitive-surrender, openai, agent-management, intent-debt, senko-rasic, artifact-chain, governance-as-code]
-sources: [2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-01-08-coding-agents-manager, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team, 2025-09-15-your-code-is-your-responsibility, 2026-08-21-ai-native-sdlc-playbook]
+refs: [agent-verification, conformance-testing, llm-as-a-judge, addy-osmani, simon-willison, factory-model, comprehension-debt, cognitive-surrender, openai, agent-management, intent-debt, senko-rasic, artifact-chain, governance-as-code, claude-tag, agent-identity]
+sources: [2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-01-08-coding-agents-manager, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team, 2025-09-15-your-code-is-your-responsibility, 2026-08-21-ai-native-sdlc-playbook, 2026-07-21-anthropic-secures-ai-native-sdlc, 2026-08-18-claude-tag-first-responder-ci-cd]
 status: active
 ---
 
@@ -49,6 +49,8 @@ PR 契约:作者对评审者的**证据义务清单**——AI 生成代码时代
 > [!note] OpenAI 官方指南立场(来源: [[2026-08-02-building-ai-native-engineering-team]]):OpenAI 对外指南明确"工程师委派首轮评审给 agent,但 **own 最终评审与合并**"——官方建议与人类签字阵营一致,与自家内部实验(评审代理化)构成**同公司两种声音**;解读:指南 = 对外生产建议(客户采用),实验 = 内部零人工探索——"对外建议保守、内部实验激进"是阵营分歧的厂商内部镜像;也呼应"AI 评审不必然加速但防缺陷"(与 441% 时长是同一事实的两面)
 
 > [!note] Anthropic 官方评审循环(来源: [[2026-08-21-ai-native-sdlc-playbook]]):**AI 双向进评审**——Claude 既评 incoming PR(同一组 pass、findings 按严重度排序;`REVIEW.md` 定义 pass(bugs / security / compliance against spec.md+plan.md)、Important vs Nit、nit 上限(≤5 条其余只报数量)、跳过清单(generated / CI 已管)),也处理自己 PR 上的 `@claude` 评论并推送修复(PR thread 记录请求与变更;给 Claude 开的 PR 可再上“babysit 到 merge”的 slash command:扫未决评论+失败检查→修复→推到只剩 code owner 批准);**关键分界:findings 本身不 approve/block**——branch protection 仍要 code owner,severity 计数以机器可读 tally 发布;分离职责保留:“写码的代理无法批准自己的代码”;**评审发现回流 CLAUDE.md**(第二次出现的错误写进文件);每月调优(给 findings 评级、封顶 nit 量)。与本页 OpenAI 官方立场(own 最终评审与合并)合流:**Osmani / Senko / OpenAI 指南 / Anthropic playbook 在“人类签字 + 写码者不得自批”上收敛**;剩下的分歧只在内部实验的激进程度(见 [[official-sdlc-guides]])
+
+**组织级兜底(官方口径)**(来源: [[2026-07-21-anthropic-secures-ai-native-sdlc]] + [[2026-08-18-claude-tag-first-responder-ci-cd]]):自动化程度再高,兜底三件不变——**每个 PR 有具名人类 owner、每次变更需批准才能合并、走同一套 CI gates**;自动批准**连信号与推理一起记录**,**按风险加权抽样人审**;不变量测试与 SAST 并排——契约的证据义务在组织规模上被工程化为“记录 + 抽检”双轨(见 [[governance-as-code]])
 
 ## 与其他页面的关系
 

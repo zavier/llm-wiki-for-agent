@@ -4,8 +4,8 @@ tags: [ai-agents, memory, context]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-10-15
-refs: [context-engineering, claude-code, subagents, multi-agent-systems, file-as-memory, self-reflection, long-running-agents, context-rot, agent-evals, harness-engineering]
-sources: [2026-08-02-effective-context-engineering-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-04-08-scaling-managed-agents]
+refs: [context-engineering, claude-code, subagents, multi-agent-systems, file-as-memory, self-reflection, long-running-agents, context-rot, agent-evals, harness-engineering, control-bands, claude-tag]
+sources: [2026-08-02-effective-context-engineering-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-04-08-scaling-managed-agents, 2026-08-18-claude-tag-first-responder-ci-cd]
 status: active
 ---
 
@@ -27,6 +27,8 @@ status: active
 - **跨会话 harness 记忆**(来源: [[2026-08-02-effective-harnesses-for-long-running-agents]]):Claude Agent SDK 长时任务用 **progress 文件 + git 历史**承担跨会话记忆——每个会话以空记忆开始,靠"读 git log + progress 文件"快速进入状态;会话结束写 git commit(描述性消息)+ 进度更新;feature list 的 passes 状态同时充当**反事实目标记忆**(未完成特征的完整清单,防止"提前宣布完成");"每次新会话从零开始"的设定把记忆问题变成显式的文件读写协议(见 [[long-running-agents]])
 
 - **会话 ≠ 上下文窗口:记忆的真正边界**(来源: [[2026-04-08-scaling-managed-agents]]):平台化实现把二者拆开——**事件流存在上下文窗口之外、需要哪段就切哪段**,而模型当下看到的只是一个切片。这给了“记忆”一个更准的定位:记忆不是把更多东西塞进窗口,而是**窗口外有一个可寻址的持久层 + 一套选择切片的策略**。两条硬约束:①**压缩与裁剪是不可逆决策**(切掉的东西回不来,因此压缩质量必须被专门 eval,见 [[agent-evals]]);②窗口外持久层使长时任务不再依赖单窗口容量(与 [[harness-engineering]] 的组件过期问题同源)
+
+- **lessons.md:事故记忆的“追加→先读→固化”三件套**(来源: [[2026-08-18-claude-tag-first-responder-ci-cd]]):Claude Tag 的 `lessons.md` 是运行中的事故日志(发生了什么/根因/修复/坑),**Claude 自动追加**;**每次新调查先读它**——第一假设从最近发生的事开始;重复模式提升进 investigation skill。与 [[file-as-memory]] 的 failures 日志“最值钱”同构;也是“记忆决定第一假设”的实例:没有它,每次事故从头推理
 
 ## 与其他页面的关系
 
