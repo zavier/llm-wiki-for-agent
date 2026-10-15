@@ -38,8 +38,10 @@
 - [[execution-graph]] — 组织范式:org chart → execution graph;routing+governance;Platform 三柱
 - [[hive-mind]] — 上层协作文化:双层结构(Harness 层 + Hive Mind 层);death of ego 边界
 - [[management-collapse]] — 管理塌缩非消失:10 件事分化;Architect 最高杠杆;绩效失效
-- [[intent-debt]] — 意图债:外部化 rationale 的缺失;唯一代理无法代付的债务
+- [[intent-debt]] — 意图债:外部化 rationale 的缺失;唯一代理无法代付的债务;官方 intent.md 捕获+存活率指标
+- [[artifact-chain]] — 提交工件链:每阶段以工件结束触发下一关;intent.md→spec.md→plan.md→diff→PR→incident;提交链=审计链
 - [[loop-engineering]] — 循环工程:harness 上一层自动化(五件套+记忆);/goal 停止条件;maker/checker 分裂
+- [[control-bands]] — 控制带:确定性检测+1σ/2σ/3σ 分级响应;代理仅在越界时被调用一次;发现写回 intent.md 闭环
 - [[agent-teams]] — 代理团队:共享任务列表+依赖跟踪+文件锁+对等消息;计划审批;@reviewer 队友
 - [[ralph-loop]] — Ralph 循环:Pick→Implement→Validate→Commit→Reset;stateless-but-iterative
 - [[process-over-prose]] — 过程胜过散文:工作流+检查点+退出标准;SDLC 六阶段;五条不可妥协
@@ -69,17 +71,18 @@
 - [[model-context-protocol]] — MCP:模型↔外部工具/数据的标准连接协议;上下文税反论(pi)
 - [[multi-agent-systems]] — 多代理协作:收益/代价量化(90.2%、4-15× token)、生产工程
 - [[parallel-agents]] — 并行代理会话:sectioning/voting、Writer/Reviewer、fan-out;并行子代理=反模式(pi)
-- [[plan-mode]] — 只读规划模式:先探索后规划再编码;小任务跳过;PLAN.md 文件化反论(pi)
+- [[plan-mode]] — 只读规划模式:先探索后规划再编码;小任务跳过;PLAN.md 文件化(pi);官方默认起点+plan.md 入库
 - [[pr-contract]] — PR 契约:作者对评审者的证据义务(意图/证据/风险/评审重点)
 - [[progressive-disclosure]] — 渐进式披露:元数据预载、细节按需加载(skills/JIT/扩展 TOC 三源印证 + 56% 未触发反证 + CLI-README 形态)
 - [[skills]] — SKILL.md 按需加载的领域知识与工作流;自动/手动双模式;2025-12 开放标准
 - [[self-reflection]] — 自反思技术谱系:ReAct/Reflexion/CoH/AD
 - [[spec-driven-development]] — 四阶段门禁流:Specify → Plan → Tasks → Implement
 - [[subagents]] — 独立上下文的专职子代理:调查/验证/对抗性评审/多代理委派;黑箱批判与独立会话替代(pi)
-- [[three-tier-boundaries]] — 三层边界:Always / Ask first / Never
+- [[three-tier-boundaries]] — 三层边界:Always / Ask first / Never;hook 执行映射(allow/ask/deny)
+- [[governance-as-code]] — 治理即代码:skill 建议→hook 确定→managed settings 强制→OTel 证据;审批门=hooks;写码者不得自批
 - [[tool-evaluation]] — 评测驱动的工具开发循环:原型→评测→代理协作优化
 - [[vibe-coding]] — 直觉快速编码;与 AI-assisted engineering 的纪律对照
-- [[factory-model]] — 工厂心智模型:建生产软件的工厂;spec 即杠杆、验证是瓶颈
+- [[factory-model]] — 工厂心智模型:建生产软件的工厂;spec 即杠杆、验证是瓶颈;官方"代码不再是瓶颈"诊断
 - [[file-as-memory]] — 文件系统即记忆:格式-功能映射、追加式安全、情景记忆
 
 ## Sources
@@ -136,11 +139,13 @@
 - [[2026-08-08-code-was-never-the-hard-part]] — Senko:编码从未容易是侮辱;两者都重要;what changes/what doesn't;meat proxy
 - [[2026-08-03-dont-be-a-meat-proxy]] — Gruhn:meat proxy 术语一手源;原样转发零增值;自己的话=理解证书;评审责任反转
 - [[2025-09-15-your-code-is-your-responsibility]] — Senko:提交 PR = 声明完全理解+合法权利;隐藏 AI 使用=操守违规;原型可 vibe;狗吃作业
+- [[2026-08-21-ai-native-sdlc-playbook]] — Anthropic 官方 SDLC playbook:六阶段 16 plays;工件链/治理即代码/控制带闭环/逐阶段领先滞后指标
 
 ## Syntheses
 
 - [[ai-feature-implementation-loop]] — 让 AI 更好实现功能:从 spec 到落地的闭环 + 失败模式修复表
 - [[minimal-vs-rich-harness]] — 极简 vs 富 harness 两派对比:共同底线、分维度分歧、证据对照、开放问题
+- [[official-sdlc-guides]] — 官方 SDLC 指南对比:OpenAI 三分法 vs Anthropic 工件链+治理+度量;共同底线、分歧表、开放问题
 
 ## Topics
 
@@ -153,4 +158,4 @@
 - [[expertise-and-prompting]] — 领域专长 × 提问方式纵线:专长定义/业务与系统维度/绿地建仓/存量复活/设计分工分层/理解不可委托/全闭环边界
 
 ---
-_Last updated: 2026-08-10 (answer:expertise-and-prompting 追加"理解不可委托"与"全闭环边界"两节)_
+_Last updated: 2026-10-15 (ingest:The AI-native SDLC playbook — 第 53 源;新建 artifact-chain / governance-as-code / control-bands + 综合页 official-sdlc-guides,更新 17 页)_

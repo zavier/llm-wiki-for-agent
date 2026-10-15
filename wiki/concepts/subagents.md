@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, architecture]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [claude-code, anthropic, parallel-agents, context-engineering, multi-agent-systems, humanlayer, loop-engineering, agent-teams, pi-coding-agent]
-sources: [2026-08-02-best-practices-claude-code, 2026-01-13-good-spec-for-ai-agents, 2026-08-02-effective-context-engineering-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-03-12-skill-issue-harness-engineering, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2025-11-30-opinionated-minimal-coding-agent]
+updated: 2026-10-15
+refs: [claude-code, anthropic, parallel-agents, context-engineering, multi-agent-systems, humanlayer, loop-engineering, agent-teams, pi-coding-agent, artifact-chain]
+sources: [2026-08-02-best-practices-claude-code, 2026-01-13-good-spec-for-ai-agents, 2026-08-02-effective-context-engineering-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-03-12-skill-issue-harness-engineering, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2025-11-30-opinionated-minimal-coding-agent, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -32,6 +32,8 @@ status: active
 
 > [!warning] 学派分歧:上下文防火墙价值(Anthropic/Osmani/HumanLayer) vs 黑箱不可接受(pi)——隔离与可观测性难以兼得,极简派选"会话级隔离 + 文件工件",富学派选"会话内隔离 + 摘要回流"(见 [[minimal-vs-rich-harness]])。
 - **上下文防火墙**(来源: [[2026-03-12-skill-issue-harness-engineering]],HumanLayer):子代理的本质用途是**上下文控制**,不是人格分工——"前端工程师"式人格子代理不 work;中间工具调用/结果一律不进父上下文,父只见 prompt 与最终结果;每个子代理获得**全新小窗口 + 全新指令预算**,浓缩结果回流(带 `filepath:line` 引用,遵循渐进披露);**成本控制**:Opus 管规划/编排,子代理用 Sonnet/Haiku 处理小而离散的任务;不支持子代理的 harness 可用 MCP 服务器包装模式(注意"传话游戏"与超时);子代理 system prompt 三要素:角色(做什么**与不做什么**)、返回什么**与怎么返回**、给什么工具;对长上下文模型的怀疑论:"更大的窗口不会让你更会找针,只是把干草堆变大"——子代理是结构性的窗口隔离方案(见 [[context-engineering]])
+
+- **官方区分:并行会话 vs 子代理**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):**并行会话** = 独立 Claude Code 实例 + 各自 git worktree 跑不同任务,彼此无知,共享的只有驾驶它们的工程师(提高在飞任务数);**subagent** = 单会话内有界助手(独立上下文窗口+工具限制),适合**重复出现**的作业——两者解决不同问题(吞吐 vs 会话聚焦)(见 [[parallel-agents]]);官方样例 `.claude/agents/verifier.md`(tools: Bash, Read;"Start the app with make run。Exercise the changed behavior and the two nearest neighboring flows。Report what you ran, what you saw, and any behavior that does not match plan.md。**Do not fix anything; report only.**")——把终检打包成只报告不修复的新鲜上下文(与反馈回路的区分见 [[agent-verification]]);定义入库(`.claude/agents/`)全队共享
 
 ## 与其他页面的关系
 

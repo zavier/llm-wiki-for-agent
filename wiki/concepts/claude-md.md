@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, configuration, persistent-context]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [claude-code, agents-md, skills, context-engineering, file-as-memory, harness-engineering]
-sources: [2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-10-06-file-system-is-the-new-database, 2026-05-14-claude-code-large-codebases]
+updated: 2026-10-15
+refs: [claude-code, agents-md, skills, context-engineering, file-as-memory, harness-engineering, pr-contract]
+sources: [2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-10-06-file-system-is-the-new-database, 2026-05-14-claude-code-large-codebases, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -28,6 +28,8 @@ Claude Code 的持久上下文文件:每次会话启动时自动读取,承载代
 - 与 [[agents-md]] 同构:都是"给代理的仓库内规则文件"——Anthropic 与 GitHub 生态的对应物
 - **大规模分层加载**(来源: [[2026-05-14-claude-code-large-codebases]],Anthropic 官方):root 文件放"指针与关键坑","**其余一切都会漂成噪声**";子目录文件放局部约定,Claude 在树中移动时**累加加载**;在**子目录初始化**(Claude 自动向上走加载沿途 CLAUDE.md,root 上下文不丢);**按子目录限定 test/lint 命令**(改一个服务跑全量套件 = 超时 + 无关输出浪费上下文,编译型 monorepo 深跨目录依赖时难做到);`.ignore` 排除生成物/构建产物 + 版本控制的 `permissions.deny`(`.claude/settings.json` 入库,全团队一致降噪,代码生成器开发者可本地覆盖);代码库地图(顶层文件夹一行描述 = 可先扫的目录,数百顶层文件夹用分层地图)
 - **随模型进化维护**:为当前模型写的规则可能反噬未来模型——补偿旧模型缺陷的指令(如"每个重构拆成单文件改动")在新模型下变成约束(它现在能协调跨文件编辑);hooks 同理(强制 p4 edit 的 hook 在原生 Perforce 模式后冗余);**配置评审每 3-6 个月一次**,重大模型发布后性能平台期也做(来源: 同上)
+
+**官方 play:CLAUDE.md 作为制度资产**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):①`/init` 生成 → **砍到“新人第一天所需”**(build/test/lint 命令、要命的约定、Claude 最常错的),**一页以内**——“Claude 每次会话全量读它,陈旧内容白占上下文”;②checkin 入库,全队一个版本,变更像代码一样评审(code owner 批准);③工作规则:“**Claude 同一错误犯两次,修正就写进 CLAUDE.md**”;④评审发现回流(见 [[pr-contract]]):第二次被评审标记的错误,修正作为该次评审的一部分写进 CLAUDE.md——因为评审也读 CLAUDE.md,下个 PR 起被抓住;评审还负责标记“某处改动让 CLAUDE.md 过时”;⑤度量:重复错误频率(应随修正下降)+ 新成员首个 merged PR 时间
 
 ## 与其他页面的关系
 

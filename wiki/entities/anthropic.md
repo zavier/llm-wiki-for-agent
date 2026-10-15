@@ -3,9 +3,9 @@ type: entity
 tags: [organization, ai-engineering]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [context-engineering, llm-as-a-judge, claude-code, claude-md, skills, subagents, agentic-systems, hive-mind, alibaba]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-equipping-agents-with-agent-skills, 2026-05-08-ai-native-organization]
+updated: 2026-10-15
+refs: [context-engineering, llm-as-a-judge, claude-code, claude-md, skills, subagents, agentic-systems, hive-mind, alibaba, artifact-chain, governance-as-code, control-bands, official-sdlc-guides]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-equipping-agents-with-agent-skills, 2026-05-08-ai-native-organization, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -27,6 +27,8 @@ Claude 与 Claude Code 背后的 AI 公司;贡献了有效上下文工程、Skil
 - **Skills 开放标准**(来源: [[2026-08-02-equipping-agents-with-agent-skills]]):2025-12-18 发布为 agentskills.io 开放标准,支持 Claude.ai/Claude Code/Agent SDK/Developer Platform(见 [[skills]])
 - 与 GitHub 的 [[agents-md]] 思路互补:用规范文件定义代理行为
 - **Hive Mind 文化**(来源: [[2026-05-08-ai-native-organization]],二手转述 Yegge):外部观察称 Anthropic"几乎肯定有比任何公司都精密的 Harness,但在 Harness 之上选择运行混乱的文化"——双层组织的原型案例(精密底层 + 松散上层,见 [[hive-mind]])
+
+- **官方 SDLC playbook(2026-08-21)**:六阶段(Plan/Design/Build/Test/Deploy/Maintain)+ 16 plays 的全流程框架——官方立场:提交工件链(intent/spec/plan/diff/PR/incident,见 [[artifact-chain]]);**skill 建议层 + hook 确定层 + managed settings 强制层 + OTel 证据层**(见 [[governance-as-code]]);逐 play 领先/滞后指标;Stage 6 控制带闭环(见 [[control-bands]])与 Claude Tag / Claude Security 的自治形态;官方文档(保守闭环+满治理门)与内部实践(托管评审、值班代理)存在"对外保守/内部激进"张力,与 OpenAI 同构(见 [[official-sdlc-guides]])
 
 ## 与其他页面的关系
 

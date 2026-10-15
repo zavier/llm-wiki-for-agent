@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, workflow, spec-writing]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [ai-agent-spec, agents-md, long-running-agents]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-harness-design-for-long-running-apps]
+updated: 2026-10-15
+refs: [ai-agent-spec, agents-md, long-running-agents, artifact-chain, intent-debt, plan-mode]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -29,6 +29,8 @@ status: active
 - 门禁:spec 未验证前代理不能前进
 - 防止 Willison 所称 "house of cards code"——脆弱的 AI 输出在审视下崩塌
 - **Specify 阶段的代理自动化**(来源: [[2026-08-02-harness-design-for-long-running-apps]]):Anthropic Labs 的 planner 代理把 1-4 句 prompt 自动展开为完整产品 spec(16 特征/10 sprint 级)——四阶段中"人写 spec"环节可交由代理;planner 被刻意要求**避免细粒度实现细节**("写错会在下游级联"),与门禁流的"强调用户体验而非技术栈"同调;生成器每 sprint 与评估器**协商 done 定义**(sprint contract)再实现——相当于把验收标准提前到写码前(见 [[long-running-agents]])
+
+- **官方压缩版:需求+设计一次会话**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):Design 阶段不再分“分析师写需求、设计师再解析”——产品负责人挂 `intent.md` + 组织 skills(brand/security/compliance/UX)跑**一次** requirements+design pass,产出 `spec.md` 并**标记 concerns**(先找政策 owner 解决再给工程);产品负责人不写 spec、只审(“是否解决意图所说的问题、开放问题是否回答或结转”);**接受 spec = 触发 plan mode**——门禁流从“人写 spec”进一步变成“人审 spec”;度量:intent commit→spec commit 间隔;build 开始后的需求返工(首个 plan.md commit 之后仍出现的 spec.md commit);与 [[artifact-chain]] 衔接:spec 是链上第二环
 
 ## 与其他页面的关系
 

@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, verification, quality]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [claude-code, conformance-testing, llm-as-a-judge, ai-agent-spec, agentic-systems, long-running-agents, context-anxiety, factory-model, pr-contract, comprehension-debt, openai, humanlayer, loop-engineering, cognitive-surrender, intent-debt, agent-management]
-sources: [2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-02-11-codex-agent-first-engineering, 2026-03-12-skill-issue-harness-engineering, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team]
+updated: 2026-10-15
+refs: [claude-code, conformance-testing, llm-as-a-judge, ai-agent-spec, agentic-systems, long-running-agents, context-anxiety, factory-model, pr-contract, comprehension-debt, openai, humanlayer, loop-engineering, cognitive-surrender, intent-debt, agent-management, artifact-chain, governance-as-code]
+sources: [2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-02-11-codex-agent-first-engineering, 2026-03-12-skill-issue-harness-engineering, 2026-06-07-loop-engineering, 2026-06-15-agentic-code-review, 2026-08-02-building-ai-native-engineering-team, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -45,8 +45,11 @@ status: active
 - **回压(back-pressure)体系**(来源: [[2026-03-12-skill-issue-harness-engineering]],HumanLayer):任务成功率与"代理能否验证自己的工作"强相关——最高杠杆投资;机制:强类型 typecheck/build、单测/集成测试、覆盖率报告(Stop hook 提示补)、UI 测试(playwright/agent-browser);**验证必须上下文高效**:早期每改必跑全量测试 → 4,000 行通过输出淹没上下文,代理丢失任务线索并对刚读的测试文件产生幻觉;改为**吞掉输出只浮错误**(成功静默、失败冗长,exit 2 让 harness 接续);hooks 是回压的机械载体(每次停止跑 typecheck/build,错误在完成前亮出)(见 [[harness-engineering]])
 - **停止条件验证**(来源: [[2026-06-07-loop-engineering]],Osmani):`/goal` 原语把 maker/checker 分裂应用到**停止条件本身**——每轮后由单独的模型检查"完成"是否成立(写码的代理不给自己的作业打分),如"test/auth 下所有测试通过且 lint 干净"然后走开;但"**done 是主张,不是证明**"——无人值守的循环 = 无人值守地犯错,验证的责任仍在你肩上("你的工作是交付你确认能工作的代码",与 [[pr-contract]] 立场一致)(见 [[loop-engineering]])
 
+- **官方闭环 play:反馈回路 vs verifier subagent**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):**反馈回路**贯穿整个任务、跑很多次(测试/构建/截图 diff;工程师的职责是给它一个自验方式,让产出在人类看到前已经过检);**verifier subagent** 是任务末尾用全新上下文打包的终检——“判决不被生成代码的假设染色”(`.claude/agents/verifier.md` 样例:Start the app with make run。Exercise the changed behavior and the two nearest neighboring flows。Report what you ran, what you saw, and any behavior that does not match plan.md。**Do not fix anything; report only.**);操作:单命令收口(非零退出)、命令与健康输出例写进 CLAUDE.md、目标可量化;**bug 修复先写失败测试**(复现→确认失败原因→commit→只许改代码,test-file hook 挡改测试——“修复前存在、agent 改不了的测试 = bug 已死的证明”);UI 用浏览器/截图闭环 2-3 轮;“验证是 done 的一部分”写进 CLAUDE.md 并贴输出;证据 = 工具链的字面输出(session transcript 经 OTel,进 PR check run)
+- **evals = AI-native 的 stage-gate QA**(来源: 同上):20-50 个真实任务(from recent work with expected outcome)写成“prompt + 可接受检查(tests pass/lint clean/behavior unchanged/policy followed)”;**在 CLAUDE.md/skills/hooks 变更时与定时跑**——“steering 代理的配置值得和代码一样的回归测试”;配置变更以 pass rate 为合并门;每个生产事故写一条 eval(归事故归属团队)留在套件;套件是**活的**——模型变强后旧 case 失去区分度,需从监控补新(见 [[conformance-testing]])
+
 ## 与其他页面的关系
 
-- 与 [[conformance-testing]] 互补:一致性测试是"验收标准",本页是"验证回路机制"
+- 与 [[conformance-testing]] 互补:一致性测试是“验收标准”,本页是“验证回路机制”
 - 与 [[llm-as-a-judge]] 同族:独立评审/反驳模式
 - 是 [[ai-feature-implementation-loop]] 质量层的核心;工具见 [[claude-code]]

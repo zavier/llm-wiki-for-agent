@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, debt, intent, externalization, failure-mode]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-03
-refs: [comprehension-debt, cognitive-surrender, agents-md, ai-agent-spec, factory-model, distillation-anxiety, addy-osmani, agent-readability, loop-engineering, ralph-loop, pr-contract, plan-mode, orchestration-tax, theory-building]
-sources: [2026-06-05-intent-debt, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-12-24-nobody-knows-how-software-products-work]
+updated: 2026-10-15
+refs: [comprehension-debt, cognitive-surrender, agents-md, ai-agent-spec, factory-model, distillation-anxiety, addy-osmani, agent-readability, loop-engineering, ralph-loop, pr-contract, plan-mode, orchestration-tax, theory-building, artifact-chain, spec-driven-development]
+sources: [2026-06-05-intent-debt, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-12-24-nobody-knows-how-software-products-work, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -38,6 +38,8 @@ status: active
 **冷启动经济学**:人的意图靠走廊对话/评审评论/事故记忆逐人传递(四年的老工程师 = "意图文档",昂贵但有损);**代理每次会话冷启动**,不带任何隐性意图——"给团队加代理 = 一夜之间团队规模翻倍,全是没有长期记忆的初级员工";未外部化意图从"偶尔付一次(入职/离职)"变成"**每个会话付一次 × 每个代理**";orchestration tax 很大部分就是意图税(管理多代理累 = 在补供从未写下的意图,出处: [[2026-05-24-orchestration-tax]]);Storey 认知债博客(2026-02-09)已一手核实(债务框架旁证 ✓,见 [[2026-02-09-cognitive-debt]])
 
 **先 AI 形态**(来源: [[2025-12-24-nobody-knows-how-software-products-work]]):很多系统行为**没有自觉意图**——从一系列"默认选择"的相互作用中涌现,文档写作者常常"第一次发现系统如何工作";意图债不全是 AI 时代的新债,AI 把既有的"未外部化意图"成本从偶尔(入职/离职/文档危机)变成**每个会话 × 每个代理**(呼应冷启动经济学)
+
+**官方 SDLC 形态:intent.md**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic 官方):意图捕获成为 Stage 1 的 **play**——originator 用大白话和 Claude 磨出 proto-spec,产品负责人审改后 commit 为 `intent.md`(问题/建议结果/受影响系统/约束/开放问题),不需要正式语言;重复流程编码为 skills;非工程师经 connector 让 Claude 代提交。接受 intent(merge/开启评审)触发设计;`spec.md` 触发 plan mode——**意图是工件链第一环,不是中断里找回来的东西**(见 [[artifact-chain]])。与传统 SDLC 对照:所有权不再逐手转移(originator→产品→分析→工程),**减少意图在交接中的衰减**。度量:首次对话→commit 时间(从数周降到小时)+ **存活率**(被接受 vs 被关闭)+ “首版 spec 之后仍改 intent”的次数——意图债第一次有了领先指标。边界:proto-spec 由 Claude 起草,intent 的真实性依赖 originator 修正与产品负责人审;两步形式化时,intent.md 会退化成“又一次生成的文档”(见 [[comprehension-debt]] 赝品效应)。
 
 **高意图债的形态**(不是摩擦,是无助感):代理"修 bug"删掉承重 guard clause 无人能辨;重构改掉用户依赖的行为,测试全绿但只编码了旧行为、从未编码意图;问"两个服务为什么走队列不走直连"答"代理建议的,当时看着没问题"——已经开始计息的意图债
 

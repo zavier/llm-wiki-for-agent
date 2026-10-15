@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, configuration, knowledge]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [claude-code, claude-md, anthropic, progressive-disclosure, model-context-protocol, muratcan-koylan, humanlayer, loop-engineering, addy-osmani, process-over-prose, anti-rationalization-tables]
-sources: [2026-08-02-best-practices-claude-code, 2026-01-13-good-spec-for-ai-agents, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2026-03-12-skill-issue-harness-engineering, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills]
+updated: 2026-10-15
+refs: [claude-code, claude-md, anthropic, progressive-disclosure, model-context-protocol, muratcan-koylan, humanlayer, loop-engineering, addy-osmani, process-over-prose, anti-rationalization-tables, governance-as-code]
+sources: [2026-08-02-best-practices-claude-code, 2026-01-13-good-spec-for-ai-agents, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2026-03-12-skill-issue-harness-engineering, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -32,6 +32,8 @@ status: active
 - **工具分发方式**:skill 不能直接捆绑 MCP/自定义工具——写成可执行文件/CLI/NPM 包随 skill 分发或指示安装;例:BrowserBase agent browser skills、Vercel agent-browser CLI 替代 Playwright MCP(来源: 同上)
 - **激活机制**(来源: 同上):激活时 SKILL.md 以用户消息载入 + 告知目录;可捆绑多个 markdown 由主文件指示何时读哪份(多层披露)
 - **Osmani 开源版:senior-engineer 脚手架**(来源: [[2026-05-03-agent-skills]],addyosmani/agent-skills,MIT,27K+ stars):20 个 skill 按 SDLC 六阶段组织(Define/Plan/Build/Verify/Review/Ship + `/code-simplify`,对应 `/spec`...`/ship` 七命令),元 skill 作路由器按阶段激活("工作流缩放到实际范围而非假定范围");**skill = 工作流不是参考文档**(过程胜过散文,见 [[process-over-prose]]);每个 skill 内置**反合理化表格**(借口→反驳,见 [[anti-rationalization-tables]])与**证据退出标准**(验证不可妥协);**范围纪律**("只碰叫你碰的东西",PR 可合并性的最大单一决定因素);Google DNA(Hyrum's Law/测试金字塔+Beyoncé Rule/DAMP over DRY/~100 行 PR+C-N-O-F 标签/Chesterton's Fence/主干开发/Shift Left+特性开关/代码即负债);**可移植性**:同一 SKILL.md 可入 .cursor/rules/、Gemini CLI、Codex、Aider、Windsurf、OpenCode——"写一次工作流,运行时来执行";**对长时代理更重要**("运行越长,资深脚手架越要强制执行而非建议");"代理是极其能干的初级工程师,对 diff 之外的工作没有直觉"
+
+- **官方 play:制度知识制度化**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):选**今天执行得不一致**的一条制度(安全标准/API 约定/品牌规则)→ 工程师从 policy owner 的书面来源写成 skill(frontmatter 说明何时触发,正文说明做什么)→ 放 `.claude/skills/<name>/` 随代码走,或经 plugin 组织级分发 → **测试触发**(让 Claude 用不同方式做相关任务,确认每次都加载)→ 政策变更改 skill 并由 policy owner 签核;工程师下次会话自动拿到新版本。判据:“**必须一致应用的制度知识写 skill;属于 CLAUDE.md 或一次 prompt 的组件不写**”。**定位:skill 是建议性控制**——让违规罕见、不保证合规;必须永真的政策后面要有确定性层(hook)(见 [[governance-as-code]])。度量:政策批准→skill 合并时间;引用该政策的评审 findings 应向零(不降 = 触发失效或文本漂移)
 
 **生态**
 

@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, software-engineering, paradigm, mental-model]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [addy-osmani, ai-agent-spec, agent-verification, agentic-systems, spec-driven-development, conformance-testing, multi-agent-systems, comprehension-debt, harness-engineering, agents-md]
-sources: [2026-02-25-factory-model-coding-agents, 2026-03-14-comprehension-debt, 2026-03-26-code-agent-orchestra]
+updated: 2026-10-15
+refs: [addy-osmani, ai-agent-spec, agent-verification, agentic-systems, spec-driven-development, conformance-testing, multi-agent-systems, comprehension-debt, harness-engineering, agents-md, artifact-chain, governance-as-code]
+sources: [2026-02-25-factory-model-coding-agents, 2026-03-14-comprehension-debt, 2026-03-26-code-agent-orchestra, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -34,6 +34,8 @@ status: active
 **高杠杆工程师六能力**:系统思维、问题分解、架构判断、spec 清晰度、输出评估品味(不可自动化)、编排技能(重定向 vs 重新派任务)
 
 **流水线操作化**(来源: [[2026-03-26-code-agent-orchestra]],演讲版):工厂六步——**Plan**(带验收标准的 spec;spec 是杠杆)→ **Spawn**(建团队派活)→ **Monitor**(每 5-10 分钟解阻塞,别 hover)→ **Verify**(验证是瓶颈)→ **Integrate**(合并分支)→ **Retro**(更新 AGENTS.md 复合学习);实务:WIP 上限(3-5 代理甜点)、终止标准(3+ 卡死即停重派)、异步查岗、一文件一主人(见 [[multi-agent-systems]]);**谱系**:六步最早以"编排操作系统"形态出现于 [[2026-01-08-coding-agents-manager]](Plan like a manager → Spawn → Monitor async → Verify aggressively → Integrate carefully → Retro)——管理技能迁移的操作手册见 [[agent-management]]
+
+**官方诊断:"代码不再是瓶颈"**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):实现提速后三件事同时成立——①瓶颈移到 build 两侧(plan / review-test / deploy 仍是人的速度);②控制假设失效(逐行人工审查跟不上 agent 写的 diff);③治理成本上升(例外仍走周会/委员会;安全团队按人类产出配备 → 队列堆积或欠审)。处方 = **保留旧控制目标、换执行方式**:流程线性变循环,每阶段提交工件触发下一关(见 [[artifact-chain]]、[[governance-as-code]])。与工厂模型的关系:Osmani 的"工厂"讲个人/团队的**生产方式**;playbook 把它推广到**整个组织流程的再造**——同一诊断(生成已不缺,验证/治理是瓶颈),从工具层升级到生命周期层
 
 ## 与其他页面的关系
 

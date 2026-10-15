@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, management, delegation, orchestration, workflow]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [conductor-orchestrator, pr-contract, factory-model, parallel-agents, agent-verification, simon-willison, addy-osmani, agents-md]
-sources: [2026-01-08-coding-agents-manager]
+updated: 2026-10-15
+refs: [conductor-orchestrator, pr-contract, factory-model, parallel-agents, agent-verification, simon-willison, addy-osmani, agents-md, artifact-chain, governance-as-code]
+sources: [2026-01-08-coding-agents-manager, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -30,6 +30,8 @@ status: active
 **判断瓶颈**:"AI 不消除对判断的需求,它抬高判断的价值"——Should we? 比 Can we? 重要;操作化:**WIP 上限**(别淹没在评审里——Willison 瓶颈)+ **kill criteria**(动工前定义放弃条件)
 
 **六步操作系统**(工厂流水线的个人版,见 [[factory-model]]):Plan like a manager(brief)→ Spawn like an orchestrator(并行+显式边界)→ Monitor async(轻量查岗/快速解锁/避免中途折腾)→ Verify aggressively(测试/lint/PR packet/第二代理评审)→ Integrate carefully(刻意顺序/盯边界违规)→ Retro(更新 AGENTS.md 与清单);甜点区:一把后台代理(低-中复杂度)+ 架构/产品细微留 human-in-the-loop
+
+**官方流程版:人的注意力在 gates**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):管理对象从"会话"升级为"阶段门"——人的工作是**审代理标记的内容,而不是每个阶段从零开始**;"工程师的工作是 steering 和 reviewing 所有会话,最终是构建和监控循环";授权粒度按环境分级(dev 自由部署 / prod 具名 release manager 授权 / staging 居中);审批提示不允许放在 build 阶段(会让人重新成为所有并行会话的关键路径,见 [[governance-as-code]]);与三分法的关系:三分法回答"哪些事交给谁",gates 回答"人具体在哪个点花注意力"——两者合读(见 [[official-sdlc-guides]])
 
 ## 与其他页面的关系
 

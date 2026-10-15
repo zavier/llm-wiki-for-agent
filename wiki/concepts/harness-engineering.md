@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, harness, configuration, discipline]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [addy-osmani, agents-md, context-engineering, long-running-agents, agent-verification, model-context-protocol, tool-evaluation, agentic-workflow-patterns, agent-readability, openai, cursor, humanlayer, alibaba, execution-graph, claude-code, loop-engineering, skills, process-over-prose, pi-coding-agent, minimal-vs-rich-harness]
-sources: [2026-04-19-agent-harness-engineering, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills, 2025-11-30-opinionated-minimal-coding-agent]
+updated: 2026-10-15
+refs: [addy-osmani, agents-md, context-engineering, long-running-agents, agent-verification, model-context-protocol, tool-evaluation, agentic-workflow-patterns, agent-readability, openai, cursor, humanlayer, alibaba, execution-graph, claude-code, loop-engineering, skills, process-over-prose, pi-coding-agent, minimal-vs-rich-harness, governance-as-code, control-bands]
+sources: [2026-04-19-agent-harness-engineering, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills, 2025-11-30-opinionated-minimal-coding-agent, 2026-08-21-ai-native-sdlc-playbook]
 status: active
 ---
 
@@ -57,6 +57,8 @@ status: active
 **极端实例与维护回路**(来源: [[2026-02-11-codex-agent-first-engineering]],OpenAI 零人工代码实验):harness 工程的极限形态——整个仓库由代理塑造(1/10 时间、100 万行、1500 PR);工程师的工作 = 设计环境/明确意图/构建反馈回路,出问题时问"缺什么能力、如何让能力对智能体清晰可读又可强制执行";两条新增实践:①**熵与垃圾回收**——代理复现既有模式致漂移,人类每周五清"AI 残渣"不可扩展 → 把"黄金原则"(带主观意见的机械规则)编码进仓库 + 后台清理代理(扫偏差/更新质量等级/开定向重构 PR,多数一分钟内审完自动合并);"技术债如高息贷款,小额持续偿还""人类的品味一旦被捕捉,就持续应用于每一行代码"②**规范架构**——强制不变量而非微观管理(固定层依赖方向 + 自定义 linter 机械执行,错误信息写成注入代理上下文的修复指令);"有了约束,速度才不会下降,架构才不会漂移"(见 [[agent-readability]])
 
 **按模型定制**(来源: [[2026-04-30-cursor-agent-harness-improvement]],Cursor):框架抽象不依赖具体模型但可深度定制——**工具格式必须匹配模型训练格式**(OpenAI 用 patch 编辑文件、Anthropic 用字符串替换;给不熟悉的格式额外消耗 reasoning token 并产生更多错误);提供商级定制提示(OpenAI 偏字面精确、Claude 偏直觉容忍不精确);Early Access 调优循环(从最接近的模型框架起步 → 离线评估 → 试用反馈 → 迭代);"同一个模型在专门调优过的框架中明显更快更聪明更高效"——"模型-harness 训练回路"的具体证据;护栏演进史:2024 末的护栏(每改必喂 lint/限工具数/静态上下文)大多已淡出,转向动态上下文——组件随模型变强过时的直接例证(见 [[context-anxiety]])
+
+**组织级 harness:治理强制与遥测**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):harness 在企业尺度上多了三样——①**强制层**:managed settings(平台/IT 所有,工程师不可关;permissions deny/allow、sandbox(sandbox 关闭 gap 的工具级 deny:OS 级域名白名单管出网、credentials 拒绝读+剥离环境 secret)、allowManagedHooksOnly / strictKnownMarketplaces / allowManagedMcpServersOnly 等互锁,详见 [[governance-as-code]])②**hook 的分工原则**:build 期 hook 只做快而按文件范围的护栏(block 受保护路径/format/lint/挡凭据),**要人批准的 hook 属于 gate**(放 build 会把人重新放回所有并行会话的关键路径)③**遥测层**:每次 allow/block/加载经 OpenTelemetry 导出到组织可观测栈——harness 的行为不再只活在会话里,而是可审计数据。配套:配置本身是回归测试对象(CLAUDE.md/skills/hooks 变更触发 eval 套件,pass rate 作合并门,见 [[agent-verification]])
 
 ## 与其他页面的关系
 
