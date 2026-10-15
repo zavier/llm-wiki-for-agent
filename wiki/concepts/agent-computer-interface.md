@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, tools, design]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [agentic-systems, agentic-workflow-patterns, ai-agent-spec, swe-bench, tool-evaluation, model-context-protocol, agent-readability, pi-coding-agent]
-sources: [2026-08-02-building-effective-ai-agents, 2026-01-13-good-spec-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-02-11-codex-agent-first-engineering, 2025-11-30-opinionated-minimal-coding-agent]
+updated: 2026-10-15
+refs: [agentic-systems, agentic-workflow-patterns, ai-agent-spec, swe-bench, tool-evaluation, model-context-protocol, agent-readability, pi-coding-agent, progressive-disclosure, agent-containment]
+sources: [2026-08-02-building-effective-ai-agents, 2026-01-13-good-spec-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-02-11-codex-agent-first-engineering, 2025-11-30-opinionated-minimal-coding-agent, 2025-11-24-advanced-tool-use, 2025-11-04-code-execution-with-mcp]
 status: active
 ---
 
@@ -33,6 +33,14 @@ status: active
 - 实证:SWE-bench 代理"优化工具的时间 > 优化整体 prompt";web search 工具缺陷例(Claude 给 `query` 附加 "2025" → 改描述修正)
 - 评测驱动的开发流程见 [[tool-evaluation]]
 
+**第六个维度:工具定义**怎么**进上下文(2025-11 起的结构性杠杆)**(来源: [[2025-11-24-advanced-tool-use]])
+
+- 开销是**结构性**的,不是可调参数:五 server 实测 **58 个工具 ≈ 55K tokens**(GitHub 35 工具/26K、Slack 11/21K、Sentry 5/3K、Grafana 5/3K、Splunk 2/2K)——会话开始前就烧掉;再加一个 Jira(~17K)就逼近 100K+;**Anthropic 内部见过工具定义占 134K tokens**
+- **Tool Search Tool**:给工具标 `defer_loading: true`,初始只载一个搜索工具(~500 tokens),按需发现 3-5 个相关工具(~3K)→ 总量 **~8.7K,省 85%,保留 95% 窗口**(对照:传统做法 50+ 工具预载 ~72K、总量 ~77K)
+- **准确率同时上升,不是权衡**:最常见的失败本就是选错工具/传错参数(尤其名字相近如 `notification-send-user` vs `notification-send-channel`),工具越少越清晰——MCP 评测 **Opus 4 49%→74%**、**Opus 4.5 79.5%→88.1%**
+- 附带好处:**deferred tools 完全不进初始 prompt,所以不破坏 prompt 缓存**(缓存写入按 1.25× 未缓存输入价计费)
+- 门槛:工具定义 >10K tokens、有选择准确率问题、多 server 的 MCP 系统、可用工具 ≥10 个——此时收益大;工具库小(<10)、每会话都用全部工具、定义本身紧凑时收益低,还要付额外搜索步骤的延迟
+- **同样的
 **输出双通道与流式 UX**(来源: [[2025-11-30-opinionated-minimal-coding-agent]],[[pi-coding-agent]]):pi-ai 的工具实现补充两个此前少见的设计维度——①**工具结果拆分**:一份给 LLM(文本/JSON 摘要)、一份给 UI(结构化 details/附件图,原生格式)——"解析文本化输出重构 UI 展示"是反模式;②**工具参数 schema 校验**(TypeBox + AJV,失败给可操作错误);③**工具调用流式期间的渐进 JSON 解析**:边流式解析参数边渲染部分结果(如 diff 随重写流式显示);④已知缺失:**工具结果流式**(bash ANSI 逐行显示)尚未实现。均为 ACI 的 UX 层扩展,与五原则的"返回有意义上下文"互训;极端版"最少工具集":read/write/edit/bash 四件套 + 可选只读模式(见 [[minimal-vs-rich-harness]])。
 
 **术语对应**:[[addy-osmani|Osmani]] 的 AX(Agent Experience,见 [[ai-agent-spec]])是同一思想在 spec 层的表达——AX 管文档/格式的代理可消费性,ACI 管工具接口的代理可用性;都是"为代理做设计"

@@ -4,8 +4,8 @@ tags: [ai-agents, harness, configuration, discipline]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-10-15
-refs: [addy-osmani, agents-md, context-engineering, long-running-agents, agent-verification, model-context-protocol, tool-evaluation, agentic-workflow-patterns, agent-readability, openai, cursor, humanlayer, alibaba, execution-graph, claude-code, loop-engineering, skills, process-over-prose, pi-coding-agent, minimal-vs-rich-harness, governance-as-code, control-bands]
-sources: [2026-04-19-agent-harness-engineering, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills, 2025-11-30-opinionated-minimal-coding-agent, 2026-08-21-ai-native-sdlc-playbook]
+refs: [addy-osmani, agents-md, context-engineering, long-running-agents, agent-verification, model-context-protocol, tool-evaluation, agentic-workflow-patterns, agent-readability, openai, cursor, humanlayer, alibaba, execution-graph, claude-code, loop-engineering, skills, process-over-prose, pi-coding-agent, minimal-vs-rich-harness, governance-as-code, control-bands, agent-evals, llm-as-a-judge]
+sources: [2026-04-19-agent-harness-engineering, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-07-loop-engineering, 2026-05-03-agent-skills, 2025-11-30-opinionated-minimal-coding-agent, 2026-08-21-ai-native-sdlc-playbook, 2026-04-08-scaling-managed-agents]
 status: active
 ---
 
@@ -44,6 +44,8 @@ status: active
 
 - "harness 不缩小,只移动"(Anthropic):每个组件编码"模型做不到什么"的假设;模型变强组件变死代码,但天花板上移产生新需求(多天记忆、多代理协调、设计质量评估)
 - 模型-harness 训练回路:harness 原语 → 产品化 → 进下一代训练 → 新模型更会用该原语;harness 是活系统而非一次配置
+- **组件会过期:维护的元规则**(来源: [[2026-04-08-scaling-managed-agents]]):harness 的**每个组件都在编码“模型当时做不到什么”的假设**,所以模型升级后组件会变成死重——`context reset` 在 Opus 4.5 上已沦为死重;**删除组件必须一次一个**,否则分不清收益来自哪一处。配套两条结构判断:①**会话 ≠ 上下文窗口**——事件流存在窗口之外、按需切片,而**压缩与裁剪是不可逆决策**(因此需要专门 eval,见 [[agent-evals]]);②平台化回应是把“大脑”与“手”解耦——harness 是可被替换的实现,接口才是要稳定的东西
+- **组件成本的量级参照**(来源: [[2026-08-02-harness-design-for-long-running-apps]]):评估器与重型 harness 不是默认值得上的——任务在模型可靠 solo 能力内时它们是**纯开销**;同一任务 solo 约 20 分钟/$9 vs 全 harness 约 6 小时/$200(**>20×**)。模型换代后必须重新评估(Opus 4.5→4.6 时评估器从每 sprint 必评降为终评一次,见 [[llm-as-a-judge]])
 - HaaS(Harness-as-a-Service):从 LLM API(completion)到 harness API(runtime)——Claude Agent SDK/Codex SDK/OpenAI Agents SDK;四支柱(系统提示/工具/上下文/子代理)配置;v0.1 先跑起来再迭代
 - 前沿:并行多代理共享代码库、代理自分析 trace 修 harness 失败、按任务**动态装配**工具与上下文(静态配置 → "编译器"化)
 - **过拟合双刃**(来源: [[2026-03-12-skill-issue-harness-engineering]],HumanLayer):模型在后训练 harness 上表现好(Codex 与 apply_patch 强耦合,OpenCode 被迫为 GPT/Codex 模型加 apply_patch 工具)——但**模型也会被 harness 过拟合**:Terminal Bench 2.0 上 Opus 4.6 在 Claude Code 排 #33,换专门调优的陌生 harness 排 #5(±4)——"调优过的外来 harness 可解锁后训练未覆盖的能力";OpenAI 视角解读:harness = 运行时之外的一切(回压与验证机制为主)

@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, memory, context]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [context-engineering, claude-code, subagents, multi-agent-systems, file-as-memory, self-reflection, long-running-agents]
-sources: [2026-08-02-effective-context-engineering-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents]
+updated: 2026-10-15
+refs: [context-engineering, claude-code, subagents, multi-agent-systems, file-as-memory, self-reflection, long-running-agents, context-rot, agent-evals, harness-engineering]
+sources: [2026-08-02-effective-context-engineering-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-04-08-scaling-managed-agents]
 status: active
 ---
 
@@ -25,6 +25,8 @@ status: active
 - **生成式代理记忆**(来源: [[2023-06-23-llm-powered-autonomous-agents]]):记忆流(memory stream)记录自然语言观察;检索按 相关性/近因性/重要性 三权重(importance 直接问 LLM 打分——与情景记忆的情感权重同思路);反思机制把记忆综合为高层推断(最近 100 条观察 → 3 个最显著高层问题 → 回答);25 个虚拟角色涌现出信息扩散、关系记忆、社交事件协调
 - 历史对照:2023 向量库记忆(embedding + MIPS)vs 2025-26 [[file-as-memory|纯文件记忆]]——两种长期记忆路线;生成式代理的"重要性打分"与文件派的"判断优先"殊途同归
 - **跨会话 harness 记忆**(来源: [[2026-08-02-effective-harnesses-for-long-running-agents]]):Claude Agent SDK 长时任务用 **progress 文件 + git 历史**承担跨会话记忆——每个会话以空记忆开始,靠"读 git log + progress 文件"快速进入状态;会话结束写 git commit(描述性消息)+ 进度更新;feature list 的 passes 状态同时充当**反事实目标记忆**(未完成特征的完整清单,防止"提前宣布完成");"每次新会话从零开始"的设定把记忆问题变成显式的文件读写协议(见 [[long-running-agents]])
+
+- **会话 ≠ 上下文窗口:记忆的真正边界**(来源: [[2026-04-08-scaling-managed-agents]]):平台化实现把二者拆开——**事件流存在上下文窗口之外、需要哪段就切哪段**,而模型当下看到的只是一个切片。这给了“记忆”一个更准的定位:记忆不是把更多东西塞进窗口,而是**窗口外有一个可寻址的持久层 + 一套选择切片的策略**。两条硬约束:①**压缩与裁剪是不可逆决策**(切掉的东西回不来,因此压缩质量必须被专门 eval,见 [[agent-evals]]);②窗口外持久层使长时任务不再依赖单窗口容量(与 [[harness-engineering]] 的组件过期问题同源)
 
 ## 与其他页面的关系
 

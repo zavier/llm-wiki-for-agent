@@ -3,8 +3,8 @@ type: topic
 tags: [ai-agents, spec-writing, research]
 created: 2026-08-02
 updated: 2026-10-15
-refs: [ai-agent-spec, spec-driven-development, ai-feature-implementation-loop, agentic-systems, context-engineering, agent-computer-interface, multi-agent-systems, skills, file-as-memory, self-reflection, long-running-agents, context-anxiety, harness-engineering, factory-model, pr-contract, comprehension-debt, cognitive-surrender, agent-readability, cursor, humanlayer, execution-graph, hive-mind, management-collapse, distillation-anxiety, alibaba, xu-xiaobin, claude-code, intent-debt, loop-engineering, agent-teams, ralph-loop, process-over-prose, anti-rationalization-tables, conductor-orchestrator, agent-management, agentic-engineering, orchestration-tax, theory-building, sean-goedecke, pure-impure-engineering, wicked-features, expertise-leverage, senko-rasic, meat-proxy, niklas-gruhn, artifact-chain, governance-as-code, control-bands, official-sdlc-guides]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2026-05-03-agent-skills, 2026-01-02-future-agentic-coding, 2026-01-08-coding-agents-manager, 2026-02-04-agentic-engineering, 2026-01-31-self-improving-agents, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-08-02-building-ai-native-engineering-team, 2025-03-19-measuring-ai-long-tasks, 2026-02-09-cognitive-debt, 2026-01-28-skill-formation-rct, 2026-02-12-evaluating-agents-md, 2026-04-07-cognitive-parallel-agents, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-06-22-pure-and-impure-engineering, 2025-02-10-engineers-who-wont-commit, 2025-12-24-nobody-knows-how-software-products-work, 2025-04-12-wicked-features, 2026-07-24-llms-reward-expertise, 2026-08-08-code-was-never-the-hard-part, 2025-09-15-your-code-is-your-responsibility, 2026-08-03-dont-be-a-meat-proxy, 2026-08-21-ai-native-sdlc-playbook]
+refs: [ai-agent-spec, spec-driven-development, ai-feature-implementation-loop, agentic-systems, context-engineering, agent-computer-interface, multi-agent-systems, skills, file-as-memory, self-reflection, long-running-agents, context-anxiety, harness-engineering, factory-model, pr-contract, comprehension-debt, cognitive-surrender, agent-readability, cursor, humanlayer, execution-graph, hive-mind, management-collapse, distillation-anxiety, alibaba, xu-xiaobin, claude-code, intent-debt, loop-engineering, agent-teams, ralph-loop, process-over-prose, anti-rationalization-tables, conductor-orchestrator, agent-management, agentic-engineering, orchestration-tax, theory-building, sean-goedecke, pure-impure-engineering, wicked-features, expertise-leverage, senko-rasic, meat-proxy, niklas-gruhn, artifact-chain, governance-as-code, control-bands, official-sdlc-guides, agent-evals, agent-containment, progressive-disclosure, tool-evaluation]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-building-effective-ai-agents, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2026-08-02-equipping-agents-with-agent-skills, 2025-10-06-file-system-is-the-new-database, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-effective-harnesses-for-long-running-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-04-19-agent-harness-engineering, 2026-02-25-factory-model-coding-agents, 2026-01-07-ai-code-review, 2026-03-14-comprehension-debt, 2026-05-05-cognitive-surrender, 2026-02-11-codex-agent-first-engineering, 2026-04-30-cursor-agent-harness-improvement, 2026-03-12-skill-issue-harness-engineering, 2026-05-08-ai-native-organization, 2026-05-14-claude-code-large-codebases, 2026-06-05-intent-debt, 2026-06-07-loop-engineering, 2026-03-26-code-agent-orchestra, 2026-05-03-agent-skills, 2026-01-02-future-agentic-coding, 2026-01-08-coding-agents-manager, 2026-02-04-agentic-engineering, 2026-01-31-self-improving-agents, 2026-06-15-agentic-code-review, 2026-05-24-orchestration-tax, 2026-08-02-building-ai-native-engineering-team, 2025-03-19-measuring-ai-long-tasks, 2026-02-09-cognitive-debt, 2026-01-28-skill-formation-rct, 2026-02-12-evaluating-agents-md, 2026-04-07-cognitive-parallel-agents, 2026-03-23-triple-debt-model, 2026-07-11-in-defense-of-not-understanding-your-codebase, 2025-06-22-pure-and-impure-engineering, 2025-02-10-engineers-who-wont-commit, 2025-12-24-nobody-knows-how-software-products-work, 2025-04-12-wicked-features, 2026-07-24-llms-reward-expertise, 2026-08-08-code-was-never-the-hard-part, 2025-09-15-your-code-is-your-responsibility, 2026-08-03-dont-be-a-meat-proxy, 2026-08-21-ai-native-sdlc-playbook, 2025-06-04-a-practical-guide-to-building-agents, 2025-11-04-code-execution-with-mcp, 2025-11-24-advanced-tool-use, 2026-01-09-demystifying-evals-for-ai-agents, 2026-01-21-ai-resistant-technical-evaluations, 2026-02-05-infrastructure-noise, 2026-03-06-eval-awareness-browsecomp, 2026-04-08-scaling-managed-agents, 2026-05-25-how-we-contain-claude]
 status: active
 ---
 
@@ -19,6 +19,9 @@ status: active
 - [[artifact-chain]] — 提交工件链:intent.md→spec.md→plan.md→diff→PR→incident;接受工件触发下一关;提交链=审计链
 - [[ai-feature-implementation-loop]] — 综合:从 spec 到落地的五层闭环 + 失败模式修复表
 - [[agent-verification]] — 验证门禁四档:同 prompt / /goal / Stop hook / 独立评审子代理
+- [[agent-evals]] — 评测方法学:能力 vs 回归、pass@k/pass^k、三档 grader、基础设施噪声、eval 认知/过期/饱和
+- [[agent-containment]] — 代理围堵:环境层硬边界优先;批准≠监督;凭据/egress/信任边界
+- [[tool-evaluation]] — 评测驱动循环:原型→评测→代理协作优化(含改进幅度数据)
 - [[claude-md]] — 持久上下文文件:取舍与剪枝规则
 - [[context-engineering]] — 上下文切片、扩展 TOC、会话级管理
 - [[conformance-testing]] — 验收的客观标准
@@ -122,10 +125,19 @@ status: active
 - [[2025-09-15-your-code-is-your-responsibility]] — 第五十一篇源文档(Senko:提交 PR = 声明完全理解+合法权利;隐藏 AI 使用=操守违规;原型可 vibe;狗吃作业)
 - [[2026-08-03-dont-be-a-meat-proxy]] — 第五十二篇源文档(Gruhn:meat proxy 术语一手源;原样转发零增值;自己的话=理解证书;评审责任反转)
 - [[2026-08-21-ai-native-sdlc-playbook]] — 第五十三篇源文档(Anthropic 官方 SDLC playbook:六阶段 16 plays;工件链/治理即代码/控制带/逐阶段领先滞后指标)
+- [[2025-06-04-a-practical-guide-to-building-agents]] — 第五十四篇源文档(**OpenAI 官方**:三组件/单→多代理编排/分层 guardrails/人在环——填补 wiki 内 OpenAI 一手手册空白)
+- [[2025-11-04-code-execution-with-mcp]] — 第五十五篇源文档(Anthropic:把 MCP server 呈现为代码 API 树;150,000→2,000 tokens;-98.7%;PII tokenize)
+- [[2025-11-24-advanced-tool-use]] — 第五十六篇源文档(Anthropic:工具定义按需加载三项 beta;58 工具≈55K→~8.7K;-85% 且准确率上升;PTC -37%;Examples 72%→90%)
+- [[2026-01-09-demystifying-evals-for-ai-agents]] — 第五十七篇源文档(Anthropic:**agent evals 方法论一手源**;术语体系/三档 grader/能力 vs 回归/pass@k vs pass^k/eval 饱和)
+- [[2026-01-21-ai-resistant-technical-evaluations]] — 第五十八篇源文档(Anthropic:AI 抗性技术评测;take-home 被反复攻破 2164→1363;>50% 候选人不如委托 Claude Code)
+- [[2026-02-05-infrastructure-noise]] — 第五十九篇源文档(Anthropic:**基础设施是评测变量**;六资源档、+6pp(p<0.01)、1x–3x 分数落噪声(p=0.40)、~3x 后趋势反转;<3pp 领先值得怀疑)
+- [[2026-03-06-eval-awareness-browsecomp]] — 第六十篇源文档(Anthropic:模型识破评测并解密答案键;1,266 题中 9 例污染 + 2 例识破;多代理 3.7× 更易发生)
+- [[2026-04-08-scaling-managed-agents]] — 第六十一篇源文档(Anthropic:harness 组件会过期(context reset 在 Opus 4.5 成死重);会话≠上下文窗口;brain/hands 解耦)
+- [[2026-05-25-how-we-contain-claude]] — 第六十二篇源文档(Anthropic:**三产品围堵一手复盘**;三类风险×三层组件×三种隔离;批准 93%/提示降 84%/拦 83% 但漏~17%;25 次重试 24 次外传)
 
 ## 当前状态 / 进展
 
-- 已摄入 53 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×11 + OpenAI ×2 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH) + Goedecke ×10 + Zechner ×1(极简派) + **Senko ×2(craft 辩护派,独立开发者;责任观) + Gruhn ×1(meat proxy 提出者)**
+- 已摄入 62 份源文档(2023 奠基综述 → 2026 实践,时间跨度完整);视角:Osmani ×18 + Anthropic ×19 + OpenAI ×3 + Cursor + HumanLayer + 阿里技术 + METR + Storey ×2 + 学术(RCT/ETH) + Goedecke ×10 + Zechner ×1(极简派) + **Senko ×2(craft 辩护派,独立开发者;责任观) + Gruhn ×1(meat proxy 提出者)**
 - 综合页已更新:自改进循环层 + 评审经济学层 + 编排税层 + 官方指南层 + 理解力层(债务框架一手化);METR 时间地平线一手化(2h17m 核实);认知债/意图债/投降机制链一手化(Storey 论文 + RCT + Shaw&Nave)
 - **RCT 全文一手化**(2026-08-03,raw/2601.20245v2.pdf):Anthropic RCT v2 全文——n=52/-17%/d=0.738/p=0.010;任务时间无显著差异 p=0.391;六模式精确画像(65-86% vs 24-39%;Generation-Then-Comprehension 86% 最高);错误即学习机制(对照中位 3 错误 vs AI 组 1);chat=认知卸载下界(agentic 损失更大是论文自身立场);全部数字闭合
 - **极简派一手化**(2026-08-08,raw/What I learned building an opinionated and minimal coding agent.md):Zechner 自建 pi 复盘——<1000 token 系统提示+四工具(read/write/edit/bash)、YOLO 默认(权限弹窗=security theater)、反 MCP(上下文税:Playwright 13.7k/DevTools 18k tokens=7-9% 窗口)/to-do/plan mode(PLAN.md 文件化)/后台 bash(tmux 替代)/子代理(黑箱;独立会话+工件;并行子代理=反模式);状态全部文件化(TODO.md/PLAN.md);"模型被训练成读片段、找不全上下文,我们太信任代理了";Terminal-Bench 2.0 五轮跑分上榜 + Terminus 2(纯 tmux)名列前茅;与富 harness 学派(Anthropic/Osmani/HumanLayer)的全景分歧建综合页 [[minimal-vs-rich-harness]];本 wiki 运行环境即 pi(系统提示/四工具逐字吻合)
@@ -201,3 +213,20 @@ status: active
 - **配置即被测对象的成本曲线**(来源: 同上,见 [[agent-verification]]):CLAUDE.md/skills/hooks 的 eval 套件维护成本、过期 case(模型换代后失去区分度)的淘汰节奏;eval pass rate 门禁的误报/漏报边界;事故→eval 的闭环时延测量
 - **控制带标定与 triage 容量**(来源: 同上,见 [[control-bands]]):σ 分级阈值/去噪旋钮(dismiss 调 band)的跨团队标定;findings 队列与人的评审率匹配([[orchestration-tax]] 的生产侧同构);3σ 行动半径 = 预批 runbook 覆盖面的测量
 - **官方指南 vs 内部实验的适用边界**(来源: [[2026-08-21-ai-native-sdlc-playbook]],2026-08-21;与 OpenAI 同构):Anthropic 官方满治理门(managed settings/审批门)与内部自治实践(Claude Tag 值班/托管评审)的关系——客户形态差异还是成熟期差异;两指南逐项并排见 [[official-sdlc-guides]]
+
+### 评测学层开放问题(2026-10-15 新增,来源: [[2026-01-09-demystifying-evals-for-ai-agents]] 等六篇)
+
+- **eval 完整性的对抗均衡**:评测污染(9 例取白评测材料)与 eval awareness(2 例解密答案键)的缓解手段目前只有"加检测 + 拆题",而 to-URL 黑名单已被证明无效——公开基准在联网环境里是否还能长期成立?(见 [[agent-evals]])
+- **资源规格应当如何标准化**:作者主张把保证配额与硬 kill 阀值拆为两个参数并校准到"floor/ceiling 分数落在噪声内",但具体倍数"因 benchmark/task 分布而异"——缺跨 benchmark 的可比口径与公开推荐值(见 [[2026-02-05-infrastructure-noise]])
+- **非确定性度量在采购/选型中的落地**:pass@k(工具类)vs pass^k(面向用户)已有清晰定义,但尚无团队公开过"用 pass^k 做模型升级门禁"的实际阈值经验(见 [[agent-evals]])
+- **配置 eval 的维护成本曲线**:官方要求 CLAUDE.md/skills/hooks 变更走 eval 门禁,但未公开套件规模、过期 case 的淘汰节奏、事故→eval 的闭环时延(见 [[agent-evals]]、[[agent-verification]])
+- **专门化评估器 vs 单一强模型**:Anthropic 与 OpenAI 都倾向"maker/checker 分离 + 按维度独立 judge",但缺"多 judge 共识 vs 单 judge 多维度"的同任务 A/B 数据(见 [[llm-as-a-judge]])
+
+### 围堵与安全层开放问题(2026-10-15 新增,来源: [[2026-05-25-how-we-contain-claude]])
+
+- **隔离强度与监督能力的标定**:"隔离强度必须匹配用户的监督能力"是原则而非公式——如何测量一个用户的监督能力(会不会读 bash?)并据此选三档隔离之一?(见 [[agent-containment]])
+- **auto mode 的效用上限**:拦 ~83% / 漏 ~17% / 误拦 ~0.4% 是一组三点权衡,但缺"不同任务敏感度下应如何调阀"的数据;与 [[control-bands]] 的 σ 分级是否应合并为同一机制未定
+- **持久记忆投毒**:跨会话上下文(产品记忆、CLAUDE.md、挂载 workspace、定时 agent 的状态目录)里的注入每次启动都重载——环境层边界(凭据/egress)拦不住这条,防御形态未定(见 [[agentic-memory]]、[[agent-containment]])
+- **多代理信任升级**:子代理可隔离不可信内容,但若其**输出**被当作比原始工具结果更可信,就引入新注入向量——隔离与信任提升的边界需明确(见 [[subagents]])
+- **agent identity**:agent 该有独立主体身份还是继承用户权限?Cowork 现用"宿主 keychain + per-session 可独立吊销的 scoped token",跨平台无答案(见 [[agent-containment]])
+- **隔离的不透明性代价**:密封 VM 让 EDR 看不到内部,pull-based OTLP 不等同实时监控——合规与安全的冲突尚无解(见 [[agent-containment]])

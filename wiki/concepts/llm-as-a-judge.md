@@ -3,9 +3,9 @@ type: concept
 tags: [evaluation, llm]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [ai-agent-spec, anthropic, agentic-workflow-patterns, tool-evaluation, multi-agent-systems, self-reflection, context-anxiety, pr-contract, agent-verification]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-building-effective-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-01-07-ai-code-review, 2026-06-15-agentic-code-review]
+updated: 2026-10-15
+refs: [ai-agent-spec, anthropic, agentic-workflow-patterns, tool-evaluation, multi-agent-systems, self-reflection, context-anxiety, pr-contract, agent-verification, agent-evals, conformance-testing]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-building-effective-ai-agents, 2025-09-11-writing-effective-tools-for-ai-agents, 2026-08-02-how-we-built-our-multi-agent-research-system, 2023-06-23-llm-powered-autonomous-agents, 2026-08-02-harness-design-for-long-running-apps, 2026-01-07-ai-code-review, 2026-06-15-agentic-code-review, 2026-01-09-demystifying-evals-for-ai-agents]
 status: active
 ---
 
@@ -31,6 +31,17 @@ status: active
 - **评审器异质性:对抗性评审的实证**(来源: [[2026-06-15-agentic-code-review]],Osmani 转述非厂商实验):4 个评审器并行(CodeRabbit/Sentry Seer/Greptile/Cursor BugBot),146 真实 PR/679 findings/3.5 周——**617 个标记位置 93.4% 恰好只被一个工具抓到、6% 两个、几乎无三个、四个一个都没有**;每个强在不同类别(Greptile 正确性/架构近零假阳性;CodeRabbit 网最广+一键修复;Seer 生产故障严重性)——"四份同模型 = 一个评审员加更大的发票";厂商基准(有立场):CodeRabbit Martian F1 ~49% precision 最好 recall;Greptile ~82% vs 44% bug-catch(假阳性更多);Anthropic Code Review <1% 发现被工程师标错 + 内部实质评审率 16%→54%;"没有单一最佳"——高端场景跑两个性格不同的(互补对:Greptile+Seer),solo 一个好评审器+真测试;每个基准都特定于某代码库,在自己代码上测量;隐含原则:**异质性是强于同源规模的杠杆**——与 maker/checker 分裂同族,但进一步:不是"多一个评审",而是"多一类盲区覆盖"(见 [[agent-verification]])
 - **AI 评审工具的现实**(来源: [[2026-01-07-ai-code-review]]):体验两极——有的团队抓到 95%+ bug,有的视为"文本噪音";需认真配置(灵敏度、关无用评论类型、opt-in/opt-out);配置得当可抓 70-80% 低垂果实(Graphite,二手);多模型评审(生成与审计用不同模型)抵消偏差;定位 = 一审非终审(spellcheck 非编辑),人类签字不可替代(见 [[pr-contract]])
 - 是 [[ai-agent-spec]] 质量门的一环;可用便宜/小模型承担评审角色以降本
+
+**在 grader 体系中的位置与使用纪律**(来源: [[2026-01-09-demystifying-evals-for-ai-agents]]):LLM judge 只是三档 grader 中的**一档**——code-based(优先,快/便宜/客观/可复现)、model-based(本页,灵活但需校准)、human(黄金标准,用于校准前两者)。放权前必须守四条:
+
+1. **退出口**:明确告诉 judge 信息不足时返回 "Unknown"——这是抑制 judge 幻觉的主要手段
+2. **分维度隔离**:造清晰的分维度 rubric,每个维度用**独立的** LLM judge,而不是让一个 judge 同时评所有维度
+3. **与人类专家紧密校准**:确认模型判分与人类判分分歧足够小之后才敢依赖;健壮后人类复核可降到偶发
+4. **聚合方式先定**:weighted(加权过阈)/ binary(全过)/ hybrid——多组件任务要给部分分(正确识别问题+验证客户但没完成退款,明显优于一开始就失败)
+
+另一条与自评同族的硬约束:**评产出,别评路径**。硬性要求工具调用顺序会让 judge 惩罚合法但未预料到的解法——过度脆弱的 rubric 比没有 rubric 更差。
+
+反面参照:人工测试能抓到自动化评审系统性漏掉的东西(早期 Research 代理偏好 SEO 内容农场而非学术 PDF,加来源质量启发式才修正)(来源: [[2026-08-02-how-we-built-our-multi-agent-research-system]])。
 
 ## 与其他页面的关系
 

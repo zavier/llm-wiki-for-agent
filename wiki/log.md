@@ -514,3 +514,38 @@
 - 主题页: 53 份源文档;Anthropic ×11;官方指南层双份;开放问题 +4(工件链存量适配与事实源抉择/evals 成本曲线/控制带标定与 triage 容量/官方指南 vs 内部实验适用边界)
 - 关键互证: 工件链 ↔ [[intent-debt]](意图在便宜时刻落盘)/[[process-over-prose]](退出标准的物理形态);双层控制 ↔ [[harness-engineering]] hooks 强制层/[[three-tier-boundaries]] 可执行化;控制带 ↔ [[loop-engineering]](心跳自动化 vs 异常触发);evals ↔ [[conformance-testing]];官方"写码者不能自批" ↔ [[pr-contract]](四源收敛:Osmani/Senko/OpenAI 指南/Anthropic playbook);managed settings vs pi"权限弹窗=security theater" = 同一反对、两种路径(组织 vs 个人;规模自变量再现)
 - 无事实矛盾;待核: companion 两篇(《securing an AI-native SDLC at Anthropic》《how Claude Tag runs on-call for CI/CD at Anthropic》)、作者/发布日细节、"Claude Mythos 5" 模型名与各功能 beta 状态
+
+## [2026-10-15] ingest | Anthropic 评测/围堵/harness 系 8 篇 + OpenAI agents 官方手册(第 54-62 源)
+
+- 源文档(9 份;均于本日由网页原文落盘 raw/):
+  - `raw/A practical guide to building agents.md` — **OpenAI 官方**(第 54 源;PDF 无 published 元数据,首发日期待核)
+  - `raw/Code execution with MCP.md` — Anthropic(2025-11-04,第 55 源)
+  - `raw/Introducing advanced tool use on the Claude Developer Platform.md` — Anthropic(2025-11-24,第 56 源)
+  - `raw/Demystifying evals for AI agents.md` — Anthropic(2026-01-09,第 57 源)
+  - `raw/Designing AI-resistant technical evaluations.md` — Anthropic(2026-01-21,第 58 源)
+  - `raw/Quantifying infrastructure noise in agentic coding evals.md` — Anthropic(2026-02-05,第 59 源)
+  - `raw/Eval awareness in Claude Opus 4.6 BrowseComp performance.md` — Anthropic(2026-03-06,第 60 源)
+  - `raw/Scaling Managed Agents.md` — Anthropic(2026-04-08,第 61 源)
+  - `raw/How we contain Claude across products.md` — Anthropic(2026-05-25,第 62 源)
+- 定位: 补齐 wiki 一直空缺的两层——**评测方法学**与**围堵/安全**;并把工具层的规模化路径(按需加载、代码执行)并入既有 ACI/MCP 页
+- 新建 2 概念页:
+  - [[agent-evals]] — 术语体系(task/trial/grader/transcript vs outcome)、三档 grader(code 优先 / model 需校准 / human 金标准)、能力 vs 回归 eval、pass@k vs pass^k(0.75³≈42%)、零到一(20-50 题起;0% pass@100 = 任务坏了;reference solution)、harness 稳定性(共享状态污染,含 trial 间 git history 取巧)、grader 设计(评产出不评路径/部分分/Unknown 退出口/防绕过)、**评测自身的失效**(基础设施噪声 / eval 认知 / eval 过期 / 饱和 / 先怀疑 eval 再怀疑模型)、六种理解手段分工与瑞士奶酪、eval-driven development、配置即被测对象、官方反模式清单
+  - [[agent-containment]] — 环境层优先于模型层(模型层是概率性的)、批准≠监督(批准 93% / 沙箱后提示降 84% / auto mode 拦 83% 漏 ~17% 误拦 ~0.4%)、凭据不进沙箱、"egress allowlist = 能力授予而非目的地过滤"(经 api.anthropic.com 外泄案例)、信任边界(`.claude/settings.json` hook 在信任提示前执行)、直接注入模型层无解(25 次重试 24 次外传)、可见性代价(密封 VM 挡住 EDR)、反模式清单
+- 更新 12 页:
+  - [[agent-computer-interface]] 新增"工具定义**怎么**进上下文"维度(defer_loading / Tool Search / PTC / Tool Use Examples;58 工具≈55K → ~8.7K、-85%、Opus 4 49%→74%、Opus 4.5 79.5%→88.1%、72%→90%)
+  - [[model-context-protocol]] 新增代码执行路径(server → 代码 API 树;150,000→2,000 tokens、-98.7%;PII tokenize;状态持久化 + skills)
+  - [[agentic-memory]] 会话≠上下文窗口;事件流在窗口外、压缩不可逆
+  - [[harness-engineering]] 组件会过期(context reset 在 Opus 4.5 成死重、删除一次一个);组件成本量级(solo 20min/$9 vs 全 harness 6h/$200,>20×)
+  - [[subagents]] 并行前提(16 agent 撞同一 bug、需引入 oracle;文本锁 + git 即足够)
+  - [[tool-evaluation]] 改进幅度数据(Tool Search / Examples / PTC;工具测试代理使后续任务完成时间 -40%)
+  - [[llm-as-a-judge]] grader 体系位置 + 四条使用纪律(退出口/分维度独立/人类校准/聚合方式)
+  - [[agent-verification]] 与 [[agent-evals]] 的层次分工(机制 vs 方法学)
+  - [[anthropic]] 工程博客四条主线(工具规模化 / 评测学 / 围堵 / harness 维护)+ 方法学上的自我限定
+  - [[openai]] 填补唯一缺失的 OpenAI 一手 agent 手册
+  - wiki/index.md、wiki/topics/ai-agents.md
+- **纠正一处事实(重要)**: 基础设施噪声的 **p=0.40 属于 1x→3x 的"成功率落在噪声内"**,不属于 3x→uncapped;3x→uncapped 是 infra error 再降 1.6pp 而 success 跃升近 4pp(原文六资源档:1x 兼 floor/ceiling → 3x → uncapped)。委派方发现,已核原文并修正 [[agent-evals]]
+- 主题页: 62 份源文档;**Anthropic ×19**;新增"评测学层"与"围堵与安全层"两组开放问题(共 +11 条)
+- 关键互证: eval 方法论 ↔ [[agent-verification]](机制 vs 方法学);基础设施噪声 ↔ [[harness-engineering]](资源规格是 harness 的一部分);围堵 ↔ [[lethal-trifecta]](威胁面 vs 防御层次)、[[three-tier-boundaries]]、[[governance-as-code]];按需加载 ↔ [[progressive-disclosure]](工具层的渐进披露)、[[context-rot]](134K 工具定义是"上下文是有限资源"的直接证据);会话≠窗口 ↔ [[long-running-agents]]
+- 无事实矛盾;待核:OpenAI 手册发布日期(2025-06 首发 vs 二手标 2025-11-04)、advanced-tool-use 三功能 GA 与定价、infrastructure-noise 的时段/API 延迟效应(原文自认仅轶事、未量化)
+- 过程说明: 落盘清洗时曾误切文末脚注(Footnotes 位于 Acknowledgements 之后、newsletter 之前),已修——被切的恰是 containment 的 ~0.4% / ~17% 关键数字
+- 健康检查: `scripts/lint.sh` → **lint clean ✓(147 pages checked)**

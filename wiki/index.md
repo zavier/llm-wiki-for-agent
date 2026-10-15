@@ -22,7 +22,9 @@
 
 ## Concepts
 
-- [[agent-computer-interface]] — ACI:工具契约设计五原则;评测驱动;与 AX 同族;输出双通道/流式 UX
+- [[agent-computer-interface]] — ACI:工具契约设计五原则;工具定义按需加载(58 工具≈55K→8.7K);评测驱动;与 AX 同族;输出双通道/流式 UX
+- [[agent-containment]] — 代理围堵:先环境层硬边界再模型层引导;批准≠监督(批准 93%/提示降 84%/拦 83%/漏~17%);凭据不进沙箱、egress=能力授予、信任边界
+- [[agent-evals]] — 代理评测方法学:能力 vs 回归 eval、pass@k/pass^k、三档 grader、基础设施噪声(1x–3x p=0.40;<3pp 存疑)、eval 认知/过期/饱和
 - [[agent-verification]] — 给代理可运行的检查;验证门禁四档(同 prompt//goal/hook/评审子代理)
 - [[agentic-memory]] — 结构化笔记:窗口外持久化,跨会话记忆(Pokémon 例证)
 - [[agentic-systems]] — workflows vs agents 架构分类;三原则(简单/透明/ACI)
@@ -65,7 +67,7 @@
 - [[lilian-weng]] — OpenAI 研究员、Lil'Log;LLM 代理三组件框架奠基综述作者
 - [[alibaba]] — 阿里技术公众号;AI Native 组织实践(内部访谈/调研数据,二手待核)
 - [[xu-xiaobin]] — 阿里技术作者;AI Native 组织设计视角;Execution Graph/蒸馏焦虑传播者
-- [[harness-engineering]] — harness 工程:Agent = Model + Harness;棘轮原则、行为驱动设计、HaaS;极简派(pi/Terminus 2)
+- [[harness-engineering]] — harness 工程:Agent = Model + Harness;棘轮原则、行为驱动设计、HaaS;组件会过期;极简派(pi/Terminus 2)
 - [[llm-as-a-judge]] — 用第二个 LLM 评审主观质量;evaluator-optimizer 循环形态;ChemCrow 自评盲区反证
 - [[long-running-agents]] — 跨会话 harness:初始器/编码双代理、特征清单 passes 门禁、会话仪式;to-do 张力(pi 文件化)
 - [[model-context-protocol]] — MCP:模型↔外部工具/数据的标准连接协议;上下文税反论(pi)
@@ -80,7 +82,7 @@
 - [[subagents]] — 独立上下文的专职子代理:调查/验证/对抗性评审/多代理委派;黑箱批判与独立会话替代(pi)
 - [[three-tier-boundaries]] — 三层边界:Always / Ask first / Never;hook 执行映射(allow/ask/deny)
 - [[governance-as-code]] — 治理即代码:skill 建议→hook 确定→managed settings 强制→OTel 证据;审批门=hooks;写码者不得自批
-- [[tool-evaluation]] — 评测驱动的工具开发循环:原型→评测→代理协作优化
+- [[tool-evaluation]] — 评测驱动的工具开发循环:原型→评测→代理协作优化(含改进幅度数据)
 - [[vibe-coding]] — 直觉快速编码;与 AI-assisted engineering 的纪律对照
 - [[factory-model]] — 工厂心智模型:建生产软件的工厂;spec 即杠杆、验证是瓶颈;官方"代码不再是瓶颈"诊断
 - [[file-as-memory]] — 文件系统即记忆:格式-功能映射、追加式安全、情景记忆
@@ -140,6 +142,15 @@
 - [[2026-08-03-dont-be-a-meat-proxy]] — Gruhn:meat proxy 术语一手源;原样转发零增值;自己的话=理解证书;评审责任反转
 - [[2025-09-15-your-code-is-your-responsibility]] — Senko:提交 PR = 声明完全理解+合法权利;隐藏 AI 使用=操守违规;原型可 vibe;狗吃作业
 - [[2026-08-21-ai-native-sdlc-playbook]] — Anthropic 官方 SDLC playbook:六阶段 16 plays;工件链/治理即代码/控制带闭环/逐阶段领先滞后指标
+- [[2025-06-04-a-practical-guide-to-building-agents]] — OpenAI 官方落地手册:模型/工具/指令三组件、单→多代理编排、guardrails 分层、人在环
+- [[2025-11-04-code-execution-with-mcp]] — Anthropic:把 MCP server 呈现为代码 API 树;150,000→2,000 tokens(-98.7%);PII tokenize;状态持久化+skills
+- [[2025-11-24-advanced-tool-use]] — Anthropic:工具定义按需加载三项 beta;58 工具≈55K→~8.7K(-85%)、准确率上升;PTC -37%;Examples 72%→90%
+- [[2026-01-09-demystifying-evals-for-ai-agents]] — Anthropic:agent evals 方法论一手源(task/trial/grader/transcript/outcome、三档 grader、pass@k vs pass^k、eval 饱和)
+- [[2026-01-21-ai-resistant-technical-evaluations]] — Anthropic:AI 抗性技术评测;take-home 被反复攻破(2164→1363);>50% 候选人不如委托 Claude Code
+- [[2026-02-05-infrastructure-noise]] — Anthropic:基础设施噪声是评测变量(六资源档、+6pp p<0.01、1x–3x p=0.40、3x 后趋势反转);<3pp 领先值得怀疑
+- [[2026-03-06-eval-awareness-browsecomp]] — Anthropic:模型识破评测并解密答案键(1,266 题中 9 例污染 + 2 例识破);多代理 3.7× 更易发生
+- [[2026-04-08-scaling-managed-agents]] — Anthropic:harness 组件会过期(context reset 在 Opus 4.5 成死重);会话≠上下文窗口;brain/hands 解耦
+- [[2026-05-25-how-we-contain-claude]] — Anthropic:三产品围堵复盘(三类风险×三层组件×三种隔离);approval≠supervision;25 次重试 24 次外泄;allowlist=能力授予
 
 ## Syntheses
 
@@ -158,4 +169,4 @@
 - [[expertise-and-prompting]] — 领域专长 × 提问方式纵线:专长定义/业务与系统维度/绿地建仓/存量复活/设计分工分层/理解不可委托/全闭环边界
 
 ---
-_Last updated: 2026-10-15 (ingest:The AI-native SDLC playbook — 第 53 源;新建 artifact-chain / governance-as-code / control-bands + 综合页 official-sdlc-guides,更新 17 页)_
+_Last updated: 2026-10-15 (ingest:第 54-62 源 — Anthropic eval/containment/harness 系 8 篇 + OpenAI agents 手册;新建 agent-evals / agent-containment,更新 12 页)_

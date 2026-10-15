@@ -3,9 +3,9 @@ type: concept
 tags: [ai-agents, evaluation, tools]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
-refs: [agent-computer-interface, llm-as-a-judge, swe-bench, agentic-workflow-patterns, cursor, context-rot]
-sources: [2025-09-11-writing-effective-tools-for-ai-agents, 2023-06-23-llm-powered-autonomous-agents, 2026-04-30-cursor-agent-harness-improvement]
+updated: 2026-10-15
+refs: [agent-computer-interface, llm-as-a-judge, swe-bench, agentic-workflow-patterns, cursor, context-rot, agent-evals, progressive-disclosure]
+sources: [2025-09-11-writing-effective-tools-for-ai-agents, 2023-06-23-llm-powered-autonomous-agents, 2026-04-30-cursor-agent-harness-improvement, 2025-11-24-advanced-tool-use]
 status: active
 ---
 
@@ -28,6 +28,10 @@ status: active
 **分析**:读 CoT 与原始 transcript(含工具调用与响应);**代理省略的往往比包含的更重要**;web search 工具例——Claude 给 `query` 附加 "2025" 污染结果,改描述修正;held-out 测试集防过拟合,还能挖出超越"专家手写"的改进
 
 **协作优化**:把评测 transcript 拼接后交给 Claude Code,批量重构工具(保证实现与描述自洽);"本文大部分建议来自此循环"——用 AI agents 写 AI agents 的工具;Slack/Asana 内部评测显示 Claude 优化版优于人类专家手写版
+
+**改进的实际幅度(用于判断这个循环值不值)**(来源: [[2025-11-24-advanced-tool-use]]):同一批内部 MCP 评测上,只改**工具的定义与加载方式**就拿到——Tool Search(按需发现)使 **Opus 4 49%→74%、Opus 4.5 79.5%→88.1%**;Tool Use Examples(补 schema 之不足)使复杂参数处理 **72%→90%**;Programmatic Tool Calling 使知识检索 **25.6%→28.5%**、**GIA 46.5%→51.2%**,同时复杂研究任务 token **43,588→27,297(-37%)**。另一份内部证据:一个**工具测试代理**——给一个坏掉的 MCP 工具,它反复试用后重写工具描述,使后续代代理任务完成时间降 **40%**(来源: [[2026-08-02-how-we-built-our-multi-agent-research-system]])。含义:**工具层是当前投入产出比最高的可测杠杆之一**,而这类改进只能靠评测发现
+
+**方法论位置**:本页是 [[agent-evals]] 方法论在工具层的具体化;grader 选择、能力 vs 回归 eval、非确定性度量等通用纪律见该页
 
 ## 与其他页面的关系
 
