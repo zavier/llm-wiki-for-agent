@@ -549,3 +549,12 @@
 - 无事实矛盾;待核:OpenAI 手册发布日期(2025-06 首发 vs 二手标 2025-11-04)、advanced-tool-use 三功能 GA 与定价、infrastructure-noise 的时段/API 延迟效应(原文自认仅轶事、未量化)
 - 过程说明: 落盘清洗时曾误切文末脚注(Footnotes 位于 Acknowledgements 之后、newsletter 之前),已修——被切的恰是 containment 的 ~0.4% / ~17% 关键数字
 - 健康检查: `scripts/lint.sh` → **lint clean ✓(147 pages checked)**
+
+## [2026-10-15] fix | 撤下唯一一条「主张在 wiki、来源未入库」的主张
+
+- 触发: 上一条 ingest 在 [[subagents]] 里写入了基于 `anthropic.com/engineering/building-c-compiler` 的一条主张(16 个并行代理在单体任务上撞同一 bug、需引入 GCC 作 oracle;文本锁 + git 作互斥即足够),并标注"原文尚未入库待 ingest"——这在 wiki 内属**半成品状态**:主张可读,但读者回不到 raw/ 原文
+- 决策: 人类指示候选正文(含 building-c-compiler)不入库 → 该条失去可追溯来源,按 §1「一页对应一份 raw 原文」的契约撤销,而非保留悬空引用
+- 动作: 删除 wiki/concepts/subagents.md 中该条(全文唯一引用点;frontmatter / index / topic hub / 实体页均未引用,已逐处确认)
+- 影响面: 0 个 broken-link;subagents 其余内容(上下文防火墙、探索与编辑分离、maker/checker 分裂、报告文件交接、极简派批判、官方并行会话 vs 子代理区分)不受影响
+- 保留待办: 若日后要恢复该主张,须先把原文落盘 raw/ 再走完整 ingest(候选另两篇 claude-think-tool / claude-code-auto-mode 同此)
+- 健康检查: `scripts/lint.sh` → **lint clean ✓(147 pages checked)**
