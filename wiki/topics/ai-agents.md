@@ -109,7 +109,7 @@ status: active
 - [[2025-03-19-measuring-ai-long-tasks]] — 第三十三篇源文档(METR:时间地平线度量;7 个月翻倍;Opus 4.6 ~16h;2h17m 一手源)
 - [[2026-02-09-cognitive-debt]] — 第三十四篇源文档(Storey:认知债一手源;Naur 理论;Brooks 回声)
 - [[2026-01-28-skill-formation-rct]] — 第三十五篇源文档(Anthropic RCT:AI 损害技能形成;六交互模式;agentic 损失更大)
-- [[2026-02-12-evaluating-agents-md]] — 第三十六篇源文档(ETH:AGENTS.md 反证一手化;-0.5%/-2% 口径;文档冗余假说)
+- [[2026-02-12-evaluating-agents-md]] — 第三十六篇源文档(ETH:AGENTS.md 反证**全文已入库 2026-11-06**;摘要 -3% vs 正文 -0.5%/-2% 口径闭合;人写 +4% 且对 Claude Code 无效;文档冗余假说 +2.7% 消融;AGENTbench 138 实例构法)
 - [[2026-04-07-cognitive-parallel-agents]] — 第三十七篇源文档(Osmani:并行上限;ambient anxiety tax;先降范围再降数量)
 - [[2026-03-23-triple-debt-model]] — 第三十八篇源文档(Storey 论文:债务三元组一手化;认知债≠comprehension debt 修正;抵制理解的自动化)
 - [[2026-07-11-in-defense-of-not-understanding-your-codebase]] — 第三十九篇源文档(Goedecke:为大系统部分理解辩护;驳 Naur 废弃重建;理论=权衡之一;LLM 双刃剑)
@@ -147,7 +147,8 @@ status: active
 - **极简派一手化**(2026-08-08,raw/What I learned building an opinionated and minimal coding agent.md):Zechner 自建 pi 复盘——<1000 token 系统提示+四工具(read/write/edit/bash)、YOLO 默认(权限弹窗=security theater)、反 MCP(上下文税:Playwright 13.7k/DevTools 18k tokens=7-9% 窗口)/to-do/plan mode(PLAN.md 文件化)/后台 bash(tmux 替代)/子代理(黑箱;独立会话+工件;并行子代理=反模式);状态全部文件化(TODO.md/PLAN.md);"模型被训练成读片段、找不全上下文,我们太信任代理了";Terminal-Bench 2.0 五轮跑分上榜 + Terminus 2(纯 tmux)名列前茅;与富 harness 学派(Anthropic/Osmani/HumanLayer)的全景分歧建综合页 [[minimal-vs-rich-harness]];本 wiki 运行环境即 pi(系统提示/四工具逐字吻合)
 - **官方 SDLC 双层**(2026-10-15,raw/The AI-native SDLC playbook.md):Anthropic 官方 playbook——六阶段 16 plays;**提交工件链**(intent/spec/plan/diff/PR/incident;接受工件触发下一关);**skill+hook+managed settings+OTel 四层治理**;控制带闭环(1σ/2σ/3σ;确定性检测;发现写回 intent.md);配置即被测对象(evals 对 CLAUDE.md/skills/hooks 门禁);逐阶段领先/滞后指标;新建 3 概念页 + 与 OpenAI 指南并排对比 [[official-sdlc-guides]]
 - **官方 companion 两篇**(2026-10-15,raw/How Anthropic secures… + How Claude Tag…):playbook 挂账的两篇实装篇——安全侧(8× 产出/~80% 代码/>50% 由 Claude Tag 合并;PSR/shadow mode/抽检/SIEM/新型内部威胁;16%→54%)与值班侧(中位 14 分钟/最快 4 分钟;dynamic workflow + 617 行 investigation skill + lessons.md;oncall-kit 开源);新建 [[agent-identity]]、[[claude-tag]];更新 [[governance-as-code]]/[[control-bands]] 等 13 页;修正“官方保守 vs 内部激进”张力为“高自动化+高治理配对”
-- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(全文一手已核 2026-08-03:n=52/-17%/d=0.738/六模式画像/错误机制)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(一手已核:-0.5%/-2%)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)、**pi Terminal-Bench 2.0 五轮跑分(Opus 4.5) + Terminus 2 纯 tmux 上榜(极简派证据,2026-08-08)**
+- **ETH agentfile 全文落盘**(2026-11-06,raw/Evaluating AGENTS.md…):同一论文第 36 源的 raw 补全 + 重写——清掉“-3% 待核”(那是摘要数字,正文分基准 -0.5%/-2%,同属一篇论文);新增硬数据(成本 +20/23%、reasoning token +14~22%、人写 +3.34 步/+19% 成本、首次寻址无改善、概览段占比 95-100%、GPT-5.1 mini 反复重读已在上下文的文件);新增测试:人写文件**对 Claude Code 无效**;消融:换更强模型生成(+2%/-3%)与换生成提示均无一致优劣;新建 [[documentation-redundancy]]
+- 实证基础:GitHub 2,500+ 配置文件分析、curse of instructions、context rot、BrowseComp、SWE-bench Verified、ChemCrow 自评盲区、Vercel skills 评测(二手)、Opus 4.5 跨会话 harness 实证、Solo vs 三代理 20 倍成本对比、Terminal Bench #33 vs #5、宏观指标(二手)、评审量化数据(二手)、Anthropic RCT 理解力(全文一手已核 2026-08-03:n=52/-17%/d=0.738/六模式画像/错误机制)、Wharton 73% 投降率(出处确认 SSRN 6097646,全文待)、OpenAI 零人工代码(自述)、Cursor Keep Rate、ETH Zurich agentfile 研究(**全文已核 2026-11-06**:摘要 -3% / 正文 -0.5%/-2%;人写 +4%;+20~23% 成本)、阿里内部访谈/调研(二手待核)、METR impact-of-ai(Goedecke 引用:熟悉代码库者 AI 提速很小,待核)、**pi Terminal-Bench 2.0 五轮跑分(Opus 4.5) + Terminus 2 纯 tmux 上榜(极简派证据,2026-08-08)**
 
 ## 开放问题
 

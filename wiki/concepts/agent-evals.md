@@ -100,7 +100,7 @@ status: active
 - 成本 upfront 可见、收益累积——这正是它容易被低估的原因;"定义 eval 任务是压力测试产品需求是否足够具体的**最佳方式之一**"
 - 案例:Descript 围绕三维度建 eval(不弄坏 / 做我要的 / 做得好),从人工打分演进到 LLM grader + 产品团队定标准 + 周期人类校准,现并行两套套件(质量对标 / 回归);Bolt 在已有广泛使用的 agent **之后**才建,3 个月内做出静态分析 + 浏览器 agent 测应用 + LLM judge 判指令遵循的系统
 - **配置也是被测对象**(来源: [[2026-08-21-ai-native-sdlc-playbook]]):官方 playbook 要求 eval 对 **CLAUDE.md / skills / hooks 的变更**与对代码变更同等门禁——"steering 代理的配置值得和代码一样的回归测试";配置变更是以 pass rate 为合并门;每个生产事故写一条 eval 归属到对应团队;套件是**活的工件**,模型变强后旧 case 失去区分度,需从监控补新
-- 反面校准物:ETH Zurich 的 AGENTS.md 受控实验给出 **-0.5%/-2%** 口径(文档冗余假说),说明"配置改动"必须被测量而非假定有效(来源: [[2026-02-12-evaluating-agents-md]])
+- 反面校准物:ETH Zurich 的 AGENTS.md 受控实验(来源: [[2026-02-12-evaluating-agents-md]],全文已入库)给出正文口径 **-0.5%/-2%**、摘要口径 **-3%**(见 [[documentation-redundancy]])——**读法本身就是一课**:摘要的圆整数字与正文的分基准数字不一致,引"配置有效/无效"必须回到分基准表格才发现**人写 +4% vs LLM -3%** 的方向差异。两个可拿来用的 eval 卫生实践:外包注入的基准**要自己验**(该论文的回归测试由 LLM 生成,但强制 fail@R / pass@R∘X\* 并人工修过拟合断言,平均覆盖 75%)、**任务描述要验无解法泄漏**(抽检 10%)
 - OpenAI 侧的形态:**gold-standard PR 样例集(代码+注释)存为评估集**衡量评审工具;**PR comment reactions 作低摩擦质量度量**(来源: [[2026-08-02-building-ai-native-engineering-team]]);trace + 人类反馈 → 持久 eval → 门禁 → harness 改动的闭环(flywheel)
 - **在线评测变体**:Cursor 的 Keep Rate 以固定间隔回放历史代码库状态、比对建议是否与后续人工实现一致,弥补离线套件与真实分布的差距(来源: [[2026-04-30-cursor-agent-harness-improvement]])
 

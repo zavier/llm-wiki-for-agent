@@ -3,43 +3,56 @@ type: source
 tags: [ai-agents, agents-md, eth-zurich, evaluation, evidence]
 topic: ai-agents
 created: 2026-08-02
-updated: 2026-08-02
+updated: 2026-11-06
 status: active
 ---
 
 # Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents? (2026-02-12,ETH Zurich)
 
-- 原文: 无 raw 文件(AI 直接抓取自 arXiv 2602.11988 摘要页/HTML v1/第三方总结,2026-08-02;arXiv API 确认 published **2026-02-12**,v2 更新 2026-06-23)
-- 类型: 学术论文(Gloaguen, T.; Mündler, N.; Müller, M.; Raychev, V.; Vechev, M.——ETH Zurich + LogicStar.ai;[arXiv:2602.11988],cs.SE)
-- 备注: 本 wiki 第三十六篇源文档;**agentfile 反证的一手来源**(此前 [[2026-03-12-skill-issue-harness-engineering|HumanLayer]] 与 [[2026-03-26-code-agent-orchestra|Osmani]] 两路转述"平均成功率 -3%/推理成本 +20%+";现一手论文入库,数字口径需协调)
+- 原文: `raw/Evaluating AGENTS.md_Are Repository-Level Context Files Helpful for Coding Agents_.md`(arXiv 2602.11988**v1** HTML,clipped 2026-11-06)
+- 类型: 学术论文(Gloaguen, T.; Mündler, N.; Müller, M.; Raychev, V.; Vechev, M.——ETH Zurich + LogicStar.ai;cs.SE)
+- 备注: 本 wiki **第三十六篇源文档**(计数不变——同一论文的全文落盘版)。2026-08-02 首建时**无 raw 文件**(抓自摘要页/HTML/第三方总结),本次按 §1「一页对应一份 raw 原文」补全:**全文入库 + 重写**;此前挂的「-3% vs -0.5%/-2% 口径待核」已闭合(见下)。v2(2026-06-23)**未**入库,本页所有引文按 v1 正文。
 
 ## 摘要
 
-仓库级上下文文件(AGENTS.md/CLAUDE.md)是代理开发商强烈鼓励的实践,但此前无严谨研究检验其真实效果。本论文在真实 GitHub issue 派生的任务上、多代理多模型设置下系统检验:SWE-bench Lite + 新颖的 AgentBench;三条件(NONE 基线 / LLM 自动生成 / HUMAN 开发者编写);四代理(Sonnet-4.5/GPT-5.2/GPT-5.1 M./Qwen3-30B)。**主结果:上下文文件不提升代理性能,还显著增加推理成本(+20%+)**;trace 分析:指令一般被遵循、导致更多测试与更广探索,但**不能充当有效的仓库概览**;结论:上下文文件只应包含代码库之外的具体附加指令。
+仓库级上下文文件(AGENTS.md/CLAUDE.md)被代理开发商强烈推荐,却从未被严谨检验。本文构造 **AGENTbench**(138 个实例 / 12 个带开发者上下文文件的冷门仓库 / Python),与 SWE-bench Lite 互补,在 4 个代理(Sonnet-4.5、GPT-5.2、GPT-5.1 mini、Qwen3-30B)上跑三条件(NONE / LLM 生成 / 开发者编写)。结论:**LLM 生成的文件平均降低成功率并抬高成本**;**开发者编写文件只在边际上提升**(摘要口径 +4%),且**对 Claude Code 无效**。机制:trace 显示指令被**真的执行**了(更多测试、更广探索、更多仓库专属工具),reasoning token 上升 14-22%,但上下文文件**不构成有效的仓库概览**(没让代理更快找到相关文件)。文档冗余假说:把仓库里所有文档删掉后,LLM 生成文件反而 +2.7% 并**胜过**人写的。结论:只用**人写的、最小的**需求(如"本仓库用 uv")。
 
 ## 关键主张
 
-**数字口径协调**(重要):Osmani/HumanLayer 转述的"平均成功率 **-3%**" vs 一手数据——Medium 总结(v2 口径):SWE-bench Lite(LLM 生成文件)平均 **-0.5%**、AgentBench 平均 **-2%**;v1 HTML 表格显示部分模型微升(步骤数↑、成本↑↑);**-3% 与 -0.5%/-2% 同量级但非精确一致——聚合口径差异待核**(转述可能基于不同子集/版本)
+> [!warning] 摘要与正文口径不一致 —— 引用请用 §4.2
+> 摘要写"LLM 生成文件平均 **-3%**""人写文件 **+4%**";正文 §4.2 的分基准数字是 **SWE-bench Lite 平均 -0.5%、AGENTbench 平均 -2%**,人写文件无单一总数字(只说"除 Claude Code 外四个代理均提升")。**-3% 与 -0.5%/-2% 出自同一篇论文的两个层级,不是转述误差**;此前 wiki 记的"Medium/v2 口径 -0.5%/-2%"归因错误——那正是 v1 正文。行为引用取正文,不要取摘要的圆整数字。
 
-**成本**:推理成本 **+20% 以上**(两路转述一致 ✓);原因:指令推动更多探索、更多测试、更多工具使用(步骤数显著上升,如 Sonnet-4.5 SWE-bench Lite 步骤 54.4→57.2、成本 1.30→1.51)
+**基准:AGENTbench 怎么造**(来源: 同上):GitHub 搜索含根目录 AGENTS.md/CLAUDE.md 的 Python 仓库 → 要求有测试套件 + ≥400 PR(保证能抽出 ≥10 个实例)→ 5694 个 PR 过滤为 138 实例(12 仓库)。多数 PR 不含测试,故用 LLM agent 生成回归测试并**验证 fail@R、pass@R∘X\***,人工筛掉过拟合实现的断言,最终测试对改动代码的平均覆盖 **75%**;任务描述用第三个 LLM 标准化成 6 段(描述/复现步骤/期望/实际/规格/附加),随机抽检 10% 确认**无解法泄漏**;保留 87% 候选(至少一个测试通过)。实例画像:issue 211.6 词、代码库 3337 文件、patch 118.9 行 / 2.5 文件、**上下文文件 641 词 / 9.7 个小节**。
 
-**机制发现(trace 分析)**:
-- 指令一般被遵循——上下文文件确实改变代理行为(更守规)
-- 但**不充当有效的仓库概览**——作为"地图"功能失败
-- **文档冗余假说**:LLM 生成文件与既有文档高度冗余;人工移除全部文档后(上下文文件成为唯一文档来源),LLM 文件**一致提升 2.7% 平均**,且胜过开发者写的文档——上下文文件的价值 = 文档缺失时的替代品,而非附加信息
-- 人为编写文件仍优于自动生成(表:HUMAN 行与 LLM 行接近但略稳)
+**主结果:LLM 文件降成功率、抬成本**(来源: 同上):8 个设置中 5 个成功率下降;平均 **-0.5%(SWE-bench Lite)/ -2%(AGENTbench)**;步骤 **+2.45 / +3.92**,成本 **+20% / +23%**。逐模型(Table 2,SWE-bench Lite,步数/美元):Sonnet-4.5 54.4/$1.30 → 57.2/$1.51;GPT-5.2 12.5/$0.32 → 12.7/$0.43;GPT-5.1 mini 40.9/$0.18 → 45.2/$0.22;Qwen3-30B 29.7/$0.12 → 32.2/$0.13。
 
-**结论**:上下文文件不提升代理性能(部分场景微降);**应只包含代码库之外的具体附加指令**(specific additional instructions beyond what is already available);厂商推荐 vs 实证结果存在具体差距——呼吁"自动生成简洁、任务相关指导"的原则性方法
+**人写文件:略好,但仍贵**(来源: 同上):四个代理上**人写均优于 LLM 生成**(尽管人写文件不是为代理定制的);相对无文件,**除 Claude Code 外全部提升**;代价 **+3.34 步、成本最高 +19%**。AGENTbench 上 Sonnet 46.5(LLM)→ 45.3(Human)步、1.33 → 1.30 美元。
 
-**局限**:特定基准(SWE-bench Lite/AgentBench)与特定代理(Claude Code/Codex/Qwen);结果可能随设置变化
+**上下文文件不是有效的仓库概览**(来源: 同上):度量"首次触碰 PR 改动文件前的步数",有无文件**无实质差别**(两基准皆然)。概览的供给并不缺:被 GPT-OSS-120b 判定含概览段的比例为 Sonnet-4.5 生成 **100%**、GPT-5.2 **99%**、Qwen3-30B **95%**、GPT-5.1 mini **36%**;12 份人写文件里 8 份有概览、4 份逐目录枚举。**副作用发现**:GPT-5.1 mini 在文件存在时会**多次发命令去找上下文文件、并反复重读它——尽管它已在上下文里**;此行为只在有文件时出现,是该模型步数暴增的直接原因。
+
+**指令被遵循——所以失败不是"没听话"**(来源: 同上):文件提到 uv 时每实例平均用 1.6 次,未提到时 <0.01;仓库专属工具提到 2.5 次 vs 未提到 <0.05;几乎全部被测工具呈同向。工具**意图**分类(GPT-OSS-120b,334 类归并为 10 类)复核:测试、搜索、质量检查显著上升。
+
+**照做更费思考**(来源: 同上):GPT-5.2 reasoning token **+22%**、GPT-5.1 mini **+14%**(SWE-bench Lite;AGENTbench 14%/10%);人写文件 +20%/+2%。作者据此认为**多余要求把任务变难了**,而非模型忽略要求。
+
+**文档冗余假说(消融)**(来源: 同上):手动删掉仓库内所有 `.md`、示例代码与 `docs/` 后再评测(Claude Code 因成本排除)——LLM 生成文件**一致提升 2.7%** 且**反超人写文件**。解释:LLM 文件与既有文档高度冗余;只有当它成为**唯一文档来源**时才有价值。这也解释了"加了上下文文件感觉变好"的轶事——多数冷门仓库几乎没有文档。
+
+**更强模型生成的未必更好;提示也没那么重要**(来源: 同上):改用 GPT-5.2+Codex 生成文件,SWE-bench Lite 全模型 **+2%**,AGENTbench 全模型 **-3%**;Codex 与 Claude Code 的生成提示互换后无一致优劣。
+
+**按仓库看没有显著效应**(来源: 同上):12 个仓库逐一比较,无一仓库出现显著影响;AGENTbench 难度分布均衡(验证构法),SWE-bench Lite 则因 django 占多数而估计噪声大。
+
+**实验设置要点**(来源: 同上):Claude Code 开 Task 工具(Haiku-4.5 子代理);温度 0(Qwen 0.7/top-p 0.8,60% 压缩,shell 输出限 2000 token);每实例采样一次;AGENTbench 容器为 Docker,**移除 git 历史与全部 remote**,给联网;人工核查**无作弊**(去看对应 PR),联网调用 <1%。
 
 ## 与现有 wiki 的关系
 
-- 更新 [[agents-md]](反证一手化 + 数字协调 + 机制细节), [[ai-feature-implementation-loop]] 反证区(agentfile 条目数字更新:统一为 -0.5%/-2% 一手口径 + 转述 -3% 差异标注), [[2026-03-12-skill-issue-harness-engineering|skill-issue source]] 与 [[2026-03-26-code-agent-orchestra|orchestra source]] 的 ETH 引用标注
-- 互证:文档冗余假说 ↔ [[agents-md]] "prompt additive" 原则(条目应提供代码库之外的信息——论文结论与 Osmani 实践指南意外一致);"指令被遵循但概览失败" ↔ 手册四节结构中 Patterns/Gotchas 有效 vs 综述性描述无效;铁律"绝不让代理直接写 AGENTS.md"(综合页)获论文支持(LLM 文件 < HUMAN 文件)
-- 与 [[2026-05-14-claude-code-large-codebases|Claude Code at scale]] 张力:官方强烈推荐配置评审 3-6 月——"配置有价值但需人写、短而精"是两边的折中
+- 一手化 + 纠错:[[agents-md]](ETH 条目重写,口径警告上移)、[[claude-md]]("人写文件对 Claude Code 无效"直接落在 `/init` 生成物上)、[[documentation-redundancy]](**新建**:文档冗余假说获得独立页 + 消融证据)、[[curse-of-instructions]](从"越多越不遵循"升级为"越遵循越费 token,成功率不升")、[[context-engineering]](上下文预算的**成本侧**硬数据)、[[agent-evals]](配置即被测对象 + 该基准构法可作 eval 卫生模板)
+- 消解旧待办:[[2026-03-12-skill-issue-harness-engineering]] 与 [[2026-03-26-code-agent-orchestra]] 两处转述的"-3%"不再是"待核转述"——它确实是论文摘要数字;两页与 [[ai-feature-implementation-loop]]、[[minimal-vs-rich-harness]]、[[2026-02-12-evaluating-agents-md]] 的"口径协调"措辞一并更正
+- 互证:文档冗余 ↔ [[agent-readability]]「上下文之外不存在」(文件只在承载代码里看不到的信息时有价值);"概览无效" ↔ [[2026-02-11-codex-agent-first-engineering]]「给一张地图而非说明书」(两者都反"目录罗列",但 OpenAI 主张结构化 docs/ 索引,本文主张最小需求——见综合页张力);"+22% reasoning token" ↔ [[context-rot]]/[[curse-of-instructions]] 的注意力预算;`641 词 / 9.7 节` 与 HumanLayer「<60 行」量级接近,**说明 +4% 已是"相对克制"文件的成绩**,不能读作"再写长点也行"
+- 张力:[[2026-05-14-claude-code-large-codebases]] 官方主张配置评审 3-6 月、子目录分层累加——本文给"最小需求 + 人写"的量化背书,但同时显示**即使在理想写法下收益也仅约 4%**;[[2026-01-31-self-improving-agents]] 的"运行笔记本"(代理自己追加)在本文框架下属**最高风险形态**(LLM 生成、冗余、无消融验证)
 
 ## 待办 / 后续
 
-- v2 全文未完整抓取(HTML v1 可用,v2 无 HTML);精确聚合方式与 -3% 转述差异待全文核对
-- 与"运行笔记本"(Ralph Loop 代理自写 AGENTS.md 条目)的张力:论文显示 LLM 生成文件价值最低——代理自写条目质量仍存疑(综合页反证区待核项,现获得部分回答:LLM 文件冗余/低效)
+- v2(2026-06-23)与 v1 的差异未核;若 v2 改了聚合口径,本页的口径警告需按版本重写
+- **纯 Python 是最大外部效度缺口**:作者自认 Python 训练语料充足,模型参数知识可能已覆盖工具链/仓库惯例,从而**低估**上下文文件在冷门语言/私有栈上的作用——这恰好是我们(私有仓库 + 非主流栈)最该关心的方向,缺数据
+- 未测:安全性与代码效率(只测任务完成率)、多轮/长时任务、上下文文件与 hooks/skills 的替代关系
+- 可跟进:作者呼吁的"原则性地自动生成简洁、任务相关的指导"(continuous learning from prior tasks 方向)是否有后续论文
+- 与 pi(极简 harness)的关系:本文为"少配置"提供实证,但 pi 的对照实验是"零 AGENTS.md",本文的 NONE 条件同样接近零配置——两者并不冲突

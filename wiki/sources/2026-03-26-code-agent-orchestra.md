@@ -39,7 +39,7 @@ status: active
 - Cursor Cloud Agents + **Glass**:代理管理成为主界面,编辑器退居其下——"控制平面成为主要体验"的生态趋势
 - 大多数人 2026 年三层都用:Tier 1 交互、Tier 2 并行冲刺、Tier 3 夜里清积压
 
-**规模化 Pro-tips**:多模型路由(MODEL_ROUTING.md:规划→Gemini、实现→Opus/Sonnet、评审→专用安全模型);worktree 生命周期脚本(agent-spin/agent-merge/agent-clean,约 12 行 bash);**AGENTS.md 只许人工维护**——ETH Zurich 研究(Gloaguen et al.,一手已核: [[2026-02-12-evaluating-agents-md]]):LLM 生成的 AGENTS.md **无收益且平均成功率 -3%、推理成本 +20% 以上**(一手口径 -0.5%/-2%,见新 source 页);人工写的约 +4%;绝不让代理直接写 AGENTS.md,lead 批准每一行;结构:STYLE/GOTCHAS/ARCH_DECISIONS/TEST_STRATEGY
+**规模化 Pro-tips**:多模型路由(MODEL_ROUTING.md:规划→Gemini、实现→Opus/Sonnet、评审→专用安全模型);worktree 生命周期脚本(agent-spin/agent-merge/agent-clean,约 12 行 bash);**AGENTS.md 只许人工维护**——ETH Zurich 研究(Gloaguen et al.,一手已核: [[2026-02-12-evaluating-agents-md]]):LLM 生成的 AGENTS.md **无收益且平均成功率下降、推理成本 +20% 以上**(论文**摘要**口径 -3%;**正文**分基准 -0.5%/-2%——两者不矛盾,全文已入库 2026-11-06);人工写的约 +4%(对 Claude Code 无效);绝不让代理直接写 AGENTS.md,lead 批准每一行;结构:STYLE/GOTCHAS/ARCH_DECISIONS/TEST_STRATEGY
 
 **质量门(trust but verify)**:计划审批(修坏计划比修坏代码便宜得多;teammate 写计划 → lead 审查 → 批准/拒绝 → 实现);hooks(TeammateIdle 验证测试全过才让停;TaskCompleted 跑 lint+测试,不过就继续干);AGENTS.md 复合学习(每会话读、每会话加:demo 里捕获"给已有表加列必须带 ALTER TABLE 迁移")
 
@@ -68,9 +68,9 @@ status: active
 
 - 新建概念: [[agent-teams]](协调原语)、[[ralph-loop]](stateless-but-iterative 形式化)
 - 更新了 [[multi-agent-systems]](指挥→编排、三堵墙、四理由、工具三层)、[[parallel-agents]](WIP/一文件一主人/token 预算)、[[subagents]](报告文件交接 + 层级子代理)、[[agents-md]](ETH 精确数字 + Gloaguen 归因)、[[self-reflection]](循环护栏强制反思 + REFLECTION.md)、[[long-running-agents]](Ralph Loop 形式化)、[[factory-model]](六步流水线)、[[ai-feature-implementation-loop]]
-- 关键互证:**ETH 数字精确化**(HumanLayer 的"损害性能且贵 20%+" = 本源的 ~3% 成功率降低 + >20% 推理成本,归因 Gloaguen et al.,arXiv 2602.11988 待核);Agent Teams 的协调原语 = 对 [[multi-agent-systems]]"实时协调委派不成熟"开放问题的直接回应;@reviewer 队友 = [[agent-verification]] 回压的团队形态;Ralph Loop 四通道记忆 = [[file-as-memory]] 与 [[long-running-agents]] 的交叉验证;"人类瓶颈曾是特性" ↔ [[cognitive-surrender]]/[[comprehension-debt]];验证仍是瓶颈 ↔ [[factory-model]];"委派任务不委派判断" ↔ [[intent-debt]] 的意图唯一来源论;2026 工具三层 = 多代理工具谱系的 snapshot(2026-03 时点)
+- 关键互证:**ETH 数字精确化**(HumanLayer 的"损害性能且贵 20%+" = 本源的 ~3% 成功率降低 + >20% 推理成本,归因 Gloaguen et al.,arXiv 2602.11988 **全文已入库 2026-11-06**:"-3%" 是**论文摘要**口径,正文分基准为 -0.5%/-2%,两者不矛盾——今年初记的"待核"到此闭合);Agent Teams 的协调原语 = 对 [[multi-agent-systems]]"实时协调委派不成熟"开放问题的直接回应;@reviewer 队友 = [[agent-verification]] 回压的团队形态;Ralph Loop 四通道记忆 = [[file-as-memory]] 与 [[long-running-agents]] 的交叉验证;"人类瓶颈曾是特性" ↔ [[cognitive-surrender]]/[[comprehension-debt]];验证仍是瓶颈 ↔ [[factory-model]];"委派任务不委派判断" ↔ [[intent-debt]] 的意图唯一来源论;2026 工具三层 = 多代理工具谱系的 snapshot(2026-03 时点)
 
 ## 待办 / 后续
 
-- ETH Zurich 研究精确数字与归因核实(arXiv 2602.11988,Gloaguen et al.);Agent Teams 正式发布进度(实验特性);Beads/Gastown 的制度记忆形态跟进
+- ETH Zurich 研究数字与归因**已闭合并全文入库**(2026-11-06,见 [[2026-02-12-evaluating-agents-md]]);Agent Teams 正式发布进度(实验特性);Beads/Gastown 的制度记忆形态跟进
 - 2026 工具三层谱系的时效性(2026-03 snapshot,需随季度更新);Copilot Coding Agent 自评循环细节

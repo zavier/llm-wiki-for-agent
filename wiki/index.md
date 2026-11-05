@@ -32,6 +32,7 @@
 - [[agentic-systems]] — workflows vs agents 架构分类;三原则(简单/透明/ACI)
 - [[agentic-workflow-patterns]] — 五种工作流模式:chaining/routing/parallelization/orchestrator/evaluator-optimizer
 - [[agents-md]] — 仓库内代理配置文件,定义行为与专职人格
+- [[documentation-redundancy]] — 文档冗余假说:LLM 生成的上下文文件与既有文档重叠,价值只在文档缺失时(删文档后 +2.7% 反超人写);概览类内容零收益
 - [[ai-agent-spec]] — AI 代理 spec 总框架:五原则 + 六大核心区域清单
 - [[claude-md]] — Claude Code 持久上下文文件;取舍与剪枝规则
 - [[cognitive-surrender]] — 认知投降:offloading vs surrender;借用信心(73%);互惠放大
@@ -126,7 +127,7 @@
 - [[2025-03-19-measuring-ai-long-tasks]] — METR:时间地平线(任务长度=能力);7 个月翻倍;GPT-2 4 秒 → Opus 4.6 ~16h
 - [[2026-02-09-cognitive-debt]] — Storey:认知债一手源(Naur 程序理论;Brooks 回声;缓解实践)
 - [[2026-01-28-skill-formation-rct]] — Anthropic RCT:AI 损害技能形成(六交互模式 65-86%;agentic 损失更大)
-- [[2026-02-12-evaluating-agents-md]] — ETH Zurich:AGENTS.md 反证一手化(-0.5%/-2%;+20% 成本;文档冗余假说)
+- [[2026-02-12-evaluating-agents-md]] — ETH Zurich:AGENTS.md 反证**全文入库**(摘要 -3% vs 正文 -0.5%/-2%;人写 +4% 但对 Claude Code 无效;成本 +20~23%;AGENTbench 138 实例;文档冗余消融)
 - [[2026-04-07-cognitive-parallel-agents]] — Osmani:并行代理上限(监督吞吐≠理解吞吐;ambient anxiety tax)
 - [[2026-03-23-triple-debt-model]] — Storey 论文:债务三元组一手化(三层系统健康/三债循环/抵制理解自动化)
 - [[2026-07-11-in-defense-of-not-understanding-your-codebase]] — Goedecke:为大系统部分理解辩护;驳 Naur 废弃重建;LLM 双刃剑
@@ -173,4 +174,4 @@
 - [[expertise-and-prompting]] — 领域专长 × 提问方式纵线:专长定义/业务与系统维度/绿地建仓/存量复活/设计分工分层/理解不可委托/全闭环边界
 
 ---
-_Last updated: 2026-10-15 (ingest:第 63-64 源 — Anthropic 安全实现篇 + Claude Tag 值班篇;新建 agent-identity / claude-tag,更新 13 页)_
+_Last updated: 2026-11-06 (ingest:第 36 源全文落盘 — ETH AGENTS.md 研究重写;新建 documentation-redundancy,更新 8 页)_

@@ -570,3 +570,16 @@
 - 张力修正: playbook 源页原记“官方保守 vs 内部激进”——两篇 companion 显示内部实装是“高自动化 + 高治理配对”(shadow mode/抽检/SIEM/身份边界),问题转为该实装的可复制性
 - 待核: 文中引用的候选新源(Zero Trust for Agents/agent identity & access model/CISO guide/code review 等);Intercom/CircleCI 为自述案例;值班数据为操作数据(非受控评测)
 - 健康检查: `scripts/lint.sh` → **lint clean ✓(151 pages checked)**
+
+## [2026-11-06] ingest | Evaluating AGENTS.md(ETH Zurich)全文落盘 — 第 36 源重写 + 口径闭合
+
+- 触发: `raw/Evaluating AGENTS.md_Are Repository-Level Context Files Helpful for Coding Agents_.md`(arXiv 2602.11988v1 HTML,clipped 2026-11-06)入库。该论文 2026-08-02 曾在**无 raw 文件**的情况下建页(抓自摘要页/HTML/二手总结),本次按 §1「一页对应一份 raw 原文」补全并重写
+- 定位: 上下文文件(AGENTS.md/CLAUDE.md)唯一的受控实证;wiki 内散落 5 处的「-3% 待核」本次全部闭合
+- **口径修正(本次最重要)**: 摘要的「LLM 生成平均 **-3%**、人写 **+4%**」与正文 §4.2 的「**-0.5%**(SWE-bench Lite)/ **-2%**(AGENTbench)」**同属一篇论文的不同层级,不是转述误差**;此前记的「Medium/v2 总结给出 -0.5%/-2%」归因错误——那就是 v1 正文。→ 措辞改写:[[agents-md]]、[[ai-feature-implementation-loop]]、[[2026-03-12-skill-issue-harness-engineering]]、[[2026-03-26-code-agent-orchestra]]、[[minimal-vs-rich-harness]]、[[agent-evals]]、topic hub
+- **新增硬数据**: 成本 +20%/+23%;reasoning token +22%/+14%;步数 +2.45/+3.92;人写 +3.34 步、成本最高 +19%;Table 2 逐模型美元数(Sonnet 54.4→57.2 步 / $1.30→$1.51 等);**首次触碰 PR 改动文件的步数无改善**;概览段占比 100%/99%/95%/36%;GPT-5.1 mini **反复重读已在上下文里的文件**;uv 1.6 次/实例 vs 未提及 <0.01、repo_tool 2.5 vs <0.05;AGENTbench 构法(5694 PR → 138 实例/12 仓库;测试自生成但强制 fail@R / pass@R∘X*;10% 抽检无解法泄漏;75% 覆盖;上下文文件 641 词/9.7 节)
+- **新增结论**: 人写文件**对 Claude Code 无效**(四个代理中唯一例外);换更强模型生成文件 +2%(SWE-bench Lite)/ -3%(AGENTbench)、换生成提示无一致优劣 → 强模型/好提示不产生更好的上下文文件;按仓库看无一仓库出现显著效应
+- 新建 1 页: [[documentation-redundancy]](文档冗余假说 + 删文档消融 +2.7% 反超人写;与 [[agent-readability]]/[[intent-debt]] 的分界)
+- 更新 10 页: [[agents-md]](主承载,口径警告上移 + 消融/副作用)、[[claude-md]](/init 产物 = 典型冗余物;Claude Code 例外)、[[curse-of-instructions]](机制定量:不是「不遵守」而是「遵守了也不划算」)、[[context-engineering]](上下文预算的成本侧账本)、[[agent-evals]](摘要/正文不一致作为读法教训 + 该基准可作 eval 卫生模板)、[[ai-feature-implementation-loop]]、[[2026-03-12-skill-issue-harness-engineering]]、[[2026-03-26-code-agent-orchestra]]、[[minimal-vs-rich-harness]]、[[ai-agents]](源列表/进度/实证基础;开放问题换血:新增「冷门语言/私有栈的外部效度」与「短而精的阈值」)
+- 未做: **不新增源计数**(同一论文,仍 64 源);v2(2026-06-23)未入库,本页引文一律按 v1 正文
+- 工具噪声备注: pi-lens 的 Marksman 在多个文件报 "Ambiguous link"(cognitive-surrender / loop-engineering / agentic-engineering / wicked-features)——它把 `sources/YYYY-MM-DD-<slug>.md` 按**后缀 slug** 匹配,与 `concepts/<slug>.md` 撞名;仓库约定是裸 slug、`scripts/lint.sh` 按精确文件名解析(**clean**),且 marksman 不在 PATH、无可配置项 → 判为**误报**,不改既有 43 页链接,已用 lens_diagnostic_mark 逐条记为 false-positive(共 21 条;若要根治需统一改源页命名或加 analyzer 配置,属独立重构)
+- 健康检查: `scripts/lint.sh` → **lint clean ✓(152 pages checked)**
