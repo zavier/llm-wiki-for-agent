@@ -4,8 +4,8 @@ tags: [prompt-engineering, llm-behavior]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-11-06
-refs: [ai-agent-spec, context-engineering, documentation-redundancy, agents-md]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2026-02-12-evaluating-agents-md]
+refs: [ai-agent-spec, context-engineering, documentation-redundancy, agents-md, three-tier-boundaries]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2026-02-12-evaluating-agents-md, 2026-11-03-policy-wording-compliance]
 status: active
 ---
 
@@ -21,7 +21,8 @@ status: active
 - 与 [[context-engineering|模块化上下文]] 互为印证:小、聚焦的上下文优于巨型 prompt
 - 配置文件形态的实证(来源: [[2026-08-02-best-practices-claude-code]]):过长的 [[claude-md|CLAUDE.md]] 会被 Claude 忽略——规则淹没在噪声里;剪枝规则:"删掉这一行 Claude 会犯错吗?不会就删"
 - 系统提示的"正确高度"(来源: [[2026-08-02-effective-context-engineering-for-ai-agents]]):脆弱硬编码与过度笼统之间;替代罗列边界情况的做法是精选典范示例("example 是千言万语对应的图")——见 [[context-engineering]]
-- **定量版本:不是"不遵守",是"遵守了也不划算"**(来源: [[2026-02-12-evaluating-agents-md]],ETH Zurich 全文):上下文文件里的指令**确实被执行**(文件提到 uv → 1.6 次/实例;未提 <0.01;仓库专属工具 2.5 vs <0.05)——所以这个现象在代理时代呈现为**代价**而非拒绝:reasoning token **+14~22%**、步数 +2.45/+3.92、成本 **+20%/23%**,成功率却 -0.5%/-2%。作者结论:多余要求把任务变难了(代理多跑测试、多探索、多检查),而非模型"忽略"规则。**推论**: curse of instructions 的中间机制 = 每一条多出来的指令都要从注意力预算里抽税,而且**按真办事的方式抽**(见 [[context-engineering]]、[[documentation-redundancy]]);只有极少数**真实约束**能挣回税钱——人写文件 +4% 的对照就是这条边界
+- **定量版本:不是"不遵守",是"遵守了也不划算"**(来源: [[2026-02-12-evaluating-agents-md]],ETH Zurich v3):上下文文件里的指令**确实被执行**(文件提到 uv → 1.6 次/实例;未提 <0.01;仓库专属工具 2.5 vs <0.05)——所以这个现象在代理时代呈现为**代价**而非拒绝:reasoning token **+14~22%**、步数 +2.45/+3.92、成本 **+20%/23%**,成功率却 -0.5%/-2%。作者结论:多余要求把任务变难了(代理多跑测试、多探索、多检查),而非模型"忽略"规则。**推论**: curse of instructions 的中间机制 = 每一条多出来的指令都要从注意力预算里抽税,而且**按真办事的方式抽**(见 [[context-engineering]]、[[documentation-redundancy]]);只有极少数**真实约束**能挣回税钱——人写文件 +4% 的对照就是这条边界
+- **但“太长所以被忽略”缺证据**(来源: [[2026-11-03-policy-wording-compliance]],转引 McMillan arXiv:2605.10039 四面析因):**文件长度、策略位置、文件结构、是否存在冲突策略——都不显著改变遵守率**;真正在动遵守的是**措辞**(条件式最差,**0~78%** 的遵守率取决于措辞 × 模型/框架组合)。→ 本页的正确表述是两层:**“指令多”不导致“被忽略”,而导致“照做成本升高、任务变难”**(上一条),以及**“遵守本就不完全且吃措辞”**(本行)。只有把该强制的写成建议,才会真的失效(见 [[three-tier-boundaries]])
 
 ## 与其他页面的关系
 

@@ -33,6 +33,8 @@
 - [[agentic-workflow-patterns]] — 五种工作流模式:chaining/routing/parallelization/orchestrator/evaluator-optimizer
 - [[agents-md]] — 仓库内代理配置文件,定义行为与专职人格
 - [[documentation-redundancy]] — 文档冗余假说:LLM 生成的上下文文件与既有文档重叠,价值只在文档缺失时(删文档后 +2.7% 反超人写);概览类内容零收益
+- [[instruction-hierarchy]] — 指令层级:system > 用户/指令文件 > tool output;防注入与"旧文档赢过新代码"是同一机制;可一句话反向利用(90.1%→91.4%)
+- [[stale-instructions]] — 指令文件陈旧:过期描述因走指令通道而覆盖正确代码(90.1%);73.8% 一次不改;一句话可纠正;与 context-rot/冗余三者区分
 - [[ai-agent-spec]] — AI 代理 spec 总框架:五原则 + 六大核心区域清单
 - [[claude-md]] — Claude Code 持久上下文文件;取舍与剪枝规则
 - [[cognitive-surrender]] — 认知投降:offloading vs surrender;借用信心(73%);互惠放大
@@ -156,12 +158,17 @@
 - [[2026-05-25-how-we-contain-claude]] — Anthropic:三产品围堵复盘(三类风险×三层组件×三种隔离);approval≠supervision;25 次重试 24 次外泄;allowlist=能力授予
 - [[2026-07-21-anthropic-secures-ai-native-sdlc]] — Anthropic Deputy CISO 安全实现篇:8× 产出/~80% 代码/>50% 由 Claude Tag 合并;PSR/shadow mode/抽检/SIEM;实质评审率 16%→54%
 - [[2026-08-18-claude-tag-first-responder-ci-cd]] — Anthropic 值班实现篇:中位 14 分钟/最快 4 分钟;dynamic workflow + 617 行 investigation skill + lessons.md;oncall-kit 开源
+- [[2025-11-17-agent-readmes]] — Agent READMEs:2,303 份上下文文件普查(v2);测试 75.9%/安全 14.8%;67% 多次修改;v1→v2 有 11 处数字漂移
+- [[2026-01-28-agents-md-efficiency]] — ICSE JAWs:Lulla et al. 配对实验;手写根 AGENTS.md 令时长 -28.64%、输出 token -16.58%;未测正确性
+- [[2026-10-22-stale-instruction-files]] — Xu & Wu:陈旧文件覆盖代码(90.1%);Claude Code 指出冲突仍照做(79/80);一句话修复→91.4%
+- [[2026-11-03-policy-wording-compliance]] — Tsuchida et al.:措辞 × 遵守率(0–78%);条件式最差;复用 CTXbench 86 任务
 
 ## Syntheses
 
 - [[ai-feature-implementation-loop]] — 让 AI 更好实现功能:从 spec 到落地的闭环 + 失败模式修复表
 - [[minimal-vs-rich-harness]] — 极简 vs 富 harness 两派对比:共同底线、分维度分歧、证据对照、开放问题
 - [[official-sdlc-guides]] — 官方 SDLC 指南对比:OpenAI 三分法 vs Anthropic 工件链+治理+度量;共同底线、分歧表、开放问题
+- [[context-files-evidence]] — 上下文文件证据记分卡:5 篇一手材料并排(成功率/效率/遵守率/内容/时效),拆解三处表面矛盾 + 可执行清单
 
 ## Topics
 
@@ -174,4 +181,4 @@
 - [[expertise-and-prompting]] — 领域专长 × 提问方式纵线:专长定义/业务与系统维度/绿地建仓/存量复活/设计分工分层/理解不可委托/全闭环边界
 
 ---
-_Last updated: 2026-11-06 (ingest:第 36 源全文落盘 — ETH AGENTS.md 研究重写;新建 documentation-redundancy,更新 8 页)_
+_Last updated: 2026-11-06 (ingest:第 65-68 源 — 上下文文件后续研究群;新建 instruction-hierarchy / stale-instructions + context-files-evidence 记分卡;ETH 页按 v3 重校,更新 10 页)_

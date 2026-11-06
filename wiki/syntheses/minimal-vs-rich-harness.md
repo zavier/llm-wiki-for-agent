@@ -35,7 +35,7 @@ status: active
 **证据对照**:
 
 - Terminal-Bench 2.0:富学派"只改 harness 把代理从 Top 30 提到 Top 5"(调优增益);极简派 pi 五轮跑分上榜 + Terminal-Bench 团队自己的 Terminus 2(**纯 tmux、零工具**)名列前茅——**harness 差距论的两面:harness 可以增加表现,也可以削减负担**,机制未解(来源: [[2025-11-30-opinionated-minimal-coding-agent]]、[[2026-04-19-agent-harness-engineering]])
-- ETH agentfile 反证([[2026-02-12-evaluating-agents-md]],全文已入库):LLM 生成的长上下文文件损害性能(摘要 -3% / 正文 **-0.5%/-2%**)+ 成本 +20~23%、reasoning token +14~22%、首次寻址步数无改善;人工写的短文件约 +4%(但**对 Claude Code 无效**)——支持"短而精",不支持"极简 = 零配置";"存在本身不是问题,内容质量才是"
+- ETH agentfile 反证([[2026-02-12-evaluating-agents-md]],全文已入库):LLM 生成的长上下文文件损害性能(摘要 -3% / 正文 **-0.5%/-2%**)+ 成本 +20~23%、reasoning token +14~22%、首次寻址步数无改善;人工写的短文件约 +4%(**v3 已下调为 +2.4%、p=21% 不显著**;显著的是"人写 > 生成物 +7pp";且**对 Claude Code 无效**)——支持"短而精",不支持"极简 = 零配置";另有效率向的反证:手写根文件令时长 -28.64%、输出 token -16.58%(见 [[2026-01-28-agents-md-efficiency]]、[[context-files-evidence]]);"存在本身不是问题,内容质量才是"
 - curse-of-instructions 与 56% skill 未触发([[progressive-disclosure]]):支持极简派的"披露失效"担忧;但富学派的回应是触发机制工程而非删除机制
 - 决策依据差异:富学派有组织规模证据(OpenAI 零人工代码、Anthropic at scale、阿里 2-3×),极简派证据主要来自个人/小团队(Zechner:7 个生产项目用过 pi-ai;pi-mono 是唯一主战场)——**规模可能是学派分化的自变量**
 

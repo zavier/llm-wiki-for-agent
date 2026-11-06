@@ -4,8 +4,8 @@ tags: [ai-agents, configuration, persistent-context]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-11-06
-refs: [claude-code, agents-md, skills, context-engineering, file-as-memory, harness-engineering, pr-contract, documentation-redundancy]
-sources: [2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-10-06-file-system-is-the-new-database, 2026-05-14-claude-code-large-codebases, 2026-08-21-ai-native-sdlc-playbook, 2026-02-12-evaluating-agents-md]
+refs: [claude-code, agents-md, skills, context-engineering, file-as-memory, harness-engineering, pr-contract, documentation-redundancy, instruction-hierarchy, stale-instructions]
+sources: [2026-08-02-best-practices-claude-code, 2026-08-02-effective-context-engineering-for-ai-agents, 2025-10-06-file-system-is-the-new-database, 2026-05-14-claude-code-large-codebases, 2026-08-21-ai-native-sdlc-playbook, 2026-02-12-evaluating-agents-md, 2026-10-22-stale-instruction-files]
 status: active
 ---
 
@@ -27,7 +27,8 @@ Claude Code 的持久上下文文件:每次会话启动时自动读取,承载代
 - 像代码一样对待:定期剪枝、用"行为是否真的改变"验证改动、入库让团队贡献
 - 与 [[agents-md]] 同构:都是"给代理的仓库内规则文件"——Anthropic 与 GitHub 生态的对应物
 - **大规模分层加载**(来源: [[2026-05-14-claude-code-large-codebases]],Anthropic 官方):root 文件放"指针与关键坑","**其余一切都会漂成噪声**";子目录文件放局部约定,Claude 在树中移动时**累加加载**;在**子目录初始化**(Claude 自动向上走加载沿途 CLAUDE.md,root 上下文不丢);**按子目录限定 test/lint 命令**(改一个服务跑全量套件 = 超时 + 无关输出浪费上下文,编译型 monorepo 深跨目录依赖时难做到);`.ignore` 排除生成物/构建产物 + 版本控制的 `permissions.deny`(`.claude/settings.json` 入库,全团队一致降噪,代码生成器开发者可本地覆盖);代码库地图(顶层文件夹一行描述 = 可先扫的目录,数百顶层文件夹用分层地图)
-- **实测:人写 CLAUDE.md 对 Claude Code 是唯一无效的**(来源: [[2026-02-12-evaluating-agents-md]],ETH Zurich 全文):四个代理中,开发者编写的上下文文件**除 Claude Code 外均提升**成功率;Claude Code 是唯一例外——AGENTbench 上 Sonnet-4.5 在**无文件**时 40.7 步/\$1.15,**人写文件**反而变成 45.3 步/\$1.30(成功率不升)。考虑到它也是唯一默认带 `/init` 自动生成 + 子目录累加 CLAUDE.md 的代理,这个例外值得当作"文件对它的边际价值最低"的警号。实践含义:`/init` 产出应当**被砍到最小**而不是"先跑一遍再润色"(**自动生成物 ≈ 与代码库文档冗余**,见 [[documentation-redundancy]]);官方"砍到新人第一天所需、一页以内"及"同一错误犯两次才写进去"的纪律得到量化背书——写进去的东西只该是**代码里看不出的约束**
+- **实测:人写 CLAUDE.md 对 Claude Code 是唯一无效的**(来源: [[2026-02-12-evaluating-agents-md]],ETH Zurich **v3**):四个代理中,开发者编写的上下文文件**除 Claude Code 外均提升**成功率;Claude Code 是唯一例外——AGENTbench 上 Sonnet-4.5 在**无文件**时 40.7 步/\$1.15,**人写文件**反而变成 45.3 步/\$1.30(成功率不升)。考虑到它也是唯一默认带 `/init` 自动生成 + 子目录累加 CLAUDE.md 的代理,这个例外值得当作"文件对它的边际价值最低"的警号。实践含义:`/init` 产出应当**被砍到最小**而不是"先跑一遍再润色"(**自动生成物 ≈ 与代码库文档冗余**,见 [[documentation-redundancy]]);官方"砍到新人第一天所需、一页以内"及"同一错误犯两次才写进去"的纪律得到量化背书——写进去的东西只该是**代码里看不出的约束**
+- **用户级 CLAUDE.md 目前唯一“必写”的一条(新证据)**(来源: [[2026-10-22-stale-instruction-files]]):写进 `~/.claude/CLAUDE.md` 一句元规则——**文档与既有代码冲突时以代码为准,并在最终回复里逐条指出不一致**。实验:无此句时 **90.1%** 的选择跟随陈旧文件;Claude Code 在 **79/80** 次运行里**点名冲突却仍照文件写**(其中 86.2% 的选择匹配文件);加上该句后跟随代码 **7.5% → 94.4%**、全组合 **91.4%**、测试通过 89.4%→100%。这条规则属于“代码里看不出来、也不会随代码腐烂”的元层约束——正是应该放用户级而非项目级的那类(见 [[instruction-hierarchy]]、[[stale-instructions]])
 - **随模型进化维护**:为当前模型写的规则可能反噬未来模型——补偿旧模型缺陷的指令(如"每个重构拆成单文件改动")在新模型下变成约束(它现在能协调跨文件编辑);hooks 同理(强制 p4 edit 的 hook 在原生 Perforce 模式后冗余);**配置评审每 3-6 个月一次**,重大模型发布后性能平台期也做(来源: 同上)
 
 **官方 play:CLAUDE.md 作为制度资产**(来源: [[2026-08-21-ai-native-sdlc-playbook]],Anthropic):①`/init` 生成 → **砍到“新人第一天所需”**(build/test/lint 命令、要命的约定、Claude 最常错的),**一页以内**——“Claude 每次会话全量读它,陈旧内容白占上下文”;②checkin 入库,全队一个版本,变更像代码一样评审(code owner 批准);③工作规则:“**Claude 同一错误犯两次,修正就写进 CLAUDE.md**”;④评审发现回流(见 [[pr-contract]]):第二次被评审标记的错误,修正作为该次评审的一部分写进 CLAUDE.md——因为评审也读 CLAUDE.md,下个 PR 起被抓住;评审还负责标记“某处改动让 CLAUDE.md 过时”;⑤度量:重复错误频率(应随修正下降)+ 新成员首个 merged PR 时间

@@ -4,8 +4,8 @@ tags: [ai-agents, configuration]
 topic: ai-agents
 created: 2026-08-02
 updated: 2026-11-06
-refs: [github, three-tier-boundaries, ai-agent-spec, harness-engineering, factory-model, agent-readability, humanlayer, intent-debt, process-over-prose, ralph-loop, conformance-testing, documentation-redundancy]
-sources: [2026-01-13-good-spec-for-ai-agents, 2026-04-19-agent-harness-engineering, 2026-02-25-factory-model-coding-agents, 2026-02-11-codex-agent-first-engineering, 2026-03-12-skill-issue-harness-engineering, 2026-06-05-intent-debt, 2026-05-03-agent-skills, 2026-01-31-self-improving-agents, 2026-08-02-building-ai-native-engineering-team, 2026-02-12-evaluating-agents-md]
+refs: [github, three-tier-boundaries, ai-agent-spec, harness-engineering, factory-model, agent-readability, humanlayer, intent-debt, process-over-prose, ralph-loop, conformance-testing, documentation-redundancy, context-files-evidence, stale-instructions]
+sources: [2026-01-13-good-spec-for-ai-agents, 2026-04-19-agent-harness-engineering, 2026-02-25-factory-model-coding-agents, 2026-02-11-codex-agent-first-engineering, 2026-03-12-skill-issue-harness-engineering, 2026-06-05-intent-debt, 2026-05-03-agent-skills, 2026-01-31-self-improving-agents, 2026-08-02-building-ai-native-engineering-team, 2026-02-12-evaluating-agents-md, 2026-01-28-agents-md-efficiency, 2026-10-22-stale-instruction-files, 2026-11-03-policy-wording-compliance, 2025-11-17-agent-readmes]
 status: active
 ---
 
@@ -29,7 +29,9 @@ status: active
   - **机制**:指令**真的被执行**(uv 被提及 1.6 次/实例 vs 未提及 <0.01;仓库专属工具 2.5 次 vs <0.05)→ 更多测试/探索 → 成功**不升**;**概览无效**:95-100% 的生成文件含概览段,却**没缩短**找到 PR 改动文件的步数;GPT-5.1 mini 甚至会反复去找并重读**已在上下文里**的文件(只在文件存在时发生,是它步数暴增的直接原因)
   - **冗余本质**:删掉仓库全部 `.md`/示例/`docs/` 后,LLM 文件**一致 +2.7% 且反超人写文件** → 价值 = 文档缺失时的替代品(见 [[documentation-redundancy]])
   - **消融**:换成更强的 GPT-5.2 生成(+2% SWE-bench Lite / **-3%** AGENTbench)、或换 Codex↔Claude Code 的生成提示,均无一致优劣 → **强模型/好提示不产生更好的上下文文件**;按仓库看无一仓库出现显著效应
-  - **结论**:**只应包含代码库之外的具体附加指令**(工具链、非默认约定),优先人写;`641 词 / 9.7 节` 的实测人写文件只换到约 +4%——这是"克制写法"的成绩上限,不能读作"再写长点也行"
+  - **结论**:**只应包含代码库之外的具体附加指令**(工具链、非默认约定),优先人写;`641 词 / 9.7 节` 的实测人写文件相对“无文件”只换到 **+2.4%(p=21%,不显著)**——真正的信号是**人写 > 生成物 7pp(p=3.8%)**。不能读作“再写长点也行”
+  - ⚠️ **v3 口径变更(2026-09-29)**:v1 摘要的“生成 -3% / 人写 +4%”已被取代——基准改名 **CTXbench**,人写从 +4% 降为 **+2.4% 且不显著**,摘要改为“**不普遍提升成功率**”(对生成物与人写都成立)。引旧数字(“+4%”或“AGENTbench”)即意味着在引 v1
+  - **后续研究群(2026-11-06 入库四篇)**:[[2026-01-28-agents-md-efficiency]](手写根文件使时长 **-28.64%**、输出 token **-16.58%**,但**未测正确性**)、[[2026-10-22-stale-instruction-files]](陈旧文件赢过代码 **90.1%**,一句话可纠正——见 [[instruction-hierarchy]]、[[stale-instructions]] 两个新页)、[[2026-11-03-policy-wording-compliance]](**用 CTXbench 86 个任务**测措辞:遵守率 **0-78%**,条件式最差)、[[2025-11-17-agent-readmes]](2,303 份文件的内容普查:测试 75.9%/安全 14.8%)→ 全部收入 [[context-files-evidence]] 记分卡
   - HumanLayer 版结论:不自动生成、少即是多、渐进披露、<60 行;——**绝不让代理直接写 AGENTS.md,lead 批准每一行**;结构示例:STYLE/GOTCHAS/ARCH_DECISIONS/TEST_STRATEGY
 - **意图账本 framing**(来源: [[2026-06-05-intent-debt]],Osmani):AGENTS.md = **意图账本,不是配置**——自动生成的文件(如 /init)描述"代码是什么",意图文件描述"团队想什么"(约定、"我们不这么干因为"、任何单文件里看不见的约束);与 OpenAI 四败因/ETH 反证不矛盾:反对的不是文件存在,是"把描述代码的文件当规则文件"——意图必须人写(见 [[intent-debt]])
 - **五条不可妥协**(来源: [[2026-05-03-agent-skills]],Osmani 元 skill 提炼,"明天就能进任何 AGENTS.md"):①建之前显性化假设(静默的错误假设是最常见失败模式)②需求冲突时停下问,别猜 ③该顶回去就顶回去(不是 say-yes 机器)④偏好无聊明显的方案(聪明是昂贵的)⑤只碰叫你碰的东西——与 OpenAI 四败因兼容:短而强制(五条)而非长而忽略(见 [[process-over-prose]])

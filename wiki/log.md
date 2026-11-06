@@ -583,3 +583,15 @@
 - 未做: **不新增源计数**(同一论文,仍 64 源);v2(2026-06-23)未入库,本页引文一律按 v1 正文
 - 工具噪声备注: pi-lens 的 Marksman 在多个文件报 "Ambiguous link"(cognitive-surrender / loop-engineering / agentic-engineering / wicked-features)——它把 `sources/YYYY-MM-DD-<slug>.md` 按**后缀 slug** 匹配,与 `concepts/<slug>.md` 撞名;仓库约定是裸 slug、`scripts/lint.sh` 按精确文件名解析(**clean**),且 marksman 不在 PATH、无可配置项 → 判为**误报**,不改既有 43 页链接,已用 lens_diagnostic_mark 逐条记为 false-positive(共 21 条;若要根治需统一改源页命名或加 analyzer 配置,属独立重构)
 - 健康检查: `scripts/lint.sh` → **lint clean ✓(152 pages checked)**
+
+## [2026-11-06] ingest | 上下文文件证据群四篇 + ETH 论文 v3 重校(第 65-68 源)
+
+- 触发: 人类要求"挑几篇下下来、落盘 raw/ 然后 ingest"。从上一轮搜索结果中选取四篇最高价值者落盘:`raw/2601.20404v2.pdf`(效率)、`raw/2610.30571v1.pdf`(陈旧)、`raw/2611.04367v1.pdf`(遵守率)、`raw/2511.12884v2.pdf`(普查);另补 `raw/2602.11988v3.pdf`(已入库论文的新版)
+- **最重要的发现(改变了旧结论)**:[[2026-02-12-evaluating-agents-md|ETH 论文]] 已到 **v3(2026-09-29)**,结论方向变了——基准改名为 **CTXbench**;人写文件从**摘要口径 +4% 下调为正文 +2.4%(p=21%,不显著)**;新增"人写显著优于生成物 **+7pp**(p=3.8%)";摘要从"reduce success rates"改为"**不普遍提升**"(对生成物与人写都成立)。→ wiki 内 5 处"+4%"引用已全部加订正标记(agents-md / claude-md / minimal-vs-rich-harness / ai-feature-implementation-loop / skill-issue 源 / orchestra 源 / topic hub)
+- 新建 4 个源页:[[2026-01-28-agents-md-efficiency]](ICSE JAWs,Lulla et al.;10 仓库/124 PR 配对;时长 **-28.64%**、输出 token **-16.58%**;**无正确性评测**)、[[2026-10-22-stale-instruction-files]](Xu & Wu;40 项目/320 运行;陈旧文件赢 **90.1%**;Claude Code **79/80** 指出冲突仍照做;Codex **20/80** 改写既有代码、原测试挂 **17**;一句话修复→跟代码 **91.4%**、测试 89.4%→100%)、[[2026-11-03-policy-wording-compliance]](Tsuchida et al.;**复用 CTXbench 86 任务**;4 措辞 × 4 组合;遵守率 **0-78%**;条件式最差;开放权重 ≤20%)、[[2025-11-17-agent-readmes]](2,303 文件/1,925 仓库;**测试 75.9%/实现 70.8%/架构 68.1%**,安全 14.8%/性能 14.5%;67% 多次修改;v1→v2 有 11 处数字漂移)
+- 新建 2 个概念页:[[instruction-hierarchy]](机制:system > 指令文件 > tool output;防注入与"旧文档赢过新代码"同源;可一句话反向利用)、[[stale-instructions]](失败模式:冗余 vs 陈旧的区分、73.8%/23.0% 基础率(转引)、修法与检测)
+- 新建 1 个综合页:[[context-files-evidence]](**证据记分卡**:五篇并排 + 三处表面矛盾的解释:成本↑ vs token↓ = 文件来源/任务形态/指标不同;"主动维护" vs "73.8% 不改" = 人群不同;"被遵循" vs "0-78% 遵守率" = 分辨率与规则类型不同 + McMillan 四面析因)
+- 更新 8 页:[[agents-md]](新增 v3 口径变更 + 后续研究群 + 效率反证)、[[claude-md]](用户级 CLAUDE.md 的唯一必写项 = 代码优先元规则;Claude Code 79/80 行为特写)、[[documentation-redundancy]](v3 弱化绝对收益;冗余与陈旧同根因;普查内容侧证据)、[[curse-of-instructions]](拆为两层:"照做变难" + "遵守本就不完全且吃措辞";**并用 McMillan 否定"太长所以被忽略"**)、[[context-engineering]](预载也能省的反方向证据)、[[agent-evals]](配置改动三轴评测 + 配对设计门槛 + "只测效率不测质量"红线)、[[ai-feature-implementation-loop]] 与 [[minimal-vs-rich-harness]](口径订正)
+- 主题页:68 份源文档;开放问题换血 6 条(效率×成功率联合测量、权威判据、陈旧速度曲线、开放权重天花板归因、短而精边界被部分否定、指令文件作为攻击面)
+- 未做:未核 v1/v2 的中间口径细节;转引的 Denisov-Blanch(441 公司仓库 73.8%)与 Treude & Baltes(356 仓库 23.0%)原文未入库;CSA 的"指令文件投毒"研究未入库
+- 健康检查: `scripts/lint.sh` → **lint clean ✓(159 pages checked)**

@@ -39,7 +39,7 @@ status: active
 - Cursor Cloud Agents + **Glass**:代理管理成为主界面,编辑器退居其下——"控制平面成为主要体验"的生态趋势
 - 大多数人 2026 年三层都用:Tier 1 交互、Tier 2 并行冲刺、Tier 3 夜里清积压
 
-**规模化 Pro-tips**:多模型路由(MODEL_ROUTING.md:规划→Gemini、实现→Opus/Sonnet、评审→专用安全模型);worktree 生命周期脚本(agent-spin/agent-merge/agent-clean,约 12 行 bash);**AGENTS.md 只许人工维护**——ETH Zurich 研究(Gloaguen et al.,一手已核: [[2026-02-12-evaluating-agents-md]]):LLM 生成的 AGENTS.md **无收益且平均成功率下降、推理成本 +20% 以上**(论文**摘要**口径 -3%;**正文**分基准 -0.5%/-2%——两者不矛盾,全文已入库 2026-11-06);人工写的约 +4%(对 Claude Code 无效);绝不让代理直接写 AGENTS.md,lead 批准每一行;结构:STYLE/GOTCHAS/ARCH_DECISIONS/TEST_STRATEGY
+**规模化 Pro-tips**:多模型路由(MODEL_ROUTING.md:规划→Gemini、实现→Opus/Sonnet、评审→专用安全模型);worktree 生命周期脚本(agent-spin/agent-merge/agent-clean,约 12 行 bash);**AGENTS.md 只许人工维护**——ETH Zurich 研究(Gloaguen et al.,一手已核: [[2026-02-12-evaluating-agents-md]]):LLM 生成的 AGENTS.md **无收益且平均成功率下降、推理成本 +20% 以上**(论文**摘要**口径 -3%;**正文**分基准 -0.5%/-2%——两者不矛盾,全文已入库 2026-11-06);人工写的约 +4%(v3 已下调为 +2.4%、p=21%,对 Claude Code 无效);绝不让代理直接写 AGENTS.md,lead 批准每一行;结构:STYLE/GOTCHAS/ARCH_DECISIONS/TEST_STRATEGY
 
 **质量门(trust but verify)**:计划审批(修坏计划比修坏代码便宜得多;teammate 写计划 → lead 审查 → 批准/拒绝 → 实现);hooks(TeammateIdle 验证测试全过才让停;TaskCompleted 跑 lint+测试,不过就继续干);AGENTS.md 复合学习(每会话读、每会话加:demo 里捕获"给已有表加列必须带 ALTER TABLE 迁移")
 
